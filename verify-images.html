@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Verification</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .image-test { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+        .image-test img { max-width: 200px; max-height: 150px; margin: 10px; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Image Verification Test</h1>
+    <p>This page tests if images are accessible from the public folder.</p>
+    
+    <div id="results"></div>
+    
+    <script>
+        const images = [
+            '/assets/images/logo.svg',
+            '/assets/images/about-img-1.jpg',
+            '/assets/images/service-image-1.jpg',
+            '/assets/images/hero-images/AdobeStock_1013238345.jpeg',
+            '/assets/images/case-study-img-1.jpg',
+            '/assets/images/post-1.jpg',
+            '/assets/images/testimonial-img-1.jpg',
+            '/assets/images/footer-logo.svg'
+        ];
+        
+        const resultsDiv = document.getElementById('results');
+        
+        images.forEach(img => {
+            const div = document.createElement('div');
+            div.className = 'image-test';
+            div.innerHTML = `<strong>Testing:</strong> ${img}<br>`;
+            
+            const imgEl = document.createElement('img');
+            imgEl.src = img;
+            imgEl.alt = img;
+            imgEl.onload = () => {
+                div.innerHTML += `<span class="success">✓ Loaded successfully</span>`;
+                div.appendChild(imgEl);
+            };
+            imgEl.onerror = () => {
+                div.innerHTML += `<span class="error">✗ Failed to load</span>`;
+            };
+            
+            resultsDiv.appendChild(div);
+        });
+    </script>
+</body>
+</html>
+

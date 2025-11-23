@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Test</title>
+</head>
+<body>
+    <h1>Testing Assets</h1>
+    <p>If you can see this, the public folder is accessible.</p>
+    <p>Check browser console (F12) for any 404 errors on CSS/JS files.</p>
+    <script>
+        // Test if assets are accessible
+        const testFiles = [
+            '/assets/css/bootstrap.min.css',
+            '/assets/css/custom.css',
+            '/assets/js/jquery-3.7.1.min.js'
+        ];
+        
+        testFiles.forEach(file => {
+            fetch(file)
+                .then(response => {
+                    if (response.ok) {
+                        console.log('✓', file, 'is accessible');
+                    } else {
+                        console.error('✗', file, 'returned', response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error('✗', file, 'error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
+

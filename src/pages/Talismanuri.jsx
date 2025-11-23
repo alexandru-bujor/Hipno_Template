@@ -7,30 +7,33 @@ const Talismanuri = () => {
   const talismans = [
     {
       title: 'Talismanuri de protecție',
-      description: 'Talismanuri puternice pentru protecție spirituală și fizică. Fiecare talisman este binecuvântat și pregătit cu grijă pentru a-ți oferi protecție maximă.',
-      image: '/assets/images/hero-images/AdobeStock_183593206.jpeg',
+      description:
+        'Talismanuri puternice pentru protecție spirituală și fizică. Fiecare talisman este binecuvântat și pregătit cu grijă pentru a-ți oferi protecție maximă.',
+      image: 'assets/images/hero-images/AdobeStock_183593206.jpeg',
       features: ['Protecție spirituală', 'Energie pozitivă', 'Binecuvântat']
     },
     {
       title: 'Artefacte antice',
-      description: 'Colecție exclusivă de artefacte cu putere spirituală dovedită. Fiecare artefact are o istorie bogată și puteri unice.',
-      image: '/assets/images/hero-images/AdobeStock_267533248.jpeg',
+      description:
+        'Colecție exclusivă de artefacte cu putere spirituală dovedită. Fiecare artefact are o istorie bogată și puteri unice.',
+      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg',
       features: ['Istorie bogată', 'Putere dovedită', 'Colecție exclusivă']
     },
     {
       title: 'Amulete personalizate',
-      description: 'Amulete create special pentru tine, adaptate nevoilor tale specifice. Fiecare amuletă este unică și puternică.',
-      image: '/assets/images/hero-images/AdobeStock_638399430.jpeg',
+      description:
+        'Amulete create special pentru tine, adaptate nevoilor tale specifice. Fiecare amuletă este unică și puternică.',
+      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg',
       features: ['Personalizat', 'Unic', 'Puternic']
     }
   ]
 
   return (
     <>
-      <PageHeader 
-        title="Talismanuri și artefacte" 
+      <PageHeader
+        title="Talismanuri și artefacte"
         subtitle="Putere spirituală"
-        backgroundImage="/assets/images/hero-images/AdobeStock_1013238345.jpeg"
+        backgroundImage="assets/images/hero-images/AdobeStock_1013238345.jpeg"
       />
       
       <div className="our-services" style={{ padding: '100px 0' }}>

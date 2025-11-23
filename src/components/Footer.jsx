@@ -57,7 +57,7 @@ const Footer = () => {
             <div className="col-lg-12">
               {/* Footer Logo */}
               <div className="footer-logo">
-                <img src="/assets/images/footer-logo.svg" alt="Logo" />
+                <img src="assets/images/footer-logo.svg" alt="Logo" />
               </div>
             </div>
 

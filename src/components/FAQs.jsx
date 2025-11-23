@@ -40,10 +40,10 @@ const FAQs = () => {
   ]
 
   const customerImages = [
-    '/assets/images/hero-images/AdobeStock_183593206.jpeg',
-    '/assets/images/hero-images/AdobeStock_267533248.jpeg',
-    '/assets/images/hero-images/AdobeStock_638399430.jpeg',
-    '/assets/images/hero-images/AdobeStock_723363653.jpeg'
+    'assets/images/hero-images/AdobeStock_183593206.jpeg',
+    'assets/images/hero-images/AdobeStock_267533248.jpeg',
+    'assets/images/hero-images/AdobeStock_638399430.jpeg',
+    'assets/images/hero-images/AdobeStock_723363653.jpeg'
   ]
 
   const toggleFAQ = (index) => {
@@ -54,7 +54,7 @@ const FAQs = () => {
     <div
       className="our-faqs parallaxie"
       style={{
-        backgroundImage: 'url(/assets/images/hero-images/AdobeStock_1649580010.jpeg)',
+        backgroundImage: 'url(assets/images/hero-images/AdobeStock_1649580010.jpeg)',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',

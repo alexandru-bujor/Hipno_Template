@@ -26,24 +26,24 @@ const Appointment = () => {
 
   const appointmentItems = [
     {
-      icon: '/assets/images/icon-appointment-item-1.svg',
+      icon: 'assets/images/icon-appointment-item-1.svg',
       title: 'book appointment',
       description: 'Schedule your appointment online or call us directly.'
     },
     {
-      icon: '/assets/images/icon-appointment-item-2.svg',
+      icon: 'assets/images/icon-appointment-item-2.svg',
       title: 'get consultation',
       description: 'Receive expert guidance from our experienced therapists.'
     }
   ]
 
   const partnerLogos = [
-    '/assets/images/partner-logo-1.svg',
-    '/assets/images/partner-logo-2.svg',
-    '/assets/images/partner-logo-3.svg',
-    '/assets/images/partner-logo-1.svg',
-    '/assets/images/partner-logo-2.svg',
-    '/assets/images/partner-logo-3.svg'
+    'assets/images/partner-logo-1.svg',
+    'assets/images/partner-logo-2.svg',
+    'assets/images/partner-logo-3.svg',
+    'assets/images/partner-logo-1.svg',
+    'assets/images/partner-logo-2.svg',
+    'assets/images/partner-logo-3.svg'
   ]
 
   return (

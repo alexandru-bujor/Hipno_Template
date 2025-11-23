@@ -5,10 +5,10 @@ import RevealImage from './RevealImage'
 
 const AboutUs = () => {
   const customerImages = [
-    '/assets/images/hero-images/AdobeStock_183593206.jpeg',
-    '/assets/images/hero-images/AdobeStock_267533248.jpeg',
-    '/assets/images/hero-images/AdobeStock_638399430.jpeg',
-    '/assets/images/hero-images/AdobeStock_723363653.jpeg'
+    'assets/images/hero-images/AdobeStock_183593206.jpeg',
+    'assets/images/hero-images/AdobeStock_267533248.jpeg',
+    'assets/images/hero-images/AdobeStock_638399430.jpeg',
+    'assets/images/hero-images/AdobeStock_723363653.jpeg'
   ]
 
   return (
@@ -21,14 +21,14 @@ const AboutUs = () => {
               {/* About Image 1 */}
               <div className="about-img-1">
                 <figure className="image-anime">
-                  <img src="/assets/images/hero-images/AdobeStock_1013238345.jpeg" alt="About Us" />
+                  <img src="assets/images/hero-images/AdobeStock_1013238345.jpeg" alt="About Us" />
                 </figure>
               </div>
 
               {/* About Image 2 */}
               <div className="about-img-2">
                 <figure className="image-anime">
-                  <img src="/assets/images/hero-images/AdobeStock_1649580010.jpeg" alt="About Us" />
+                  <img src="assets/images/hero-images/AdobeStock_1649580010.jpeg" alt="About Us" />
                 </figure>
               </div>
 

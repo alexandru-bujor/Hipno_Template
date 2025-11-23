@@ -8,7 +8,7 @@ const Programare = () => {
       <PageHeader 
         title="Programare" 
         subtitle="Rezervă o consultație"
-        backgroundImage="/assets/images/hero-images/AdobeStock_1013238345.jpeg"
+        backgroundImage="assets/images/hero-images/AdobeStock_1013238345.jpeg"
       />
       <Appointment />
     </>

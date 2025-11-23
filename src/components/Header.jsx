@@ -37,7 +37,7 @@ const Header = () => {
       <div className="react-header-inner">
         {/* Logo */}
         <Link to="/" className="react-header-logo" aria-label="Acasă">
-          <img src="/assets/images/logo.svg" alt="Logo" />
+          <img src="assets/images/logo.svg" alt="Logo" />
         </Link>
 
         {/* Desktop navigation */}
@@ -92,7 +92,7 @@ const Header = () => {
               className="react-nav-mobile-logo"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <img src="/assets/images/logo.svg" alt="Logo" />
+              <img src="assets/images/logo.svg" alt="Logo" />
             </Link>
             <button
               type="button"

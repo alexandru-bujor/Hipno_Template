@@ -7,17 +7,17 @@ const TalismanuriPreview = () => {
     {
       title: 'Talismanuri de protecție',
       description: 'Talismanuri puternice pentru protecție spirituală și fizică.',
-      image: '/assets/images/hero-images/AdobeStock_183593206.jpeg'
+      image: 'assets/images/hero-images/AdobeStock_183593206.jpeg'
     },
     {
       title: 'Artefacte antice',
       description: 'Colecție exclusivă de artefacte cu putere spirituală dovedită.',
-      image: '/assets/images/hero-images/AdobeStock_267533248.jpeg'
+      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg'
     },
     {
       title: 'Amulete personalizate',
       description: 'Amulete create special pentru tine, adaptate nevoilor tale.',
-      image: '/assets/images/hero-images/AdobeStock_638399430.jpeg'
+      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg'
     }
   ]
 

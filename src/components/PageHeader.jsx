@@ -1,7 +1,7 @@
 import React from 'react'
 
 const PageHeader = ({ title, subtitle, backgroundImage }) => {
-  const defaultBg = backgroundImage || '/assets/images/hero-bg.jpg'
+  const defaultBg = backgroundImage || 'assets/images/hero-bg.jpg'
   
   return (
     <div 

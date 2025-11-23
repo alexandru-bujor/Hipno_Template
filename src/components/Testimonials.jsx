@@ -10,21 +10,21 @@ import 'swiper/css/pagination'
 const Testimonials = () => {
   const testimonials = [
     {
-      image: '/assets/images/hero-images/AdobeStock_183593206.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_183593206.jpeg',
       quote:
         'Nu pot să le mulțumesc suficient specialiștilor pentru abordarea lor compătimitoare. M-au ajutat să procesez traumele într-un mediu sigur și am văzut îmbunătățiri semnificative în sănătatea mea mentală.',
       author: 'Maria P.',
       position: 'Clientă'
     },
     {
-      image: '/assets/images/hero-images/AdobeStock_267533248.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg',
       quote:
         'Ritualurile și consultațiile m-au ajutat să găsesc pacea interioară pe care o căutam de atâția ani. Recomand cu încredere serviciile acestora.',
       author: 'Ion D.',
       position: 'Client'
     },
     {
-      image: '/assets/images/hero-images/AdobeStock_638399430.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg',
       quote:
         'Talismanurile pe care le-am primit au adus o schimbare pozitivă în viața mea. Simt o protecție și o energie pozitivă pe care nu le simțeam înainte.',
       author: 'Ana M.',
@@ -33,19 +33,19 @@ const Testimonials = () => {
   ]
 
   const customerImages = [
-    '/assets/images/hero-images/AdobeStock_723363653.jpeg',
-    '/assets/images/hero-images/AdobeStock_1013238345.jpeg',
-    '/assets/images/hero-images/AdobeStock_1649580010.jpeg',
-    '/assets/images/hero-images/AdobeStock_183593206.jpeg'
+    'assets/images/hero-images/AdobeStock_723363653.jpeg',
+    'assets/images/hero-images/AdobeStock_1013238345.jpeg',
+    'assets/images/hero-images/AdobeStock_1649580010.jpeg',
+    'assets/images/hero-images/AdobeStock_183593206.jpeg'
   ]
 
   const companyLogos = [
-    '/assets/images/company-logo-1.svg',
-    '/assets/images/company-logo-2.svg',
-    '/assets/images/company-logo-3.svg',
-    '/assets/images/company-logo-4.svg',
-    '/assets/images/company-logo-5.svg',
-    '/assets/images/company-logo-1.svg'
+    'assets/images/company-logo-1.svg',
+    'assets/images/company-logo-2.svg',
+    'assets/images/company-logo-3.svg',
+    'assets/images/company-logo-4.svg',
+    'assets/images/company-logo-5.svg',
+    'assets/images/company-logo-1.svg'
   ]
 
   return (
@@ -77,7 +77,7 @@ const Testimonials = () => {
             {/* Testimonial Review Box */}
             <div className="testimonial-review-box">
               <div className="testimonial-site-logo">
-                <img src="/assets/images/footer-logo.svg" alt="Logo" />
+                <img src="assets/images/footer-logo.svg" alt="Logo" />
               </div>
               <div className="about-customer-rating">
                 {[...Array(5)].map((_, i) => (

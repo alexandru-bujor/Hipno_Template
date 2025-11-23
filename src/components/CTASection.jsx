@@ -11,7 +11,7 @@ const CTASection = () => {
             <div className="cta-box">
               {/* CTA Box Image */}
               <div className="cta-box-image">
-                <img src="/assets/images/hero-images/AdobeStock_1013238345.jpeg" alt="CTA" />
+                <img src="assets/images/hero-images/AdobeStock_1013238345.jpeg" alt="CTA" />
               </div>
 
               {/* CTA Box Content */}

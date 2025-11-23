@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom'
 const Blog = () => {
   const blogPosts = [
     {
-      image: '/assets/images/hero-images/AdobeStock_723363653.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_723363653.jpeg',
       title: 'Construirea rezilienței: strategii de adaptare pentru provocările vieții',
       link: '/blog-single'
     },
     {
-      image: '/assets/images/hero-images/AdobeStock_1013238345.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_1013238345.jpeg',
       title: 'Explorarea conexiunii între sănătatea mentală și fizică',
       link: '/blog-single'
     },
     {
-      image: '/assets/images/hero-images/AdobeStock_1649580010.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_1649580010.jpeg',
       title: 'Îmbunătățirea stimei de sine și încrederii prin ritualuri',
       link: '/blog-single'
     }

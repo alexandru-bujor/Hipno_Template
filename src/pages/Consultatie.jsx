@@ -10,7 +10,7 @@ const Consultatie = () => {
       <PageHeader 
         title="Consultație" 
         subtitle="Servicii personalizate"
-        backgroundImage="/assets/images/hero-images/AdobeStock_1649580010.jpeg"
+        backgroundImage="assets/images/hero-images/AdobeStock_1649580010.jpeg"
       />
       <Services />
       <WhyChooseUs />

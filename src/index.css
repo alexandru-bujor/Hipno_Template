@@ -561,115 +561,243 @@ a, button {
    COMPREHENSIVE MOBILE RESPONSIVE STYLES
    ============================================ */
 
-/* Mobile Navigation */
+/* React custom navbar (desktop + mobile), independent of template main-menu  */
+
+header.main-header.react-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+  background: transparent;
+}
+
+header.main-header.react-header.react-header-scrolled {
+  background: rgba(0, 0, 0, 0.88);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.react-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.react-header-logo img {
+  max-width: 140px;
+  height: auto;
+  display: block;
+}
+
+/* Desktop navigation */
+.react-nav-desktop {
+  flex: 1;
+}
+
+.react-nav-desktop ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.react-nav-link {
+  font-family: var(--accent-font);
+  font-size: 15px;
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: capitalize;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.react-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #9b9a84;
+  transition: width 0.2s ease;
+}
+
+.react-nav-link:hover {
+  color: #9b9a84;
+  transform: translateY(-1px);
+}
+
+.react-nav-link:hover::after,
+.react-nav-link.react-nav-link-active::after {
+  width: 100%;
+}
+
+.react-nav-link.react-nav-link-active {
+  color: #9b9a84;
+  font-weight: 500;
+}
+
+.react-header-cta-desktop {
+  display: flex;
+  align-items: center;
+}
+
+.react-header-cta-btn {
+  white-space: nowrap;
+}
+
+/* Mobile toggle (burger) */
+.react-nav-toggle {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-nav-toggle-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 22px;
+}
+
+.react-nav-toggle-line {
+  height: 2px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.react-nav-toggle.open .react-nav-toggle-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.react-nav-toggle.open .react-nav-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.react-nav-toggle.open .react-nav-toggle-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile full-screen menu */
+.react-nav-mobile {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+  z-index: 999;
+}
+
+.react-nav-mobile.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.react-nav-mobile-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 24px 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.react-nav-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.react-nav-mobile-logo img {
+  max-width: 120px;
+  height: auto;
+  display: block;
+}
+
+.react-nav-mobile-close {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 26px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.react-nav-mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.react-nav-mobile-link {
+  display: block;
+  padding: 12px 0;
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.react-nav-mobile-link.active {
+  color: #9b9a84;
+  font-weight: 600;
+}
+
+.react-nav-mobile-footer {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.react-nav-mobile-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Responsive behaviour */
 @media (max-width: 991px) {
-  .main-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  .react-header-inner {
+    padding: 14px 14px;
   }
 
-  .navbar-brand img {
-    max-width: 120px;
-    height: auto;
+  .react-nav-desktop,
+  .react-header-cta-desktop {
+    display: none;
   }
 
-  .main-menu {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 80%;
-    max-width: 320px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: left 0.3s ease;
-    overflow-y: auto;
-    z-index: 1001;
-    padding: 80px 20px 20px;
-  }
-
-  .main-menu.show {
-    left: 0;
-  }
-
-  .navbar-nav {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .nav-item {
-    width: 100%;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .nav-link {
-    display: block;
-    padding: 15px 10px !important;
-    font-size: 16px;
-    color: #333;
-    width: 100%;
-  }
-
-  .nav-item.active .nav-link {
-    color: #9b9a84;
-    font-weight: 600;
-  }
-
-  .header-btn {
-    width: 100%;
-    margin-top: 20px;
-    padding: 0 10px;
-  }
-
-  .header-btn .btn-default {
-    width: 100%;
-    text-align: center;
-    padding: 12px 20px;
-    font-size: 14px;
-  }
-
-  .navbar-toggle {
-    display: block;
-    position: relative;
-    z-index: 1002;
-  }
-
-  .slicknav_btn {
-    background: transparent;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-
-  .slicknav_icon {
+  .react-nav-toggle {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 25px;
   }
+}
 
-  .slicknav_icon-bar {
-    width: 100%;
-    height: 3px;
-    background: #333;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  .main-menu.show ~ .navbar-toggle .slicknav_icon-bar:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-  }
-
-  .main-menu.show ~ .navbar-toggle .slicknav_icon-bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .main-menu.show ~ .navbar-toggle .slicknav_icon-bar:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+@media (min-width: 992px) {
+  .react-nav-mobile {
+    display: none;
   }
 }
 

@@ -8,29 +8,29 @@ const Ritualuri = () => {
     {
       title: 'Ritualuri de purificare',
       description: 'Ritualuri tradiționale pentru curățarea energiei negative și restabilirea echilibrului spiritual. Aceste ritualuri te ajută să te eliberezi de energie negativă și să găsești pacea interioară.',
-      image: '/assets/images/hero-images/AdobeStock_267533248.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg',
       features: ['Curățare energetică', 'Echilibru spiritual', 'Tradițional']
     },
     {
       title: 'Ritualuri de protecție',
       description: 'Ritualuri puternice pentru protecție spirituală și fizică. Fiecare ritual este adaptat nevoilor tale specifice pentru protecție maximă.',
-      image: '/assets/images/hero-images/AdobeStock_638399430.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg',
       features: ['Protecție completă', 'Personalizat', 'Puternic']
     },
     {
       title: 'Ritualuri personalizate',
       description: 'Ritualuri create special pentru nevoile tale unice. Lucrăm împreună pentru a crea un ritual perfect adaptat situației tale.',
-      image: '/assets/images/hero-images/AdobeStock_723363653.jpeg',
+      image: 'assets/images/hero-images/AdobeStock_723363653.jpeg',
       features: ['100% personalizat', 'Adaptat nevoilor tale', 'Rezultate garantate']
     }
   ]
 
   return (
     <>
-      <PageHeader 
-        title="Ritualuri" 
+      <PageHeader
+        title="Ritualuri"
         subtitle="Transformare spirituală"
-        backgroundImage="/assets/images/hero-images/AdobeStock_1649580010.jpeg"
+        backgroundImage="assets/images/hero-images/AdobeStock_1649580010.jpeg"
       />
       
       <div className="our-services" style={{ padding: '100px 0' }}>

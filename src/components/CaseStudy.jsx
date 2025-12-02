@@ -1,24 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getAssetPath } from '../utils/assets'
 
 const CaseStudy = () => {
   const caseStudies = [
     {
-      image: 'assets/images/hero-images/AdobeStock_183593206.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_183593206.jpeg'),
       title: 'Succes în depășirea anxietății',
       description:
         'Printr-o abordare personalizată, acest studiu de caz explorează călătoria de depășire a anxietății sociale prin ritualuri și consultații.',
       link: '/case-study-single'
     },
     {
-      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_267533248.jpeg'),
       title: 'Relații mai puternice',
       description:
         'Descoperă cum am ajutat cupluri să-și îmbunătățească relațiile prin consultații și ritualuri de legătură spirituală.',
       link: '/case-study-single'
     },
     {
-      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_638399430.jpeg'),
       title: 'Succes în managementul stresului',
       description:
         'Află cum am ajutat persoane să-și gestioneze stresul prin tehnici tradiționale și ritualuri de purificare.',

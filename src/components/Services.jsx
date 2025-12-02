@@ -1,40 +1,41 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getAssetPath } from '../utils/assets'
 
 const Services = () => {
   const services = [
     {
-      image: 'assets/images/hero-images/AdobeStock_1013238345.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_1013238345.jpeg'),
       title: 'Consultație individuală personalizată',
       description: 'Consultații adaptate nevoilor tale specifice pentru transformare profundă și vindecare.',
       link: '/consultatie'
     },
     {
-      image: 'assets/images/hero-images/AdobeStock_1649580010.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_1649580010.jpeg'),
       title: 'Consultație pentru cupluri',
       description: 'Sprijin pentru cupluri în căutarea armoniei și conexiunii mai profunde în relație.',
       link: '/consultatie'
     },
     {
-      image: 'assets/images/hero-images/AdobeStock_183593206.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_183593206.jpeg'),
       title: 'Consultație pentru tineri',
       description: 'Sprijin specializat pentru tineri și adolescenți în procesul de creștere și dezvoltare.',
       link: '/consultatie'
     },
     {
-      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_267533248.jpeg'),
       title: 'Sprijin pentru anxietate și depresie',
       description: 'Tehnici tradiționale și moderne pentru depășirea anxietății și depresiei.',
       link: '/consultatie'
     },
     {
-      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_638399430.jpeg'),
       title: 'Managementul stresului și furiei',
       description: 'Ritualuri și tehnici pentru gestionarea eficientă a stresului și emoțiilor negative.',
       link: '/consultatie'
     },
     {
-      image: 'assets/images/hero-images/AdobeStock_723363653.jpeg',
+      image: getAssetPath('assets/images/hero-images/AdobeStock_723363653.jpeg'),
       title: 'Practici de mindfulness și meditație',
       description: 'Tehnici de conștientizare și meditație pentru echilibru și armonie interioară.',
       link: '/consultatie'

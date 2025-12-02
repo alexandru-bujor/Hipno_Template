@@ -1,23 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import RevealImage from './RevealImage'
+import { getAssetPath } from '../utils/assets'
 
 const RitualuriPreview = () => {
   const rituals = [
     {
       title: 'Ritualuri de purificare',
       description: 'Ritualuri tradiționale pentru curățarea energiei negative și restabilirea echilibrului spiritual.',
-      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg'
+      image: getAssetPath('assets/images/hero-images/AdobeStock_267533248.jpeg')
     },
     {
       title: 'Ritualuri de protecție',
       description: 'Ritualuri puternice pentru protecție spirituală și fizică, adaptate nevoilor tale.',
-      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg'
+      image: getAssetPath('assets/images/hero-images/AdobeStock_638399430.jpeg')
     },
     {
       title: 'Ritualuri personalizate',
       description: 'Ritualuri create special pentru nevoile tale unice, pentru transformare profundă.',
-      image: 'assets/images/hero-images/AdobeStock_723363653.jpeg'
+      image: getAssetPath('assets/images/hero-images/AdobeStock_723363653.jpeg')
     }
   ]
 

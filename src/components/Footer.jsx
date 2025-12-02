@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getAssetPath } from '../utils/assets'
 
 const Footer = () => {
   const socialLinks = [
@@ -57,7 +58,7 @@ const Footer = () => {
             <div className="col-lg-12">
               {/* Footer Logo */}
               <div className="footer-logo">
-                <img src="assets/images/footer-logo.svg" alt="Logo" />
+                <img src={getAssetPath('assets/images/footer-logo.svg')} alt="Logo" />
               </div>
             </div>
 

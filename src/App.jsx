@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { LanguageProvider } from './context/LanguageContext'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import BlogPage from './pages/Blog'
@@ -12,21 +13,70 @@ import NotFound from './pages/NotFound'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Layout>
+    <LanguageProvider>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/programare" element={<Programare />} />
-          <Route path="/consultatie" element={<Consultatie />} />
-          <Route path="/talismanuri" element={<Talismanuri />} />
-          <Route path="/ritualuri" element={<Ritualuri />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/contacte" element={<Contacte />} />
+          <Route
+            path="/programare"
+            element={
+              <Layout>
+                <Programare />
+              </Layout>
+            }
+          />
+          <Route
+            path="/consultatie"
+            element={
+              <Layout>
+                <Consultatie />
+              </Layout>
+            }
+          />
+          <Route
+            path="/talismanuri"
+            element={
+              <Layout>
+                <Talismanuri />
+              </Layout>
+            }
+          />
+          <Route
+            path="/ritualuri"
+            element={
+              <Layout>
+                <Ritualuri />
+              </Layout>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <Layout>
+                <BlogPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/contacte"
+            element={
+              <Layout>
+                <Contacte />
+              </Layout>
+            }
+          />
           {/* 404 Page */}
-          <Route path="*" element={<NotFound />} />
+          <Route
+            path="*"
+            element={
+              <Layout>
+                <NotFound />
+              </Layout>
+            }
+          />
         </Routes>
-      </Layout>
-    </BrowserRouter>
+      </BrowserRouter>
+    </LanguageProvider>
   )
 }
 

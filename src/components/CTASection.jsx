@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getAssetPath } from '../utils/assets'
 
 const CTASection = () => {
   return (
@@ -11,7 +12,10 @@ const CTASection = () => {
             <div className="cta-box">
               {/* CTA Box Image */}
               <div className="cta-box-image">
-                <img src="assets/images/hero-images/AdobeStock_1013238345.jpeg" alt="CTA" />
+                <img
+                  src={getAssetPath('assets/images/hero-images/AdobeStock_1013238345.jpeg')}
+                  alt="CTA"
+                />
               </div>
 
               {/* CTA Box Content */}

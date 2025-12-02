@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { getAssetPath } from '../utils/assets'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -8,7 +9,6 @@ const Header = () => {
 
   const menuItems = [
     { title: 'Pagina principală', link: '/' },
-    { title: 'Programare', link: '/programare' },
     { title: 'Consultație', link: '/consultatie' },
     { title: 'Talismanuri și artefacte', link: '/talismanuri' },
     { title: 'Ritualuri', link: '/ritualuri' },
@@ -36,9 +36,13 @@ const Header = () => {
     >
       <div className="react-header-inner">
         {/* Logo */}
-        <Link to="/" className="react-header-logo" aria-label="Acasă">
-          <img src="assets/images/logo.svg" alt="Logo" />
-        </Link>
+
+            <div className="react-header-left" style={{ marginRight: '0px', marginLeft: '0px' }}>
+                <h2 style={{ color: 'white', marginRight: '5px', display: 'inline' }}>Fion</h2>
+                <h2 style={{ color: '#9B9A84FF', display: 'inline' }}>Golden</h2>
+            </div>
+
+
 
         {/* Desktop navigation */}
         <nav className="react-nav-desktop" aria-label="Navigare principală">
@@ -92,7 +96,7 @@ const Header = () => {
               className="react-nav-mobile-logo"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <img src="assets/images/logo.svg" alt="Logo" />
+              <img src={getAssetPath('assets/images/logo.svg')} alt="Logo" />
             </Link>
             <button
               type="button"

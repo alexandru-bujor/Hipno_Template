@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { getAssetPath } from '../utils/assets'
 
 const Appointment = () => {
   const [formData, setFormData] = useState({
@@ -26,24 +27,24 @@ const Appointment = () => {
 
   const appointmentItems = [
     {
-      icon: 'assets/images/icon-appointment-item-1.svg',
+      icon: getAssetPath('assets/images/icon-appointment-item-1.svg'),
       title: 'book appointment',
       description: 'Schedule your appointment online or call us directly.'
     },
     {
-      icon: 'assets/images/icon-appointment-item-2.svg',
+      icon: getAssetPath('assets/images/icon-appointment-item-2.svg'),
       title: 'get consultation',
       description: 'Receive expert guidance from our experienced therapists.'
     }
   ]
 
   const partnerLogos = [
-    'assets/images/partner-logo-1.svg',
-    'assets/images/partner-logo-2.svg',
-    'assets/images/partner-logo-3.svg',
-    'assets/images/partner-logo-1.svg',
-    'assets/images/partner-logo-2.svg',
-    'assets/images/partner-logo-3.svg'
+    getAssetPath('assets/images/partner-logo-1.svg'),
+    getAssetPath('assets/images/partner-logo-2.svg'),
+    getAssetPath('assets/images/partner-logo-3.svg'),
+    getAssetPath('assets/images/partner-logo-1.svg'),
+    getAssetPath('assets/images/partner-logo-2.svg'),
+    getAssetPath('assets/images/partner-logo-3.svg')
   ]
 
   return (

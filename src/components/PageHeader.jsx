@@ -1,20 +1,21 @@
 import React from 'react'
+import { getAssetPath } from '../utils/assets'
 
 const PageHeader = ({ title, subtitle, backgroundImage }) => {
-  const defaultBg = backgroundImage || 'assets/images/hero-bg.jpg'
+  const bg = backgroundImage ? getAssetPath(backgroundImage) : getAssetPath('assets/images/hero-bg.jpg')
   
   return (
     <div 
       className="page-header"
-      style={{
-        position: 'relative',
-        padding: '150px 0 100px',
-        background: `linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), url(${defaultBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        overflow: 'hidden'
-      }}
+        style={{
+          position: 'relative',
+          padding: '150px 0 100px',
+          background: `linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), url(${bg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          overflow: 'hidden'
+        }}
     >
       {/* Overlay Pattern */}
       <div

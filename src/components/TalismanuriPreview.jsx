@@ -1,23 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import RevealImage from './RevealImage'
+import { getAssetPath } from '../utils/assets'
 
 const TalismanuriPreview = () => {
   const talismans = [
     {
       title: 'Talismanuri de protecție',
       description: 'Talismanuri puternice pentru protecție spirituală și fizică.',
-      image: 'assets/images/hero-images/AdobeStock_183593206.jpeg'
+      image: getAssetPath('assets/images/hero-images/AdobeStock_183593206.jpeg')
     },
     {
       title: 'Artefacte antice',
       description: 'Colecție exclusivă de artefacte cu putere spirituală dovedită.',
-      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg'
+      image: getAssetPath('assets/images/hero-images/AdobeStock_267533248.jpeg')
     },
     {
       title: 'Amulete personalizate',
       description: 'Amulete create special pentru tine, adaptate nevoilor tale.',
-      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg'
+      image: getAssetPath('assets/images/hero-images/AdobeStock_638399430.jpeg')
     }
   ]
 

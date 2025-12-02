@@ -7,8 +7,8 @@ import CTASection from '../components/CTASection'
 const Consultatie = () => {
   return (
     <>
-      <PageHeader 
-        title="Consultație" 
+      <PageHeader
+        title="Consultație"
         subtitle="Servicii personalizate"
         backgroundImage="assets/images/hero-images/AdobeStock_1649580010.jpeg"
       />

@@ -1,23 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import RevealImage from './RevealImage'
+import { getAssetPath } from '../utils/assets'
 
 const WhyChooseUs = () => {
   const whyChooseItems = [
     {
-      icon: 'assets/images/icon-why-choose-1.svg',
+      icon: getAssetPath('assets/images/icon-why-choose-1.svg'),
       title: 'experienced professionals'
     },
     {
-      icon: 'assets/images/icon-why-choose-2.svg',
+      icon: getAssetPath('assets/images/icon-why-choose-2.svg'),
       title: 'client-centered approach'
     },
     {
-      icon: 'assets/images/icon-why-choose-3.svg',
+      icon: getAssetPath('assets/images/icon-why-choose-3.svg'),
       title: 'safe and confidential environment'
     },
     {
-      icon: 'assets/images/icon-why-choose-4.svg',
+      icon: getAssetPath('assets/images/icon-why-choose-4.svg'),
       title: 'commitment to growth'
     }
   ]
@@ -32,13 +33,19 @@ const WhyChooseUs = () => {
               <div className="why-choose-image">
                 <RevealImage>
                   <figure className="image-anime">
-                    <img src="assets/images/hero-images/AdobeStock_1013238345.jpeg" alt="Why Choose Us" />
+                    <img
+                      src={getAssetPath('assets/images/hero-images/AdobeStock_1013238345.jpeg')}
+                      alt="Why Choose Us"
+                    />
                   </figure>
                 </RevealImage>
 
                 {/* Contact Circle Image */}
                 <div className="contact-circle-img">
-                  <img src="assets/images/contact-circle-img.svg" alt="Contact" />
+                  <img
+                    src={getAssetPath('assets/images/contact-circle-img.svg')}
+                    alt="Contact"
+                  />
                 </div>
               </div>
 
@@ -81,7 +88,10 @@ const WhyChooseUs = () => {
                   <div className="why-choose-body-image">
                     <RevealImage>
                       <figure className="image-anime">
-                        <img src="assets/images/hero-images/AdobeStock_1649580010.jpeg" alt="Mental Wellness" />
+                        <img
+                          src={getAssetPath('assets/images/hero-images/AdobeStock_1649580010.jpeg')}
+                          alt="Mental Wellness"
+                        />
                       </figure>
                     </RevealImage>
                   </div>

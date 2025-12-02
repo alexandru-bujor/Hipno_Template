@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import RevealImage from './RevealImage'
 import Counter from './Counter'
+import { getAssetPath } from '../utils/assets'
 
 const FAQs = () => {
   const [activeIndex, setActiveIndex] = useState(null)
@@ -40,10 +41,10 @@ const FAQs = () => {
   ]
 
   const customerImages = [
-    'assets/images/hero-images/AdobeStock_183593206.jpeg',
-    'assets/images/hero-images/AdobeStock_267533248.jpeg',
-    'assets/images/hero-images/AdobeStock_638399430.jpeg',
-    'assets/images/hero-images/AdobeStock_723363653.jpeg'
+    getAssetPath('assets/images/hero-images/AdobeStock_183593206.jpeg'),
+    getAssetPath('assets/images/hero-images/AdobeStock_267533248.jpeg'),
+    getAssetPath('assets/images/hero-images/AdobeStock_638399430.jpeg'),
+    getAssetPath('assets/images/hero-images/AdobeStock_723363653.jpeg')
   ]
 
   const toggleFAQ = (index) => {
@@ -54,7 +55,7 @@ const FAQs = () => {
     <div
       className="our-faqs parallaxie"
       style={{
-        backgroundImage: 'url(assets/images/hero-images/AdobeStock_1649580010.jpeg)',
+        backgroundImage: `url(${getAssetPath('assets/images/hero-images/AdobeStock_1649580010.jpeg')})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',

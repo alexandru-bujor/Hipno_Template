@@ -46,7 +46,7 @@ const PageHeader = ({ title, subtitle, backgroundImage }) => {
                   opacity: 0.9
                 }}
               >
-                {subtitle || 'Bine ai venit'}
+
               </h3>
               <h1 
                 className="text-anime-style-2 wow fadeInUp"
@@ -74,9 +74,7 @@ const PageHeader = ({ title, subtitle, backgroundImage }) => {
                   color: 'rgba(255, 255, 255, 0.8)'
                 }}
               >
-                <span>Acasă</span>
-                <span>/</span>
-                <span style={{ color: '#fff', fontWeight: 600 }}>{title}</span>
+
               </nav>
             </div>
           </div>

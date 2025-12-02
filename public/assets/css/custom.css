@@ -55,8 +55,8 @@
 	--divider-color			: #EEEDED;
 	--dark-divider-color	: #FFFFFF1A;
 	--error-color			: rgb(230, 87, 87);
-	--default-font			: "Sora", sans-serif;
-	--accent-font			: "Marcellus", serif;
+	--default-font			: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--accent-font			: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 

@@ -50,6 +50,7 @@ const Appointment = () => {
   return (
     <div className="our-appointment">
       <div className="container">
+
         <div className="row">
           <div className="col-lg-12">
             {/* Our Appointment Box */}

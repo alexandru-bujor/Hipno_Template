@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import { getAssetPath } from '../utils/assets'
+import { useLanguage } from '../contexts/LanguageContext'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 
 const Hero = () => {
+  const { t } = useLanguage()
   const heroSlides = [
     {
       image: getAssetPath('assets/images/hero-images/AdobeStock_1013238345.jpeg'),
@@ -92,10 +94,13 @@ const Hero = () => {
                       <div className="section-title">
                         <h3 className="wow fadeInUp">{slide.subtitle}</h3>
                         <h1 className="text-anime-style-2" data-cursor="-opaque">
-                          {slide.title}
+                          {t('hero.title')}
                         </h1>
                         <p className="wow fadeInUp" data-wow-delay="0.2s">
-                          {slide.description}
+                          {t('hero.subtitle')}
+                          <br />
+                          <br />
+                          {t('hero.description')}
                         </p>
                       </div>
 
@@ -104,7 +109,7 @@ const Hero = () => {
                         {/* Hero Button */}
                         <div className="hero-btn wow fadeInUp" data-wow-delay="0.4s">
                           <Link to="/programare" className="btn-default">
-                            Programare
+                            {t('hero.button')}
                           </Link>
                         </div>
                       </div>

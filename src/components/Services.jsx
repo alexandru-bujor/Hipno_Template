@@ -1,105 +1,131 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getAssetPath } from '../utils/assets'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Services = () => {
-  const services = [
-    {
-      image: getAssetPath('assets/images/hero-images/AdobeStock_1013238345.jpeg'),
-      title: 'Consultație individuală personalizată',
-      description: 'Consultații adaptate nevoilor tale specifice pentru transformare profundă și vindecare.',
-      link: '/consultatie'
-    },
-    {
-      image: getAssetPath('assets/images/hero-images/AdobeStock_1649580010.jpeg'),
-      title: 'Consultație pentru cupluri',
-      description: 'Sprijin pentru cupluri în căutarea armoniei și conexiunii mai profunde în relație.',
-      link: '/consultatie'
-    },
-    {
-      image: getAssetPath('assets/images/hero-images/AdobeStock_183593206.jpeg'),
-      title: 'Consultație pentru tineri',
-      description: 'Sprijin specializat pentru tineri și adolescenți în procesul de creștere și dezvoltare.',
-      link: '/consultatie'
-    },
-    {
-      image: getAssetPath('assets/images/hero-images/AdobeStock_267533248.jpeg'),
-      title: 'Sprijin pentru anxietate și depresie',
-      description: 'Tehnici tradiționale și moderne pentru depășirea anxietății și depresiei.',
-      link: '/consultatie'
-    },
-    {
-      image: getAssetPath('assets/images/hero-images/AdobeStock_638399430.jpeg'),
-      title: 'Managementul stresului și furiei',
-      description: 'Ritualuri și tehnici pentru gestionarea eficientă a stresului și emoțiilor negative.',
-      link: '/consultatie'
-    },
-    {
-      image: getAssetPath('assets/images/hero-images/AdobeStock_723363653.jpeg'),
-      title: 'Practici de mindfulness și meditație',
-      description: 'Tehnici de conștientizare și meditație pentru echilibru și armonie interioară.',
-      link: '/consultatie'
-    }
-  ]
-
+  const { t } = useLanguage()
   return (
-    <div className="our-services">
+    <div id="services" className="our-services">
       <div className="container">
-        <div className="row section-row align-items-center">
-          <div className="col-lg-6 col-md-9">
-            {/* Section Title */}
-            <div className="section-title">
-              <h3 className="wow fadeInUp">servicii</h3>
-              <h2 className="text-anime-style-2" data-cursor="-opaque">
-                Consultații spirituale
-              </h2>
-            </div>
-          </div>
-
-          <div className="col-lg-6 col-md-3">
-            {/* Section Button */}
-            <div className="section-btn wow fadeInUp" data-wow-delay="0.2s">
-              <Link to="/consultatie" className="btn-default">
-                Vezi toate serviciile
-              </Link>
-            </div>
-          </div>
-        </div>
-
         <div className="row">
-          {services.map((service, index) => (
-            <div key={index} className="col-lg-4 col-md-6">
-              <div
-                className="service-item wow fadeInUp"
-                data-wow-delay={`${index * 0.2}s`}
-              >
-                <div className="service-image">
-                  <Link to={service.link} data-cursor-text="View">
-                    <figure className="image-anime">
-                      <img src={service.image} alt={service.title} />
-                    </figure>
-                  </Link>
-                </div>
-                <div className="service-content">
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                </div>
-                <div className="service-btn">
-                  <Link to={service.link} className="readmore-btn">
-                    Află mai multe
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-
           <div className="col-lg-12">
-            {/* Service Get Quote Text */}
-            <div className="service-get-quote-text wow fadeInUp" data-wow-delay="1s">
-              <p>
-                <span>Gratuit</span> Hai să facem ceva minunat împreună.{' '}
-                <Link to="/contacte">Contactează-ne</Link>
-              </p>
+            <div className="services-content">
+              {/* Introduction */}
+              <div className="services-intro">
+                <p className="services-intro-text">
+                  {t('services.intro1')}
+                </p>
+                <p className="services-intro-text">
+                  {t('services.intro2')}
+                </p>
+                <p className="services-intro-text">
+                  {t('services.intro3')}
+                </p>
+              </div>
+
+              {/* Мой путь */}
+              <div className="services-section">
+                <h2 className="services-section-title">{t('services.myPath')}</h2>
+                <p>
+                  {t('services.myPath1')}
+                </p>
+                <p>
+                  {t('services.myPath2')}
+                </p>
+                <p>
+                  {t('services.myPath3')}
+                </p>
+              </div>
+
+              {/* С чем я работаю */}
+              <div className="services-section">
+                <h2 className="services-section-title">{t('services.whatIWorkWith')}</h2>
+                <p>
+                  {t('services.whatIWorkWithDesc')}
+                </p>
+              </div>
+
+              {/* Я работаю с */}
+              <div className="services-section">
+                <h3 className="services-subsection-title">{t('services.iWorkWith')}</h3>
+                <ul className="services-list">
+                  <li>Таро и духовной навигацией через карты</li>
+                  <li>Чтением матрицы человека в потоке ченнелинга</li>
+                  <li>Раскрытием жизненного пути и предназначения</li>
+                  <li>Энергоблоками и кармическими узлами</li>
+                  <li>Очищением человека и любого пространства</li>
+                  <li>Помощью в росте и развитии бизнес-структур</li>
+                  <li>Налаживанием гармонии с собой, миром и партнером</li>
+                  <li>Восстановлением энергетического баланса в отношениях</li>
+                  <li>Работой с денежными потоками и блоками изобилия</li>
+                  <li>Возвращением того, что положено по судьбе</li>
+                  <li>Освобождением от страхов, тревог, родовых программ</li>
+                  <li>Диагностикой энергетического поля</li>
+                  <li>Защитой и восстановлением ауры через практику работы с пятью стихиями</li>
+                </ul>
+              </div>
+
+              {/* Также я практикую */}
+              <div className="services-section">
+                <h3 className="services-subsection-title">{t('services.iAlsoPractice')}</h3>
+                <ul className="services-list">
+                  <li>Чистку и восстановление через поющие чаши</li>
+                  <li>Звукотерапию, энерготерапию</li>
+                  <li>Медитативные сессии глубокого погружения</li>
+                  <li>Энергетическое перепрограммирование</li>
+                  <li>Создание индивидуальных защитных амулетов</li>
+                  <li>Работу с кристаллами, свечами и сакральными символами</li>
+                  <li>Обрядовые ритуальные практики на открытие путей</li>
+                  <li>Переходные ритуалы и энергетические перезагрузки, раскрытие высшего сознания человека посредством ввода в состояние гнозиса</li>
+                </ul>
+              </div>
+
+              {/* Помимо этого */}
+              <div className="services-section">
+                <h3 className="services-subsection-title">{t('services.besidesThis')}</h3>
+                <ul className="services-list">
+                  <li>Изготовления амулетов, обережных и персональных</li>
+                  <li>Создания программных свечей</li>
+                  <li>Сбора и подготовки трав, чайных тизанов и целительных сборов</li>
+                  <li>Заговоров и настройка предметов и одежды</li>
+                  <li>Индивидуальных практик и ритуалов</li>
+                  <li>Помощи в создании персонального алтаря защиты</li>
+                  <li>Работы с коренными подсознательными родовыми блоками</li>
+                </ul>
+                <p>
+                  {t('services.andMore')}
+                </p>
+                <p>
+                  {t('services.training')}
+                </p>
+              </div>
+
+              {/* Моя миссия */}
+              <div className="services-section">
+                <h2 className="services-section-title">{t('services.myMission')}</h2>
+                <p>
+                  {t('services.mission1')}
+                </p>
+                <p>
+                  {t('services.mission2')}
+                </p>
+                <p>
+                  {t('services.mission3')}
+                </p>
+                <p>
+                  {t('services.mission4')}
+                </p>
+                <p className="services-closing">
+                  {t('services.closing')}
+                </p>
+              </div>
+
+              {/* CTA Button */}
+              <div className="services-cta">
+                <Link to="/programare" className="btn-default">
+                  {t('buttons.bookConsultation')}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -109,4 +135,3 @@ const Services = () => {
 }
 
 export default Services
-

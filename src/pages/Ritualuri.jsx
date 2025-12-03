@@ -2,8 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import RevealImage from '../components/RevealImage'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Ritualuri = () => {
+  const { t } = useLanguage()
   const rituals = [
     {
       title: 'Ritualuri de purificare',
@@ -28,7 +30,7 @@ const Ritualuri = () => {
   return (
     <>
       <PageHeader
-        title="Ritualuri"
+        title={t('nav.ritualuri')}
         subtitle="Transformare spirituală"
         backgroundImage="assets/images/hero-images/AdobeStock_1649580010.jpeg"
       />

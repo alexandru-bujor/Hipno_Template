@@ -21,14 +21,14 @@ const RitualuriPreview = () => {
 
               {/* Service 1 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="1">Консультации и диагностики</h2>
+                <h2 className="services-section-title" data-number="1">{t('ritualuri.section1.title')}</h2>
                 <CollapsibleList
                   items={[
-                    'Консультация Таро любой сложности (отношения, чувства, измены, выбор, предназначение, финансы, карьера, здоровье, жизненные ситуации, духовный путь, прогнозы)',
-                    'Ченнелинг-диагностика матрицы человека (общий анализ судьбы, будущего и возможных исходов, глубинное считывание пути души)',
-                    'Нумерологическая Матрица Судьбы - (личный потенциал и жизненные задачи, матрица совместимости партнеров, детская матрица, прогноз на год по дате рождения)',
-                    'Диагностика энергетического состояния и жизненного периода',
-                    'Диагностика денежных каналов и блоков'
+                    t('ritualuri.section1.item1'),
+                    t('ritualuri.section1.item2'),
+                    t('ritualuri.section1.item3'),
+                    t('ritualuri.section1.item4'),
+                    t('ritualuri.section1.item5')
                   ]}
                   initialVisible={3}
                   listStyle="default"
@@ -37,17 +37,17 @@ const RitualuriPreview = () => {
 
               {/* Service 2 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="2">Ритуалы и энергетическая работа</h2>
+                <h2 className="services-section-title" data-number="2">{t('ritualuri.section2.title')}</h2>
                 <CollapsibleList
                   items={[
-                    'Ритуалы очищения и освобождения',
-                    'Ритуалы защиты',
-                    'Денежные и ресурсные ритуалы',
-                    'Переходные ритуалы',
-                    'Ритуалы открытия путей',
-                    'Снятие энергетических и родовых блоков',
-                    'Энергетическая перезагрузка',
-                    'Работа с кармическими узлами'
+                    t('ritualuri.section2.item1'),
+                    t('ritualuri.section2.item2'),
+                    t('ritualuri.section2.item3'),
+                    t('ritualuri.section2.item4'),
+                    t('ritualuri.section2.item5'),
+                    t('ritualuri.section2.item6'),
+                    t('ritualuri.section2.item7'),
+                    t('ritualuri.section2.item8')
                   ]}
                   initialVisible={4}
                   listStyle="cards"
@@ -56,14 +56,14 @@ const RitualuriPreview = () => {
 
               {/* Service 3 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="3">Работа с пространством и бизнесом</h2>
+                <h2 className="services-section-title" data-number="3">{t('ritualuri.section3.title')}</h2>
                 <CollapsibleList
                   items={[
-                    'Очищение и гармонизация дома',
-                    'Защита и настройка бизнес-пространств',
-                    'Энергетическая поддержка бизнеса',
-                    'Настройка денежных потоков компании',
-                    'Формирование энергетической защиты помещения'
+                    t('ritualuri.section3.item1'),
+                    t('ritualuri.section3.item2'),
+                    t('ritualuri.section3.item3'),
+                    t('ritualuri.section3.item4'),
+                    t('ritualuri.section3.item5')
                   ]}
                   initialVisible={3}
                   listStyle="cards"
@@ -72,15 +72,15 @@ const RitualuriPreview = () => {
 
               {/* Service 4 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="4">Создание сакральных предметов силы</h2>
+                <h2 className="services-section-title" data-number="4">{t('ritualuri.section4.title')}</h2>
                 <CollapsibleList
                   items={[
-                    'Индивидуальные амулеты и обереги',
-                    'Программные свечи под запрос',
-                    'Заговоренные предметы и одежда',
-                    'Заряженные сакральные символы и инструменты для магических практик',
-                    'Травяные сборы и чайные тизаны',
-                    'Энергетические кристаллы и носители'
+                    t('ritualuri.section4.item1'),
+                    t('ritualuri.section4.item2'),
+                    t('ritualuri.section4.item3'),
+                    t('ritualuri.section4.item4'),
+                    t('ritualuri.section4.item5'),
+                    t('ritualuri.section4.item6')
                   ]}
                   initialVisible={3}
                   listStyle="grid"
@@ -89,14 +89,14 @@ const RitualuriPreview = () => {
 
               {/* Service 5 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="5">Духовное обучение и сопровождение</h2>
+                <h2 className="services-section-title" data-number="5">{t('ritualuri.section5.title')}</h2>
                 <CollapsibleList
                   items={[
-                    'Индивидуальное духовное наставничество',
-                    'Групповое обучение в малых группах',
-                    'Обучение обрядовой магии и работе с энергиями',
-                    'Авторские обучающие программы',
-                    'Инициации и сопровождение в трансформации'
+                    t('ritualuri.section5.item1'),
+                    t('ritualuri.section5.item2'),
+                    t('ritualuri.section5.item3'),
+                    t('ritualuri.section5.item4'),
+                    t('ritualuri.section5.item5')
                   ]}
                   initialVisible={3}
                   listStyle="minimal"
@@ -105,12 +105,12 @@ const RitualuriPreview = () => {
 
               {/* Service 6 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="6">Ретриты</h2>
+                <h2 className="services-section-title" data-number="6">{t('ritualuri.section6.title')}</h2>
                 <CollapsibleList
                   items={[
-                    'Ретриты',
-                    'Поездки к местам силы',
-                    'Практики в сакральных пространствах'
+                    t('ritualuri.section6.item1'),
+                    t('ritualuri.section6.item2'),
+                    t('ritualuri.section6.item3')
                   ]}
                   initialVisible={3}
                   listStyle="grid"
@@ -120,14 +120,14 @@ const RitualuriPreview = () => {
 
               {/* Service 7 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="7">Дополнительные направления</h2>
+                <h2 className="services-section-title" data-number="7">{t('ritualuri.section7.title')}</h2>
                 <CollapsibleList
                   items={[
-                    'Составление персонального защитного алтаря',
-                    'Энергетическое сопровождение в кризисные периоды',
-                    'Индивидуальные духовные практики под запрос',
-                    'Работа с самоценностью и внутренней опорой',
-                    'Сопровождение в периодах трансформации'
+                    t('ritualuri.section7.item1'),
+                    t('ritualuri.section7.item2'),
+                    t('ritualuri.section7.item3'),
+                    t('ritualuri.section7.item4'),
+                    t('ritualuri.section7.item5')
                   ]}
                   initialVisible={3}
                   listStyle="default"
@@ -137,7 +137,7 @@ const RitualuriPreview = () => {
               {/* CTA Button */}
               <div className="services-cta">
                 <Link to="/programare" className="btn-default">
-                  {t('buttons.bookConsultation')}
+                  {t('ritualuri.ctaButton')}
                 </Link>
               </div>
             </div>

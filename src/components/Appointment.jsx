@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { getAssetPath } from '../utils/assets'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Appointment = () => {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     fname: '',
     lname: '',
@@ -28,13 +30,13 @@ const Appointment = () => {
   const appointmentItems = [
     {
       icon: getAssetPath('assets/images/icon-appointment-item-1.svg'),
-      title: 'book appointment',
-      description: 'Schedule your appointment online or call us directly.'
+      title: t('programare.content.item1Title'),
+      description: t('programare.content.item1Desc')
     },
     {
       icon: getAssetPath('assets/images/icon-appointment-item-2.svg'),
-      title: 'get consultation',
-      description: 'Receive expert guidance from our experienced therapists.'
+      title: t('programare.content.item2Title'),
+      description: t('programare.content.item2Desc')
     }
   ]
 
@@ -70,7 +72,7 @@ const Appointment = () => {
                         name="fname"
                         className="form-control"
                         id="fname"
-                        placeholder="Prenume"
+                        placeholder={t('programare.form.fname')}
                         value={formData.fname}
                         onChange={handleChange}
                         required
@@ -83,7 +85,7 @@ const Appointment = () => {
                         name="lname"
                         className="form-control"
                         id="lname"
-                        placeholder="Nume"
+                        placeholder={t('programare.form.lname')}
                         value={formData.lname}
                         onChange={handleChange}
                         required
@@ -96,7 +98,7 @@ const Appointment = () => {
                         name="email"
                         className="form-control"
                         id="email"
-                        placeholder="Adresă Email"
+                        placeholder={t('programare.form.email')}
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -109,7 +111,7 @@ const Appointment = () => {
                         name="phone"
                         className="form-control"
                         id="phone"
-                        placeholder="Număr Telefon"
+                        placeholder={t('programare.form.phone')}
                         value={formData.phone}
                         onChange={handleChange}
                         required
@@ -146,7 +148,7 @@ const Appointment = () => {
                         className="form-control"
                         id="message"
                         rows="5"
-                        placeholder="Mesaj"
+                        placeholder={t('programare.form.message')}
                         value={formData.message}
                         onChange={handleChange}
                       ></textarea>
@@ -154,7 +156,7 @@ const Appointment = () => {
 
                     <div className="form-group col-md-12">
                     <button type="submit" className="btn-default">
-                      Trimite programarea
+                      {t('programare.form.submit')}
                     </button>
                     </div>
                   </div>
@@ -165,13 +167,12 @@ const Appointment = () => {
               <div className="our-appointment-content">
                 {/* Section Title */}
                 <div className="section-title">
-                  <h3 className="wow fadeInUp">Programare</h3>
+                  <h3 className="wow fadeInUp">{t('programare.content.title')}</h3>
                   <h2 className="text-anime-style-2" data-cursor="-opaque">
-                    Rezervă Consultația Ta Astăzi
+                    {t('programare.content.heading')}
                   </h2>
                   <p className="wow fadeInUp" data-wow-delay="0.2s">
-                    Fă primul pas către o sănătate mentală mai bună. Rezervă o programare
-                    cu terapeuții noștri experimentați astăzi.
+                    {t('programare.content.description')}
                   </p>
                 </div>
 
@@ -197,36 +198,6 @@ const Appointment = () => {
             </div>
           </div>
 
-          <div className="col-lg-12">
-            <div className="our-partner">
-              <div className="our-partner-content">
-                {/* Section Title */}
-                <div className="section-title">
-                  <h3 className="wow fadeInUp">partenerii noștri</h3>
-                  <h2 className="text-anime-style-2" data-cursor="-opaque">
-                    În colaborare cu
-                  </h2>
-                  <p className="wow fadeInUp" data-wow-delay="0.2s">
-                    Partenerii noștri de încredere oferă servicii de terapie și consultanță 
-                    pentru sănătate mentală cu compasiune și profesionalism.
-                  </p>
-                </div>
-              </div>
-
-              {/* Partner Logo Box */}
-              <div className="partner-logo-box">
-                {partnerLogos.map((logo, index) => (
-                  <div
-                    key={index}
-                    className="partner-logo-image wow fadeInUp"
-                    data-wow-delay={`${index * 0.2}s`}
-                  >
-                    <img src={logo} alt={`Partner ${index + 1}`} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

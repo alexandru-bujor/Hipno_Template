@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getAssetPath } from '../utils/assets'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Footer = () => {
+  const { t } = useLanguage()
+  
   const socialLinks = [
     { icon: 'fa-brands fa-pinterest-p', link: '#' },
     { icon: 'fa-brands fa-x-twitter', link: '#' },
@@ -11,11 +13,10 @@ const Footer = () => {
   ]
 
   const footerMenu = [
-    { title: 'Pagina principală', link: '/' },
-    { title: 'Programare', link: '/programare' },
-    { title: 'Consultație', link: '/consultatie' },
-    { title: 'Blog', link: '/blog' },
-    { title: 'Contacte', link: '/contacte' }
+    { key: 'home', link: '/' },
+    { key: 'programare', link: '/programare' },
+    { key: 'magazin', link: '/', anchor: '#magazin' },
+    { key: 'contacte', link: '/contacte' }
   ]
 
   return (
@@ -30,7 +31,7 @@ const Footer = () => {
                 {/* Section Title */}
                 <div className="section-title">
                   <h2 className="text-anime-style-2" data-cursor="-opaque">
-                    Obține o consultație gratuită
+                    {t('footer.cta.title')}
                   </h2>
                 </div>
               </div>
@@ -58,7 +59,10 @@ const Footer = () => {
             <div className="col-lg-12">
               {/* Footer Logo */}
               <div className="footer-logo">
-                <img src={getAssetPath('assets/images/footer-logo.svg')} alt="Logo" />
+                <Link to="/" className="footer-logo-text">
+                  <span className="footer-logo-part">Fion</span>
+                  <span className="footer-logo-part-accent">Golden</span>
+                </Link>
               </div>
             </div>
 
@@ -67,7 +71,7 @@ const Footer = () => {
               <div className="about-footer">
                 <div className="section-title">
                   <h2 className="text-anime-style-2" data-cursor="-opaque">
-                    Suntem aici când ești gata
+                    {t('footer.title')}
                   </h2>
                 </div>
 
@@ -75,20 +79,20 @@ const Footer = () => {
                 <div className="footer-contact-box">
                   {/* Footer Contact Item */}
                   <div className="footer-contact-item">
-                    <p>Phone Number</p>
-                    <h3>0761-8523-398</h3>
+                    <p>{t('footer.contact.phoneLabel')}</p>
+                    <h3>{t('footer.contact.phone')}</h3>
                   </div>
 
                   {/* Footer Contact Item */}
                   <div className="footer-contact-item">
-                    <p>Email Address</p>
-                    <h3>info@domainname.com</h3>
+                    <p>{t('footer.contact.emailLabel')}</p>
+                    <h3>{t('footer.contact.email')}</h3>
                   </div>
 
                   {/* Footer Contact Item */}
                   <div className="footer-contact-item">
-                    <p>Location</p>
-                    <h3>123 High Street LN1 1AB United Kingdom</h3>
+                    <p>{t('footer.contact.locationLabel')}</p>
+                    <h3>{t('footer.contact.location')}</h3>
                   </div>
                 </div>
               </div>
@@ -97,8 +101,8 @@ const Footer = () => {
             <div className="col-lg-4">
               {/* Footer Social Link */}
               <div className="footer-social-links">
-                <h3>Alătură-te comunității noastre</h3>
-                <p>Alătură-te astăzi pentru resurse, perspective și conexiune</p>
+                <h3>{t('footer.social.title')}</h3>
+                <p>{t('footer.social.description')}</p>
                 <ul>
                   {socialLinks.map((social, index) => (
                     <li key={index}>
@@ -121,7 +125,11 @@ const Footer = () => {
                   <ul>
                     {footerMenu.map((item, index) => (
                       <li key={index}>
-                        <Link to={item.link}>{item.title}</Link>
+                        {item.anchor ? (
+                          <a href={item.anchor}>{t(`nav.${item.key}`)}</a>
+                        ) : (
+                          <Link to={item.link}>{t(`nav.${item.key}`)}</Link>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -131,7 +139,7 @@ const Footer = () => {
               <div className="col-md-6">
                 {/* Footer Copyright */}
                 <div className="footer-copyright-text">
-                  <p>Copyright © 2024 Toate drepturile rezervate.</p>
+                  <p>{t('footer.copyright')}</p>
                 </div>
               </div>
             </div>

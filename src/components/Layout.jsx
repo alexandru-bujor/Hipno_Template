@@ -3,6 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Preloader from './Preloader'
 import ScrollProgress from './ScrollProgress'
+import ScrollToTopButton from './ScrollToTopButton'
 import { useAnimations } from '../hooks/useAnimations'
 import { ScrollToTop } from '../utils/scrollToTop'
 
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
     <>
       <ScrollToTop />
       <ScrollProgress />
+      <ScrollToTopButton />
       <Preloader />
       <Header />
       <main>{children}</main>

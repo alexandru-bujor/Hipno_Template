@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useMemo } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const LanguageSwitcher = () => {
@@ -11,7 +11,42 @@ const LanguageSwitcher = () => {
     { code: 'ro', name: 'Română', flag: '🇷🇴' }
   ]
 
-  const currentLang = languages.find(lang => lang.code === language) || languages[0]
+  // Normalize language code to prevent duplication - always ensure exactly 2 characters
+  const normalizedLanguage = useMemo(() => {
+    if (!language) return 'ru'
+    let normalized = String(language).trim().toLowerCase()
+    
+    // Handle patterns like "ruru", "roro", etc.
+    if (normalized.length === 4 && normalized.substring(0, 2) === normalized.substring(2, 4)) {
+      // It's "ruru" or "roro", extract first 2 chars
+      normalized = normalized.substring(0, 2)
+    } else if (normalized.length > 2) {
+      // Take only first 2 characters
+      normalized = normalized.substring(0, 2)
+    }
+    
+    // Handle invalid 2-char codes
+    if (normalized === 'rr' || normalized === 'oo') {
+      normalized = normalized[0] === 'r' ? 'ru' : 'ro'
+    }
+    
+    // Ensure it's a valid language code
+    return (normalized === 'ru' || normalized === 'ro') ? normalized : 'ru'
+  }, [language])
+  
+  const currentLang = languages.find(lang => lang.code === normalizedLanguage) || languages[0]
+  
+  // Force ensure display code is exactly 2 characters - prevent any duplication
+  const displayCode = useMemo(() => {
+    const code = currentLang?.code || 'ru'
+    // Always take only first 2 characters and uppercase
+    const cleanCode = String(code).trim().toLowerCase().substring(0, 2)
+    // Ensure it's valid
+    if (cleanCode === 'ru' || cleanCode === 'ro') {
+      return cleanCode.toUpperCase()
+    }
+    return 'RU'
+  }, [currentLang])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -39,8 +74,7 @@ const LanguageSwitcher = () => {
         aria-label="Change language"
         aria-expanded={isOpen}
       >
-        <span className="language-switcher-flag">{currentLang.flag}</span>
-        <span className="language-switcher-text">{currentLang.code.toUpperCase()}</span>
+        <span className="language-switcher-text">{displayCode}</span>
         <span className="language-switcher-arrow">{isOpen ? '▲' : '▼'}</span>
       </button>
       
@@ -50,13 +84,12 @@ const LanguageSwitcher = () => {
             <button
               key={lang.code}
               className={`language-switcher-option ${
-                language === lang.code ? 'active' : ''
+                normalizedLanguage === lang.code ? 'active' : ''
               }`}
               onClick={() => handleLanguageChange(lang.code)}
             >
-              <span className="language-switcher-flag">{lang.flag}</span>
               <span className="language-switcher-name">{lang.name}</span>
-              {language === lang.code && (
+              {normalizedLanguage === lang.code && (
                 <span className="language-switcher-check">✓</span>
               )}
             </button>

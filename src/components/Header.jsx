@@ -13,12 +13,9 @@ const Header = () => {
 
   const menuItems = [
     { key: 'home', link: '/' },
-    { key: 'programare', link: '/programare', anchor: '#programare' },
-    { key: 'services', link: '/', anchor: '#services' },
-    { key: 'talismanuri', link: '/', anchor: '#talismanuri' },
-    { key: 'ritualuri', link: '/', anchor: '#ritualuri' },
-    { key: 'magazin', link: '/', anchor: '#magazin' },
-    { key: 'contacte', link: '/', anchor: '#contacte' }
+    { key: 'caleaMea', link: '/', anchor: '#ritualuri' },
+      { key: 'services', link: '/', anchor: '#services' },
+    { key: 'magazin', link: '/', anchor: '#magazin' }
   ]
 
   // Handle smooth scroll to anchor
@@ -126,6 +123,9 @@ const Header = () => {
           <Link to="/programare" className="btn-default react-header-cta-btn">
             {t('nav.programare')}
           </Link>
+          <Link to="/payment" className="btn-default react-header-cta-btn">
+            {t('nav.payment')}
+          </Link>
         </div>
 
         {/* Mobile burger */}
@@ -147,8 +147,14 @@ const Header = () => {
       <div
         className={`react-nav-mobile ${isMobileMenuOpen ? 'open' : ''}`}
         aria-hidden={!isMobileMenuOpen}
+        onClick={(e) => {
+          // Close menu when clicking on the overlay (not on inner content)
+          if (e.target === e.currentTarget) {
+            setIsMobileMenuOpen(false)
+          }
+        }}
       >
-        <div className="react-nav-mobile-inner">
+        <div className="react-nav-mobile-inner" onClick={(e) => e.stopPropagation()}>
           <div className="react-nav-mobile-header">
             <Link
               to="/"
@@ -205,6 +211,13 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.programare')}
+            </Link>
+            <Link
+              to="/payment"
+              className="btn-default react-nav-mobile-cta"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('nav.payment')}
             </Link>
           </div>
         </div>

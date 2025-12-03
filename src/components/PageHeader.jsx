@@ -1,7 +1,9 @@
 import React from 'react'
 import { getAssetPath } from '../utils/assets'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const PageHeader = ({ title, subtitle, backgroundImage }) => {
+  const { t } = useLanguage()
   const bg = backgroundImage ? getAssetPath(backgroundImage) : getAssetPath('assets/images/hero-bg.jpg')
   
   return (

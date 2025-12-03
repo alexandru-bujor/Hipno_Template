@@ -28,7 +28,7 @@ const ScrollProgress = () => {
         left: 0,
         width: `${scrollProgress}%`,
         height: '3px',
-        background: 'linear-gradient(90deg, #007bff, #0056b3)',
+        background: 'linear-gradient(90deg, #9b9a84, #8a8974)',
         zIndex: 9999,
         transition: 'width 0.1s ease-out'
       }}

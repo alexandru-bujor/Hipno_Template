@@ -2,8 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import RevealImage from '../components/RevealImage'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Talismanuri = () => {
+  const { t } = useLanguage()
   const talismans = [
     {
       title: 'Talismanuri de protecție',
@@ -31,7 +33,7 @@ const Talismanuri = () => {
   return (
     <>
       <PageHeader
-        title="Talismanuri și artefacte"
+        title={t('nav.talismanuri')}
         subtitle="Putere spirituală"
         backgroundImage="assets/images/hero-images/AdobeStock_1013238345.jpeg"
       />

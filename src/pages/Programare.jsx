@@ -7,9 +7,7 @@ const Programare = () => {
   const { t } = useLanguage()
   return (
     <>
-      <PageHeader
-        backgroundImage="assets/images/hero-images/AdobeStock_1013238345.jpeg"
-      />
+
       <Appointment />
     </>
   )

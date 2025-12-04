@@ -7,7 +7,10 @@ const EsotericShop = () => {
   const { t } = useLanguage()
   
   return (
-    <div id="magazin" className="our-services">
+    <div 
+      id="magazin" 
+      className="our-services"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

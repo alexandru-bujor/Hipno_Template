@@ -62,11 +62,7 @@ const ScrollToTopButton = () => {
 
   return (
     <div className="scroll-to-top-button">
-      {currentSection && (
-        <div className="scroll-to-top-section-indicator">
-          <span>{currentSection.name}</span>
-        </div>
-      )}
+
       <button
         onClick={scrollToTop}
         className="scroll-to-top-btn"

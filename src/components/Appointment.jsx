@@ -27,27 +27,6 @@ const Appointment = () => {
     console.log('Form submitted:', formData)
   }
 
-  const appointmentItems = [
-    {
-      icon: getAssetPath('assets/images/icon-appointment-item-1.svg'),
-      title: t('programare.content.item1Title'),
-      description: t('programare.content.item1Desc')
-    },
-    {
-      icon: getAssetPath('assets/images/icon-appointment-item-2.svg'),
-      title: t('programare.content.item2Title'),
-      description: t('programare.content.item2Desc')
-    }
-  ]
-
-  const partnerLogos = [
-    getAssetPath('assets/images/partner-logo-1.svg'),
-    getAssetPath('assets/images/partner-logo-2.svg'),
-    getAssetPath('assets/images/partner-logo-3.svg'),
-    getAssetPath('assets/images/partner-logo-1.svg'),
-    getAssetPath('assets/images/partner-logo-2.svg'),
-    getAssetPath('assets/images/partner-logo-3.svg')
-  ]
 
   return (
     <div className="our-appointment">
@@ -161,39 +140,6 @@ const Appointment = () => {
                     </div>
                   </div>
                 </form>
-              </div>
-
-              {/* Our Appointment Content */}
-              <div className="our-appointment-content">
-                {/* Section Title */}
-                <div className="section-title">
-                  <h3 className="wow fadeInUp">{t('programare.content.title')}</h3>
-                  <h2 className="text-anime-style-2" data-cursor="-opaque">
-                    {t('programare.content.heading')}
-                  </h2>
-                  <p className="wow fadeInUp" data-wow-delay="0.2s">
-                    {t('programare.content.description')}
-                  </p>
-                </div>
-
-                {/* Appointment Content Body */}
-                <div className="appointment-content-body">
-                  {appointmentItems.map((item, index) => (
-                    <div
-                      key={index}
-                      className="appointment-item wow fadeInUp"
-                      data-wow-delay={`${index * 0.2 + 0.4}s`}
-                    >
-                      <div className="appointment-item-icon">
-                        <img src={item.icon} alt={item.title} />
-                      </div>
-                      <div className="appointment-item-content">
-                        <h3>{item.title}</h3>
-                        <p>{item.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

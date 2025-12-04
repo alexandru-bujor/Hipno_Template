@@ -4,8 +4,40 @@
   box-sizing: border-box;
 }
 
+/* Ensure no blur filters on html or body - CRITICAL: This overrides everything */
+html,
+html *,
+body,
+body * {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+html,
+body {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ensure body background image has NO blur or filters */
+body {
+  -webkit-filter: none !important;
+  filter: none !important;
+}
+
+body::before,
+body::after {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 html {
   scroll-behavior: smooth;
+  filter: none !important; /* No blur filter */
+  backdrop-filter: none !important; /* No blur */
+  -webkit-backdrop-filter: none !important; /* No blur */
 }
 
 body {
@@ -13,6 +45,72 @@ body {
   line-height: 1.6;
   color: #333;
   overflow-x: hidden;
+  /* Background image moved to ::after for blur effect */
+  background-image: none;
+  background-color: #2c3e50; /* Fallback color */
+  position: relative;
+  min-height: 100vh;
+  backdrop-filter: none !important; /* No blur */
+  -webkit-backdrop-filter: none !important; /* No blur */
+}
+
+/* Slight blur effect for body background image */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/images/hero-images/AdobeStock_1649580010.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Greyish overlay on body background - same as hero section */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(1.91deg, rgba(38, 38, 38, 0.3) 64.59%, #262626 101.91%), linear-gradient(270deg, rgba(38, 38, 38, 0) 44.72%, #262626 117.07%), linear-gradient(180deg, rgba(38, 38, 38, 0) 68.75%, rgba(38, 38, 38, 0.8) 100%);
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  filter: none !important; /* No blur filter */
+  backdrop-filter: none !important; /* No blur */
+  -webkit-backdrop-filter: none !important; /* No blur */
+}
+
+@media (max-width: 768px) {
+  body {
+    backdrop-filter: none !important; /* No blur */
+    -webkit-backdrop-filter: none !important; /* No blur */
+  }
+
+  body::after {
+    background-attachment: scroll;
+    filter: blur(3px) !important; /* Slightly less blur on mobile */
+    -webkit-filter: blur(3px) !important;
+  }
+
+  body::before {
+    display: block !important; /* Show overlay on mobile too */
+    background: linear-gradient(1.91deg, rgba(38, 38, 38, 0.3) 64.59%, #262626 101.91%), linear-gradient(270deg, rgba(38, 38, 38, 0) 44.72%, #262626 117.07%), linear-gradient(180deg, rgba(38, 38, 38, 0) 68.75%, rgba(38, 38, 38, 0.8) 100%) !important;
+  }
 }
 
 
@@ -24,6 +122,13 @@ a {
 
 ul {
   list-style: none;
+}
+
+@media (max-width: 768px) {
+    .row {
+        padding: 0 0;
+        margin-left: 0px;
+    }
 }
 
 img {
@@ -42,6 +147,14 @@ input[type="date"] {
   max-width: 1500px;
   margin: 0 auto;
   padding: 0 50px;
+}
+
+/* Ensure container centers its content */
+.cta-section .container,
+.our-services .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Page Header Styles */
@@ -75,12 +188,47 @@ input[type="date"] {
 }
 
 @media (max-width: 768px) {
+  .page-header {
+    background-image: var(--page-header-bg, url('/assets/images/hero-images/AdobeStock_1649580010.jpeg')) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Remove dark overlay from inline styles on mobile */
+  .page-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.05) !important; /* Very light overlay */
+    backdrop-filter: none !important; /* No blur */
+    -webkit-backdrop-filter: none !important; /* No blur */
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .page-header > div[style*="background"] {
+    background: transparent !important;
+  }
+
   .page-header h1 {
     font-size: 32px;
+    position: relative;
+    z-index: 2;
   }
   
   .page-header h3 {
     font-size: 14px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-header-content {
+    position: relative;
+    z-index: 2;
   }
 }
 
@@ -391,17 +539,13 @@ button.btn-default:hover {
 .our-services {
   position: relative;
   overflow: hidden;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 .our-services::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(180deg, rgba(155, 154, 132, 0.05) 0%, transparent 100%);
-  pointer-events: none;
+  display: none !important;
 }
 
 .our-services .services-content {
@@ -414,9 +558,9 @@ button.btn-default:hover {
   opacity: 1 !important;
   position: relative;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(249, 249, 249, 0.95));
+  /* Background removed - translucent window effect is on .col-lg-12 */
+  background: transparent !important;
   border-radius: 30px;
-  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.08);
 }
 
 /* Alternating section containers */
@@ -440,26 +584,28 @@ button.btn-default:hover {
 
 .our-services .services-section:nth-child(even) {
   background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 249, 249, 1) 100%);
-  border-left: 5px solid #9b9a84;
-  border-top: 2px solid rgba(155, 154, 132, 0.2);
-  border-right: 1px solid rgba(155, 154, 132, 0.1);
-  border-bottom: 1px solid rgba(155, 154, 132, 0.1);
+  border: none !important;
+  border-left: none !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
   box-shadow: 0 10px 40px rgba(155, 154, 132, 0.1);
 }
 
 .our-services .services-section:nth-child(odd) {
   background: linear-gradient(135deg, rgba(249, 249, 249, 1) 0%, rgba(255, 255, 255, 1) 100%);
-  border-right: 5px solid #8a8974;
-  border-top: 2px solid rgba(138, 137, 116, 0.2);
-  border-left: 1px solid rgba(138, 137, 116, 0.1);
-  border-bottom: 1px solid rgba(138, 137, 116, 0.1);
+  border: none !important;
+  border-left: none !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
   box-shadow: 0 10px 40px rgba(138, 137, 116, 0.1);
 }
 
 .our-services .services-section:hover {
   transform: translateY(-8px);
   box-shadow: 0 25px 70px rgba(155, 154, 132, 0.2);
-  border-color: rgba(155, 154, 132, 0.3);
+  border: none !important;
 }
 
 .our-services .services-section:hover::before {
@@ -485,9 +631,10 @@ button.btn-default:hover {
   margin-bottom: 100px;
   position: relative;
   padding: 60px 80px;
-  border: 2px solid #9b9a84;
+  border: none !important;
   border-radius: 30px;
-  background: linear-gradient(135deg, rgba(155, 154, 132, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   box-shadow: 0 10px 40px rgba(155, 154, 132, 0.15);
   overflow: hidden;
 }
@@ -546,17 +693,19 @@ button.btn-default:hover {
   letter-spacing: -0.5px;
   position: relative;
   padding-bottom: 20px;
-  padding-left: 80px;
+  padding-left: 0 !important;
+  text-align: center !important;
 }
 
 .our-services .services-main-title {
   text-align: center;
   margin-bottom: 60px;
   padding: 40px 0;
-  background: linear-gradient(135deg, rgba(155, 154, 132, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   border-radius: 20px;
-  border: 3px solid #9b9a84;
-  border-top: 5px solid #9b9a84;
+  border: none !important;
+  border-top: none !important;
 }
 
 .our-services .services-title-main {
@@ -567,8 +716,10 @@ button.btn-default:hover {
   text-transform: uppercase;
   margin-bottom: 0;
   padding-bottom: 0;
-  text-align: center;
+  text-align: center !important;
   color: #1a1a1a !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .our-services .services-title-main::before,
@@ -581,9 +732,10 @@ button.btn-default:hover {
   text-align: center;
   margin-bottom: 50px;
   padding: 30px 65px;
-  background: linear-gradient(135deg, rgba(249, 249, 249, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   border-radius: 20px;
-  border: 2px solid rgba(155, 154, 132, 0.15);
+  border: none !important;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
 }
 
@@ -604,8 +756,9 @@ button.btn-default:hover {
 .our-services .services-section-title::before {
   content: attr(data-number);
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -35px;
   width: 65px;
   height: 65px;
   background: linear-gradient(135deg, #9b9a84 0%, #8a8974 100%);
@@ -638,7 +791,8 @@ button.btn-default:hover {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 80px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100px;
   height: 3px;
   background: linear-gradient(90deg, #9b9a84 0%, transparent 100%);
@@ -661,7 +815,8 @@ button.btn-default:hover {
   margin: 30px 0;
   padding: 25px 30px;
   background: linear-gradient(135deg, rgba(155, 154, 132, 0.12) 0%, rgba(155, 154, 132, 0.06) 100%);
-  border-left: 4px solid #9b9a84;
+  border: none !important;
+  border-left: none !important;
   border-radius: 12px;
   color: #444 !important;
   position: relative;
@@ -744,7 +899,11 @@ button.btn-default:hover {
   background: linear-gradient(135deg, rgba(155, 154, 132, 0.08) 0%, rgba(155, 154, 132, 0.03) 100%);
   border-radius: 15px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border: 1px solid rgba(155, 154, 132, 0.18);
+  border: none !important;
+  border-left: none !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -964,22 +1123,17 @@ button.btn-default:hover {
   text-align: center;
   margin-top: 80px;
   padding: 60px 40px;
-  background: linear-gradient(135deg, rgba(155, 154, 132, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
-  border-radius: 25px;
-  border: 2px dashed #9b9a84;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border-radius: 20px;
+  border: none !important;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .our-services .services-cta::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(155, 154, 132, 0.05) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
+  display: none !important;
 }
 
 @keyframes rotate {
@@ -1353,6 +1507,19 @@ header.main-header.react-header.react-header-scrolled {
 
 .react-header-cta-btn {
   white-space: nowrap;
+}
+
+/* Remove any dots or decorations from programare button */
+.react-header-cta-btn::before,
+.react-header-cta-btn::after {
+  display: none !important;
+  content: none !important;
+}
+
+.react-header-cta-btn.btn-default::before,
+.react-header-cta-btn.btn-default::after {
+  display: none !important;
+  content: none !important;
 }
 
 /* Language Switcher */
@@ -1785,9 +1952,9 @@ header.main-header.react-header.react-header-scrolled {
     margin-bottom: 45px !important;
     padding: 30px 20px !important;
     border-radius: 18px !important;
-    border: 3px solid #9b9a84 !important;
-    border-top: 4px solid #9b9a84 !important;
-    background: linear-gradient(135deg, rgba(155, 154, 132, 0.12) 0%, rgba(255, 255, 255, 1) 100%) !important;
+    border: none !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
     box-shadow: 0 6px 20px rgba(155, 154, 132, 0.18) !important;
   }
 
@@ -1822,8 +1989,12 @@ header.main-header.react-header.react-header-scrolled {
     margin-bottom: 40px !important;
     padding: 30px 20px !important;
     border-radius: 18px !important;
-    border: 3px solid #9b9a84 !important;
-    border-top: 5px solid #9b9a84 !important;
+    border: none !important;
+    border-top: none !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .our-services .services-title-main {
@@ -1841,6 +2012,10 @@ header.main-header.react-header.react-header-scrolled {
   .our-services .services-subtitle-section {
     padding: 25px 20px !important;
     margin-bottom: 35px !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .our-services .services-subtitle-title {
@@ -1855,36 +2030,48 @@ header.main-header.react-header.react-header-scrolled {
     background: #ffffff !important;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08) !important;
     border: none !important;
-    border-left: 5px solid #9b9a84 !important;
-    border-top: 3px solid rgba(155, 154, 132, 0.25) !important;
-    border-right: 1px solid rgba(155, 154, 132, 0.12) !important;
-    border-bottom: 1px solid rgba(155, 154, 132, 0.12) !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
   }
 
   .our-services .services-section:nth-child(even) {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 249, 249, 0.5) 100%) !important;
-    border-left: 5px solid #9b9a84 !important;
-    border-top: 3px solid rgba(155, 154, 132, 0.3) !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: none !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
   }
 
   .our-services .services-section:nth-child(odd) {
-    background: linear-gradient(135deg, rgba(249, 249, 249, 0.5) 0%, rgba(255, 255, 255, 1) 100%) !important;
-    border-left: 5px solid #8a8974 !important;
-    border-top: 3px solid rgba(138, 137, 116, 0.3) !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: none !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
   }
 
   .our-services .services-section-title {
     font-size: 24px !important;
     margin-bottom: 18px !important;
-    padding-left: 60px !important;
-    padding-right: 10px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     line-height: 1.35 !important;
     color: #1a1a1a !important;
     word-wrap: break-word;
     hyphens: auto;
+    text-align: center !important;
   }
 
   .our-services .services-section-title::before {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: -30px !important;
     width: 50px !important;
     height: 50px !important;
     font-size: 20px !important;
@@ -1897,7 +2084,8 @@ header.main-header.react-header.react-header-scrolled {
   }
 
   .our-services .services-section-title::after {
-    left: 60px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     width: 70px !important;
     height: 2px !important;
   }
@@ -1917,12 +2105,14 @@ header.main-header.react-header.react-header-scrolled {
     padding: 22px 18px !important;
     margin: 28px 0 !important;
     border-radius: 15px !important;
-    border-left: 5px solid #9b9a84 !important;
-    border-top: 2px solid rgba(155, 154, 132, 0.2) !important;
-    border-right: 1px solid rgba(155, 154, 132, 0.15) !important;
-    border-bottom: 1px solid rgba(155, 154, 132, 0.15) !important;
-    background: linear-gradient(135deg, rgba(155, 154, 132, 0.14) 0%, rgba(155, 154, 132, 0.08) 100%) !important;
-    box-shadow: 0 4px 15px rgba(155, 154, 132, 0.18) !important;
+    border: none !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
     line-height: 1.8 !important;
   }
 
@@ -1967,12 +2157,13 @@ header.main-header.react-header.react-header-scrolled {
     font-size: 16px !important;
     line-height: 1.85 !important;
     border-radius: 14px !important;
-    background: linear-gradient(135deg, rgba(155, 154, 132, 0.1) 0%, rgba(155, 154, 132, 0.05) 100%) !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
     border: none !important;
-    border-left: 4px solid rgba(155, 154, 132, 0.4) !important;
-    border-top: 2px solid rgba(155, 154, 132, 0.2) !important;
-    border-right: 1px solid rgba(155, 154, 132, 0.15) !important;
-    border-bottom: 1px solid rgba(155, 154, 132, 0.15) !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08) !important;
     min-height: 52px;
     display: flex;
@@ -2001,6 +2192,10 @@ header.main-header.react-header.react-header-scrolled {
 
   .our-services .services-list-cards li {
     padding: 20px 18px;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .our-services .services-list-grid {
@@ -2010,6 +2205,10 @@ header.main-header.react-header.react-header-scrolled {
 
   .our-services .services-list-grid li {
     padding: 18px 20px 18px 45px;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .our-services .services-list-minimal {
@@ -2033,6 +2232,10 @@ header.main-header.react-header.react-header-scrolled {
     color: #1a1a1a !important;
     margin-top: 35px;
     padding: 25px 20px;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .our-services .services-closing::before,
@@ -2053,11 +2256,15 @@ header.main-header.react-header.react-header-scrolled {
   .our-services .services-cta {
     margin-top: 45px !important;
     padding: 35px 20px !important;
-    border-radius: 18px !important;
-    border: 3px dashed #9b9a84 !important;
-    border-top: 4px solid #9b9a84 !important;
-    background: linear-gradient(135deg, rgba(155, 154, 132, 0.15) 0%, rgba(255, 255, 255, 1) 100%) !important;
-    box-shadow: 0 6px 20px rgba(155, 154, 132, 0.2) !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border-radius: 20px !important;
+    border: none !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .our-services .services-cta::before {
+    display: none !important;
   }
 
   .our-services .services-cta .btn-default {
@@ -2119,9 +2326,23 @@ header.main-header.react-header.react-header-scrolled {
     padding: 40px 20px;
     text-align: center;
   }
+  
+  /* Mobile: Ensure no-image boxes are centered */
+  .cta-box.cta-box-no-image {
+    padding: 40px 20px !important;
+    margin: 0 auto !important;
+  }
 
   .cta-box-content {
     width: 100%;
+  }
+  
+  /* Mobile: Override margin for no-image boxes */
+  .cta-box.cta-box-no-image .cta-box-content {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .cta-box-btn {
@@ -2167,6 +2388,373 @@ header.main-header.react-header.react-header-scrolled {
   }
 }
 
+/* Center all sections and content on main page - only affect direct children */
+.cta-section .container,
+.our-services .container {
+  display: block;
+}
+
+.cta-section .row,
+.our-services .row {
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.cta-section .col-lg-12,
+.our-services .col-lg-12 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* No background styling */
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* CTA Box Centering - when no image - override custom.css completely */
+.cta-section .cta-box.cta-box-no-image {
+  padding: 60px 40px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  position: relative !important;
+}
+
+/* Override all custom.css styles for cta-box-content when no image */
+.cta-section .cta-box.cta-box-no-image .cta-box-content {
+  width: 100% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  text-align: center !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+/* Center section title content in all CTA sections */
+.cta-box-content .section-title {
+  text-align: center;
+}
+
+.cta-box-content .section-title h3 {
+  text-align: center;
+  padding-left: 0;
+}
+
+.cta-box-content .section-title h3::before {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/* Programare section - blur to transparent effect */
+#programare {
+  position: relative;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+#programare::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#programare > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.cta-box-content .section-title h2 {
+  text-align: center;
+}
+
+.cta-box-content .section-title p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+}
+
+/* Center CTA buttons */
+.cta-box-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+/* Center services content */
+.services-content {
+  margin: 0 auto;
+}
+
+/* Section Background Images - Single image with blur and dark overlay */
+.section-with-bg {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  /* Ensure background is properly loaded */
+  background-color: #2c3e50; /* Fallback color while image loads */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  /* Image optimization */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Dark overlay with blur effect */
+.section-with-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+/* Add blur effect for browsers that support it */
+@supports (backdrop-filter: blur(4px)) {
+  .section-with-bg::before {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(4px)) {
+  .section-with-bg::before {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.section-with-bg > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* CTA section with background - darker and blurred */
+.cta-section.section-with-bg::before {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* CTA box inside translucent window */
+.cta-section .col-lg-12 .cta-box {
+  background: rgba(155, 154, 132, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Blur effect for background image using pseudo-element (desktop only) */
+.cta-section.section-with-bg {
+  position: relative;
+}
+
+@media (min-width: 769px) {
+  .cta-section.section-with-bg::after {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: none !important; /* No blur - removed blur(6px) */
+    z-index: 0;
+    opacity: 0.9;
+  }
+}
+
+.cta-section.section-with-bg > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Remove background from .our-services sections */
+.our-services {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.our-services::before,
+.our-services::after {
+  display: none !important;
+}
+
+/* Services content - no backdrop filter */
+.our-services .col-lg-12 .services-content {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Mobile Optimizations for Backgrounds */
+@media (max-width: 768px) {
+  .section-with-bg {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  /* Ensure background is properly set on mobile */
+  .section-with-bg::after {
+    display: none !important; /* Disable blur effect on mobile for performance */
+  }
+  
+  /* Optimized overlay for mobile - no blur for clearer image */
+  .section-with-bg::before {
+    background: rgba(0, 0, 0, 0) !important; /* No overlay - completely transparent */
+    backdrop-filter: none !important; /* No blur */
+    -webkit-backdrop-filter: none !important; /* No blur */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: none !important; /* Hide overlay completely */
+  }
+  
+  /* CTA sections mobile */
+  .cta-section.section-with-bg {
+    padding: 60px 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+  
+  .cta-section.section-with-bg::before {
+    background: rgba(0, 0, 0, 0) !important; /* No overlay */
+    backdrop-filter: none !important; /* No blur */
+    -webkit-backdrop-filter: none !important; /* No blur */
+    display: none !important; /* Hide overlay completely */
+  }
+  
+  .cta-section.section-with-bg .cta-box {
+    background: rgba(155, 154, 132, 0.92) !important;
+    backdrop-filter: none !important; /* No blur */
+    -webkit-backdrop-filter: none !important; /* No blur */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  /* Services sections mobile */
+  /* Services sections mobile - no background */
+  .our-services {
+    background: transparent !important;
+    background-image: none !important;
+  }
+  
+  .our-services .services-content {
+    background: transparent !important;
+  }
+  
+  /* Ensure container is above background layers */
+  .section-with-bg > .container {
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  /* Mobile - no background styling */
+  .cta-section .col-lg-12,
+  .our-services .col-lg-12 {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Extra small devices - further optimization */
+@media (max-width: 576px) {
+  .section-with-bg {
+    min-height: auto;
+  }
+  
+  .cta-section.section-with-bg,
+  .our-services.section-with-bg {
+    padding: 50px 0 !important;
+  }
+  
+  .section-with-bg::before {
+    backdrop-filter: none !important; /* No blur */
+    -webkit-backdrop-filter: none !important; /* No blur */
+    background: rgba(0, 0, 0, 0) !important; /* No overlay */
+    display: none !important; /* Hide overlay completely */
+  }
+  
+  .cta-section.section-with-bg .cta-box,
+  .our-services .services-content {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Small mobile - no background styling */
+  .cta-section .col-lg-12,
+  .our-services .col-lg-12 {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
 /* Container Mobile */
 @media (max-width: 768px) {
   .container {
@@ -2182,6 +2770,12 @@ header.main-header.react-header.react-header-scrolled {
     padding-left: 10px;
     padding-right: 10px;
   }
+  
+  /* Mobile: Center CTA boxes without images */
+  .cta-box.cta-box-no-image {
+    padding: 40px 20px !important;
+  }
+  
 }
 
 /* Buttons Mobile */
@@ -2224,14 +2818,127 @@ header.main-header.react-header.react-header-scrolled {
   }
 }
 
+/* Appointment Form Styling */
+.our-appointment {
+  padding: 100px 0;
+  background-image: url('/assets/images/hero-images/AdobeStock_267533248.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.our-appointment-box {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border-radius: 20px;
+  padding: 60px 50px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.our-appointment-box .section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.our-appointment-box .section-title h3 {
+  color: #9b9a84;
+  margin-bottom: 15px;
+}
+
+.our-appointment-box .section-title h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.our-appointment-box .section-title p {
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.appointment-form {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  width: 100%;
+}
+
+.appointment-form form {
+  width: 100%;
+  max-width: 100%;
+}
+
+.appointment-form .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  justify-content: center;
+}
+
+.appointment-form .form-group {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 25px;
+}
+
+.appointment-form .form-group:last-child {
+  margin-bottom: 0;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.appointment-form .form-control {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 15px;
+  color: #333;
+  transition: all 0.3s ease;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  width: 100%;
+}
+
+.appointment-form .form-control:focus {
+  border-color: #9b9a84;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(155, 154, 132, 0.1);
+}
+
+.appointment-form .form-control::placeholder {
+  color: #999;
+}
+
+.appointment-form textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
 /* Forms Mobile */
 @media (max-width: 768px) {
   .our-appointment {
     padding: 60px 0;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+
+  .our-appointment-box {
+    padding: 35px 20px;
+    border-radius: 15px;
   }
 
   .appointment-form {
-    padding: 0 15px;
+    padding: 0;
   }
 
   .form-group {
@@ -2416,6 +3123,60 @@ header.main-header.react-header.react-header-scrolled {
   }
 }
 
+/* Footer Styling */
+.main-footer {
+  background: #000000 !important;
+  background-color: #000000 !important;
+  padding: 60px 0 0;
+  border-top: 1px solid #333333;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.footer-copyright {
+  padding: 40px 0;
+  margin-top: 40px;
+  border-top: 1px solid #333333;
+}
+
+.footer-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-menu ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu ul li a {
+  font-family: var(--accent-font);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  text-transform: capitalize;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.footer-menu ul li a:hover {
+  color: #9b9a84;
+}
+
+.footer-copyright-text {
+  text-align: right;
+}
+
+.footer-copyright-text p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+}
+
 /* Footer Mobile Styles */
 @media (max-width: 768px) {
   .footer-cta-box {
@@ -2447,6 +3208,8 @@ header.main-header.react-header.react-header-scrolled {
 
   .main-footer {
     padding: 50px 0 30px;
+    background: #000000 !important;
+    background-color: #000000 !important;
   }
 
   .footer-logo {
@@ -2540,24 +3303,37 @@ header.main-header.react-header.react-header-scrolled {
 
   .footer-menu ul {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .footer-menu ul li a {
     font-size: 14px;
     padding: 8px 0;
     display: block;
+    color: #ffffff !important;
+  }
+
+  .footer-menu ul li a:hover {
+    color: #9b9a84 !important;
   }
 
   .footer-copyright-text {
     text-align: center;
+    margin-top: 20px;
   }
 
   .footer-copyright-text p {
     font-size: 13px;
-    color: #666;
+    color: #ffffff !important;
+  }
+
+  .footer-copyright {
+    padding: 30px 0;
+    margin-top: 30px;
+    border-top: 1px solid #333333 !important;
   }
 }
 

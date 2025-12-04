@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { getAssetPath } from '../utils/assets'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const PageHeader = ({ title, subtitle, backgroundImage }) => {
   const { t } = useLanguage()
+  const [isMobile, setIsMobile] = useState(false)
   const bg = backgroundImage ? getAssetPath(backgroundImage) : getAssetPath('assets/images/hero-bg.jpg')
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+  
+  // Use lighter overlay on mobile for clearer image
+  const overlayGradient = isMobile 
+    ? `linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%)`
+    : `linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%)`
   
   return (
     <div 
@@ -12,14 +27,14 @@ const PageHeader = ({ title, subtitle, backgroundImage }) => {
         style={{
           position: 'relative',
           padding: '150px 0 100px',
-          background: `linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), url(${bg})`,
+          background: `${overlayGradient}, url(${bg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           overflow: 'hidden'
         }}
     >
-      {/* Overlay Pattern */}
+      {/* Overlay Pattern - lighter on mobile */}
       <div
         style={{
           position: 'absolute',
@@ -28,7 +43,9 @@ const PageHeader = ({ title, subtitle, backgroundImage }) => {
           right: 0,
           bottom: 0,
           background: 'radial-gradient(circle at 30% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%)',
-          opacity: 0.6
+          opacity: isMobile ? 0.1 : 0.6, // Much lighter on mobile
+          backdropFilter: isMobile ? 'none' : undefined, // No blur on mobile
+          WebkitBackdropFilter: isMobile ? 'none' : undefined
         }}
       />
       

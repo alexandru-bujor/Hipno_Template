@@ -20,9 +20,6 @@ const Preloader = () => {
     <div className="preloader" style={{ display: loading ? 'block' : 'none' }}>
       <div className="loading-container">
         <div className="loading"></div>
-        <div id="loading-icon">
-          <img src={getAssetPath('assets/images/loader.svg')} alt="Loading" />
-        </div>
       </div>
     </div>
   )

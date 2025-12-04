@@ -5,11 +5,17 @@ import { useLanguage } from '../contexts/LanguageContext'
 const ContactePreview = () => {
   const { t } = useLanguage()
   return (
-    <div id="contacte" className="cta-section" style={{ padding: '100px 0', background: '#f8f9fa' }}>
+    <div 
+      id="contacte" 
+      className="cta-section" 
+      style={{ 
+        padding: '100px 0'
+      }}
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <div className="cta-box">
+            <div className="cta-box cta-box-no-image">
               <div className="cta-box-content">
                 <div className="section-title">
                   <h3 className="wow fadeInUp">{t('contacte.title')}</h3>

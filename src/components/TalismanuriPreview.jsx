@@ -5,7 +5,10 @@ import { useLanguage } from '../contexts/LanguageContext'
 const TalismanuriPreview = () => {
   const { t } = useLanguage()
   return (
-    <div id="talismanuri" className="our-services">
+    <div 
+      id="talismanuri" 
+      className="our-services"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

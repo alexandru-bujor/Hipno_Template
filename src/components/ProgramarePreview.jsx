@@ -4,12 +4,19 @@ import { useLanguage } from '../contexts/LanguageContext'
 
 const ProgramarePreview = () => {
   const { t } = useLanguage()
+  
   return (
-    <div id="programare" className="cta-section" style={{ padding: '100px 0' }}>
+    <div 
+      id="programare" 
+      className="cta-section" 
+      style={{ 
+        padding: '100px 0'
+      }}
+    >
       <div className="container">
-        <div className="row">
+        <div className="row" >
           <div className="col-lg-12">
-            <div className="cta-box">
+            <div className="cta-box cta-box-no-image">
               <div className="cta-box-content">
                 <div className="section-title">
                   <h3 className="wow fadeInUp">{t('programare.title')}</h3>

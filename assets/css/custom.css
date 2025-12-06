@@ -1090,7 +1090,7 @@ header.main-header .header-sticky.active::before{
 
 .our-services{
 	background: var(--secondary-color);
-	padding: 100px 0;
+
 }
 
 .service-item{
@@ -1646,7 +1646,7 @@ header.main-header .header-sticky.active::before{
 /************************************/
 
 .cta-section{
-	padding: 100px 0 50px;
+
 }
 
 .cta-box{
@@ -4854,7 +4854,7 @@ header.main-header .header-sticky.active::before{
 	}
 
 	.cta-section{
-		padding: 50px 0 25px;
+        padding-top: 25px;
 	}
 
 	.cta-box{

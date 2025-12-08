@@ -2084,8 +2084,15 @@ header.main-header .header-sticky.active::before{
 /************************************/
 
 .our-appointment{
-	background: linear-gradient(180deg, var(--white-color) 50%, var(--accent-color) 50%);
-	padding: 50px 0  100px;
+    background: linear-gradient(
+            180deg,
+            var(--white-color) 0%,
+            var(--white-color) 45%,
+            var(--accent-color) 55%,
+            var(--accent-color) 100%
+    );
+
+    padding: 50px 0  100px;
 }
 
 .our-appointment-box{
@@ -2382,7 +2389,6 @@ header.main-header .header-sticky.active::before{
 
 .page-header{
 	position: relative;
-	background: url('../images/page-header-bg.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;

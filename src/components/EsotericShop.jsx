@@ -2,11 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import CollapsibleList from './CollapsibleList'
 import { useLanguage } from '../contexts/LanguageContext'
+import PageHeader from "./PageHeader";
 
 const EsotericShop = () => {
   const { t } = useLanguage()
   
   return (
+<>
+      <PageHeader
+          backgroundImage="assets/images/hero-images/AdobeStock_267533248.jpeg"
+      />
     <div 
       id="magazin" 
       className="our-services"
@@ -16,11 +21,7 @@ const EsotericShop = () => {
           <div className="col-lg-12">
             <div className="services-content">
               {/* Main Title */}
-              <div className="services-section services-main-title">
-                <h2 className="services-section-title services-title-main">
-                  {t('magazin.title')}
-                </h2>
-              </div>
+
 
               {/* Subtitle */}
               <div className="services-section services-subtitle-section">
@@ -31,20 +32,11 @@ const EsotericShop = () => {
 
               {/* Category 1 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="1">Индивидуально созданные предметы силы</h2>
+                <h2 className="services-section-title" data-number="1">
+                  {t('magazin.category1.title')}
+                </h2>
                 <CollapsibleList
-                  items={[
-                    'Персональные амулеты под запрос',
-                    'Обереги по дате рождения',
-                    'Защитные талисманы',
-                    'Кармические амулеты',
-                    'Амулеты на удачу, любовь, силу, деньги, защиту',
-                    'Персональные печати силы',
-                    'Программные свечи (под любую задачу)',
-                    'Авторские свечи',
-                    'Заряженные сакральные символы',
-                    'Предметы силы под конкретную ситуацию'
-                  ]}
+                  items={t('magazin.category1.items', { returnObjects: true })}
                   initialVisible={5}
                   listStyle="cards"
                 />
@@ -52,443 +44,204 @@ const EsotericShop = () => {
 
               {/* Category 2 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="2">Деревенская магия и аутентичные обрядовые инструменты</h2>
+                <h2 className="services-section-title" data-number="2">
+                  {t('magazin.category2.title')}
+                </h2>
                 
-                <h3 className="services-subtitle">Обрядовые и сакральные предметы быта</h3>
+                <h3 className="services-subtitle">{t('magazin.category2.subsection1.title')}</h3>
                 <CollapsibleList
-                  items={[
-                    'Старинные иконы и обрядовые образы',
-                    'Веретена (ритуальные и рабочие)',
-                    'Прялки и элементы прялок',
-                    'Корыта для обрядов и заговоров',
-                    'Деревянные ступы и песты',
-                    'Сундуки и лари для хранения сакральных вещей',
-                    'Ложки, половники и ковши обрядовые',
-                    'Глиняная и керамическая ритуальная посуда',
-                    'Медные чаши и сосуды',
-                    'Чугунки и котелки для отваров и зельеварения',
-                    'Доски для замешивания обрядового теста',
-                    'Ситечки для просеивания «обрядовой муки»',
-                    'Склянки и бутыли старинные'
-                  ]}
+                  items={t('magazin.category2.subsection1.items', { returnObjects: true })}
                   initialVisible={6}
                   listStyle="cards"
                 />
 
-                <h3 className="services-subtitle">Инструменты для веретничества и магических работ</h3>
+                <h3 className="services-subtitle">{t('magazin.category2.subsection2.title')}</h3>
                 <CollapsibleList
-                  items={[
-                    'Ритуальные ножи и обрядовые резцы',
-                    'Старинные серпы и косы',
-                    'Топорики обрядовые',
-                    'Мотыги и мини-инструменты силы',
-                    'Иглы обрядовые',
-                    'Веревки и нити с узловой магией',
-                    'Плетеные обрядовые пояса',
-                    'Клубки магической пряжи',
-                    'Кресты обрядовые (деревянные, железные)'
-                  ]}
+                  items={t('magazin.category2.subsection2.items', { returnObjects: true })}
                   initialVisible={5}
                   listStyle="grid"
                 />
 
-                <h3 className="services-subtitle">Одежда и текстиль</h3>
+                <h3 className="services-subtitle">{t('magazin.category2.subsection3.title')}</h3>
                 <CollapsibleList
-                  items={[
-                    'Вышитая заговоренная одежда',
-                    'Традиционные рубахи с защитной вышивкой',
-                    'Платки обрядовые (для магии ухода, защиты, приворотов, родовых практик)',
-                    'Рушники с символами',
-                    'Коврики и полотна для алтарей',
-                    'Одежда ведьмы / знахаря',
-                    'Пояса-обереги',
-                    'Обрядовые фартуки'
-                  ]}
+                  items={t('magazin.category2.subsection3.items', { returnObjects: true })}
                   initialVisible={4}
                   listStyle="minimal"
                 />
 
-                <h3 className="services-subtitle">Предметы домовой и бытовой магии</h3>
+                <h3 className="services-subtitle">{t('magazin.category2.subsection4.title')}</h3>
                 <ul className="services-list">
-                  <li>Домовые фигурки</li>
-                  <li>Подковы старинные</li>
-                  <li>Заговоренные ключи</li>
-                  <li>Замки и защелки-обереги</li>
-                  <li>Миниатюрные веники</li>
-                  <li>Метлы ведьмовские</li>
-                  <li>Мешочки для домового</li>
-                  <li>Камни под порог</li>
-                  <li>Колокольчики и шумовые обереги</li>
+                  {t('magazin.category2.subsection4.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Связь с природой и родом</h3>
+                <h3 className="services-subtitle">{t('magazin.category2.subsection5.title')}</h3>
                 <ul className="services-list">
-                  <li>Кора деревьев (дуб, осина, береза, ива)</li>
-                  <li>Корни и ветви с мест силы</li>
-                  <li>Пучки трав в старинных связках</li>
-                  <li>Хлебные обереги</li>
-                  <li>Обрядовые зерновые мешочки</li>
-                  <li>Перья и шерсть животных</li>
-                  <li>Уголь ритуальный</li>
-                  <li>Пепел с костров \ сажа печная</li>
+                  {t('magazin.category2.subsection5.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Редкие элементы древней практики</h3>
+                <h3 className="services-subtitle">{t('magazin.category2.subsection6.title')}</h3>
                 <ul className="services-list">
-                  <li>Книга заговоров и переписанные молитвенники</li>
-                  <li>Рукописные деревенские каноны</li>
-                  <li>Личные амулеты знахарей</li>
-                  <li>Старинные зеркала для гаданий</li>
-                  <li>Обрядовые гребни</li>
-                  <li>Куклы-обереги</li>
-                  <li>Мотанки</li>
+                  {t('magazin.category2.subsection6.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* Category 3 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="3">Ритуальные материалы и расходники</h2>
+                <h2 className="services-section-title" data-number="3">
+                  {t('magazin.category3.title')}
+                </h2>
                 
-                <h3 className="services-subtitle">Ладаны, смолы и курительные смеси</h3>
+                <h3 className="services-subtitle">{t('magazin.category3.subsection1.title')}</h3>
                 <ul className="services-list">
-                  <li>Авторские ладаны (по темам: защита, очищение, притяжение, обнуление, родовая сила)</li>
-                  <li>Смолы деревьев: мирра, копал, бензоин, ладан церковный, стиракс, даммар</li>
-                  <li>Смоляные смеси для ритуалов</li>
-                  <li>Курительные травяные сборы</li>
-                  <li>Палочки для окуривания</li>
-                  <li>Конусы и гранулы для курильниц</li>
-                  <li>Ладанные брикеты</li>
-                  <li>Связки трав для очищения пространства</li>
-                  <li>Смеси для вызова, закрытия, защиты</li>
+                  {t('magazin.category3.subsection1.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Соли ритуальные и магические</h3>
+                <h3 className="services-subtitle">{t('magazin.category3.subsection2.title')}</h3>
                 <ul className="services-list">
-                  <li>Черная соль</li>
-                  <li>Белая соль очищения</li>
-                  <li>Соль для защиты</li>
-                  <li>Соль для снятия</li>
-                  <li>Соль для приворотов и отсечений</li>
-                  <li>Соль для очищения пространства</li>
-                  <li>Стихийная соль (огонь, вода, воздух, земля)</li>
-                  <li>Соль для домовых практик</li>
-                  <li>Соль родовая</li>
-                  <li>Пограничная соль</li>
-                  <li>Соль для алтарей</li>
-                  <li>Соль с травами и кореньями</li>
+                  {t('magazin.category3.subsection2.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Порошки и сыпучие смеси</h3>
+                <h3 className="services-subtitle">{t('magazin.category3.subsection3.title')}</h3>
                 <ul className="services-list">
-                  <li>Защитные порошки</li>
-                  <li>Порошки отсечения</li>
-                  <li>Порошки для привлечения</li>
-                  <li>Порошки для усиления намерения</li>
-                  <li>Молитвенные смеси</li>
-                  <li>Стихийные порошки</li>
-                  <li>Коловратные смеси</li>
-                  <li>Пепел силы</li>
-                  <li>Пепел родовых костров</li>
-                  <li>Сажа печная</li>
-                  <li>Зола обрядовая</li>
-                  <li>Прах трав и кореньев</li>
-                  <li>Алтарная пыль</li>
+                  {t('magazin.category3.subsection3.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Травы, коренья и растения для магии</h3>
+                <h3 className="services-subtitle">{t('magazin.category3.subsection4.title')}</h3>
                 <ul className="services-list">
-                  <li>Полынь</li>
-                  <li>Зверобой</li>
-                  <li>Чабрец</li>
-                  <li>Мелисса</li>
-                  <li>Шалфей</li>
-                  <li>Крапива</li>
-                  <li>Багульник</li>
-                  <li>Дурман (ритуальный)</li>
-                  <li>Лаванда</li>
-                  <li>Розмарин</li>
-                  <li>Можжевельник</li>
-                  <li>Пижма</li>
-                  <li>Иван-чай</li>
-                  <li>Корень аира</li>
-                  <li>Корень лопуха</li>
-                  <li>Корень девясила</li>
-                  <li>Корень мандрагоры (символически оформленный)</li>
-                  <li>Навальник</li>
-                  <li>Семена силы</li>
-                  <li>Цветы сушеные для обрядов</li>
+                  {t('magazin.category3.subsection4.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Свечные и огненные материалы</h3>
+                <h3 className="services-subtitle">{t('magazin.category3.subsection5.title')}</h3>
                 <ul className="services-list">
-                  <li>Ритуальные свечи всех видов</li>
-                  <li>Свечи по стихиям</li>
-                  <li>Свечи по чакрам</li>
-                  <li>Свечи для обрядов перехода</li>
-                  <li>Свечи очищающие</li>
-                  <li>Свечи денежные</li>
-                  <li>Свечи защитные</li>
-                  <li>Свечи для родовых практик</li>
-                  <li>Свечи на закрытие программ</li>
-                  <li>Свечи на восстановление энергии</li>
-                  <li>Свечи фигурные (символические формы)</li>
-                  <li>Фитили освященные</li>
-                  <li>Свечные красители</li>
-                  <li>Свечные масла и смеси</li>
-                  <li>Воск</li>
+                  {t('magazin.category3.subsection5.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Жидкости и эссенции для обрядов</h3>
+                <h3 className="services-subtitle">{t('magazin.category3.subsection6.title')}</h3>
                 <ul className="services-list">
-                  <li>Вода обрядовая (живая и мертвая)</li>
-                  <li>Вода стихий</li>
-                  <li>Святая вода</li>
-                  <li>Лунная вода</li>
-                  <li>Солнечная вода</li>
-                  <li>Вода мест силы</li>
-                  <li>Настои трав для магических целей</li>
-                  <li>Масла для помазания</li>
-                  <li>Аромамасла для ритуалов</li>
-                  <li>Энергетические эссенции</li>
+                  {t('magazin.category3.subsection6.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Смеси для ритуальных поверхностей</h3>
+                <h3 className="services-subtitle">{t('magazin.category3.subsection7.title')}</h3>
                 <ul className="services-list">
-                  <li>Алтарный песок</li>
-                  <li>Алтарная земля</li>
-                  <li>Земля с мест силы (монастыри, вершины гор, моря)</li>
-                  <li>Земля с перекрестков</li>
-                  <li>Меловые смеси</li>
-                  <li>Ритуальная глина</li>
-                  <li>Обрядовая мука</li>
-                  <li>Мука для магических символов</li>
+                  {t('magazin.category3.subsection7.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
 
-                <h3 className="services-subtitle">Дополнительные магические расходники</h3>
+                <h3 className="services-subtitle">{t('magazin.category3.subsection8.title')}</h3>
                 <ul className="services-list">
-                  <li>Пергаменты для записей намерений</li>
-                  <li>Бумага для ритуальных формул</li>
-                  <li>Чернила для сакральных текстов</li>
-                  <li>Уголь для курильниц</li>
-                  <li>Песочные смеси для кругов</li>
-                  <li>Тканевые мешочки для ингредиентов</li>
-                  <li>Свечные подставки</li>
-                  <li>Курильницы всех видов</li>
-                  <li>Чаши для смешивания</li>
+                  {t('magazin.category3.subsection8.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* Category 4 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="4">Чайные и травяные линии</h2>
+                <h2 className="services-section-title" data-number="4">
+                  {t('magazin.category4.title')}
+                </h2>
                 <ul className="services-list">
-                  <li>Авторские чайные тизаны</li>
-                  <li>Чай для защиты</li>
-                  <li>Чай для раскрытия интуиции</li>
-                  <li>Чай для очищения</li>
-                  <li>Чай для любви и гармонии</li>
-                  <li>Чай для сна и покоя</li>
-                  <li>Чай для женской силы</li>
-                  <li>Чай для мужской силы</li>
-                  <li>Чай для очищения рода</li>
-                  <li>Чай для пробуждения энергии жизни</li>
-                  <li>Чаи, созданные под дату рождения</li>
-                  <li>Чаи, созданные в особенные лунные сутки</li>
-                  <li>Чаи по архетипам Таро</li>
-                  <li>Чаи по состояниям - выход из кризиса, раскрытие потенциала, для начала нового\отпускания старого</li>
-                  <li>Чаи по четырем стихиям</li>
+                  {t('magazin.category4.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* Category 5 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="5">Инструменты для практиков</h2>
+                <h2 className="services-section-title" data-number="5">
+                  {t('magazin.category5.title')}
+                </h2>
                 <ul className="services-list">
-                  <li>Поющие чаши (кованые, храмовые, алтарные, ручной ковки)</li>
-                  <li>Ритуальные гонги</li>
-                  <li>Шаманские бубны</li>
-                  <li>Варганы</li>
-                  <li>Алтарные колокольчики</li>
-                  <li>Тибетские колокольчики</li>
-                  <li>Вибрационные пластины</li>
-                  <li>Звуковые палочки для частотной работы</li>
-                  <li>Энергетические жезлы</li>
-                  <li>Жезлы из кристаллов и минералов</li>
-                  <li>Жезлы стихийные</li>
-                  <li>Магические посохи</li>
-                  <li>Алтарные указатели энергии</li>
-                  <li>Деревянные и костяные жезлы</li>
-                  <li>Жезлы с сигилами и символами</li>
-                  <li>Камни силы</li>
-                  <li>Кристаллы для алтарей</li>
-                  <li>Кристаллы для ченнелинга</li>
-                  <li>Кристаллы для защиты</li>
-                  <li>Камни по чакрам</li>
-                  <li>Генераторы кристаллической энергии</li>
-                  <li>Кристаллические пирамиды</li>
-                  <li>Минеральные сферы</li>
-                  <li>Алтарные доски</li>
-                  <li>Персональные мини-алтари</li>
-                  <li>Алтарные ткани и покрытия</li>
-                  <li>Символические платформы для ритуалов</li>
-                  <li>Подставки под жезлы и чаши</li>
-                  <li>Магические ножи (атаме)</li>
-                  <li>Ритуальные кинжалы</li>
-                  <li>Серпы</li>
-                  <li>Мини-топоры</li>
-                  <li>Алтарные мечи</li>
-                  <li>Пентакли различных традиций</li>
-                  <li>Сигилы и печати силы</li>
-                  <li>Стихийные символы</li>
-                  <li>Магические амулеты для ритуалов</li>
-                  <li>Талисманические знаки</li>
-                  <li>Карты Таро (классические и авторские)</li>
-                  <li>Оракулы</li>
-                  <li>Руны (каменные, деревянные, костяные, металлические)</li>
-                  <li>Рунические круги</li>
-                  <li>Маятники (кристаллические, металлические, маятники-индикаторы)</li>
-                  <li>Биолокационные рамки</li>
-                  <li>Диагностические палочки</li>
-                  <li>Магические зеркала</li>
-                  <li>Шары предсказаний</li>
-                  <li>Чаши для гаданий по воде</li>
-                  <li>Доски для ченнелинга</li>
-                  <li>Карты энергетической диагностики</li>
-                  <li>Энергетические тестеры</li>
-                  <li>Жезлы для настройки чакр</li>
-                  <li>Медные проволоки для чувствования поля</li>
-                  <li>Ритуальные факелы</li>
-                  <li>Котелки для сжигания</li>
-                  <li>Огненные алтари</li>
-                  <li>Подсвечники ритуальные</li>
-                  <li>Свечные платформы из камня</li>
-                  <li>Ритуальные чаши огня</li>
-                  <li>Наборы для работы с огнем</li>
-                  <li>Метлы ведьминские</li>
-                  <li>Веники очищения</li>
-                  <li>Лопатки для пепла</li>
-                  <li>Курильницы</li>
-                  <li>Подставки для благовоний</li>
-                  <li>Чаши для стихийной работы</li>
-                  <li>Песочные платы для рисунков силы</li>
-                  <li>Алтарные книги</li>
-                  <li>Магические дневники</li>
-                  <li>Журналы практиков</li>
-                  <li>Книги заклинаний</li>
-                  <li>Пергаменты</li>
-                  <li>Свитки намерений</li>
-                  <li>Чернила для сакральных текстов</li>
-                  <li>Магические перья</li>
-                  <li>Ритуальные печати</li>
-                  <li>Кольца силы</li>
-                  <li>Пояса мага</li>
-                  <li>Маски для ритуалов</li>
-                  <li>Капюшоны и накидки практиков</li>
-                  <li>Шаманские артефакты</li>
-                  <li>Этнические магические инструменты</li>
-                  <li>Антикварные ритуальные предметы</li>
-                  <li>Ведьмовские реликвии</li>
-                  <li>Предметы для построения энергетических сеток</li>
-                  <li>Наборы для лунных практик</li>
-                  <li>Комплекты для работы с тенями</li>
-                  <li>Инструменты для защиты ауры</li>
-                  <li>Инструменты для очистки пространства</li>
-                  <li>Инструменты для работы со стихиями</li>
-                  <li>Наборы для ченнелинга</li>
-                  <li>Комплекты для раскрытия сознания</li>
-                  <li>Алтарные сосуды для воды стихий</li>
-                  <li>Ритуальные чаши для масла</li>
-                  <li>Магические песочные часы</li>
-                  <li>Каменные диски с символами</li>
-                  <li>Амулеты стихий</li>
+                  {t('magazin.category5.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* Category 6 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="6">Предметы для начинающих и обычных людей</h2>
+                <h2 className="services-section-title" data-number="6">
+                  {t('magazin.category6.title')}
+                </h2>
                 <ul className="services-list">
-                  <li>Домашние защитные наборы</li>
-                  <li>Стартовые эзотерические комплекты</li>
-                  <li>Мини-наборы для очищения</li>
-                  <li>Наборы для медитации</li>
-                  <li>Аромасвечи</li>
-                  <li>Защитные мешочки</li>
-                  <li>Простые обереги</li>
-                  <li>Карманные талисманы</li>
-                  <li>Амулеты "на каждый день"</li>
-                  <li>Книги</li>
+                  {t('magazin.category6.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* Category 7 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="7">Ритуальные редкости и сакральные артефакты</h2>
+                <h2 className="services-section-title" data-number="7">
+                  {t('magazin.category7.title')}
+                </h2>
                 <ul className="services-list">
-                  <li>Кожа змеи</li>
-                  <li>Кости животных (обрядовые)</li>
-                  <li>Перья редких птиц (ритуальные)</li>
-                  <li>Когти и обереги природы</li>
-                  <li>Камни силы с мест силы</li>
-                  <li>Древние амулеты</li>
-                  <li>Магические реликвии</li>
+                  {t('magazin.category7.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* Category 8 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="8">Алтарные зоны и оформление пространства</h2>
+                <h2 className="services-section-title" data-number="8">
+                  {t('magazin.category8.title')}
+                </h2>
                 <ul className="services-list">
-                  <li>Готовые наборы для алтаря</li>
-                  <li>Декор для сакрального пространства</li>
-                  <li>Тканевые алтарные покрытия</li>
-                  <li>Подсвечники</li>
-                  <li>Курильницы</li>
-                  <li>Подставки под артефакты</li>
-                  <li>Символические статуэтки</li>
-                  <li>Мини-алтари</li>
+                  {t('magazin.category8.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* Category 9 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="9">Инфопродукты и знания</h2>
+                <h2 className="services-section-title" data-number="9">
+                  {t('magazin.category9.title')}
+                </h2>
                 <ul className="services-list">
-                  <li>Книги Фиона Голдена и Анны Амиты</li>
-                  <li>Методические пособия</li>
-                  <li>Печатные обрядовые тексты</li>
-                  <li>Руководства по работе с энергиями</li>
-                  <li>Авторские Карты Таро Фиона Голдена и Валерия Lepus Art</li>
-                  <li>Обучающие тетради</li>
-                  <li>Курсы-онлайн</li>
+                  {t('magazin.category9.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* Category 10 */}
               <div className="services-section">
-                <h2 className="services-section-title" data-number="10">Магические наборы и боксы</h2>
+                <h2 className="services-section-title" data-number="10">
+                  {t('magazin.category10.title')}
+                </h2>
                 <ul className="services-list">
-                  <li>Набор "Защита"</li>
-                  <li>Набор "Очищение"</li>
-                  <li>Набор "Привлечение"</li>
-                  <li>Набор "Любовь"</li>
-                  <li>Набор "Деньги"</li>
-                  <li>Набор "Перезагрузка"</li>
-                  <li>Персональные магические боксы под запрос</li>
-                  <li>Набор с кристаллами</li>
-                  <li>Набор для окуривания</li>
-                  <li>Набор начинающего практика</li>
-                  <li>Набор зеленой ведьмы</li>
-                  <li>Чайный бокс</li>
-                  <li>Травяной бокс</li>
-                  <li>Свечной бокс</li>
+                  {t('magazin.category10.items', { returnObjects: true }).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               {/* CTA Button */}
               <div className="services-cta">
                 <Link to="/programare" className="btn-default">
-                  {t('buttons.goToShop')}
+                  {t('buttons.bookConsultation')}
                 </Link>
               </div>
             </div>
@@ -496,8 +249,9 @@ const EsotericShop = () => {
         </div>
       </div>
     </div>
+
+</>
   )
 }
 
 export default EsotericShop
-

@@ -1,6 +1,6 @@
 import React from 'react'
 import PageHeader from '../components/PageHeader'
-import Appointment from '../components/Appointment'
+import Appointment from '../components/Appointment2'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Contacte = () => {

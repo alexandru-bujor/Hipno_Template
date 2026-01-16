@@ -16,12 +16,6 @@ export const translations = {
       description: 'И если ты чувствуешь внутренний отклик - значит, наше взаимодействие уже началось.',
       button: 'Записаться',
       slides: {
-        slide1: 'Добро пожаловать',
-        slide2: 'Персональная консультация',
-        slide3: 'Талисманы и артефакты',
-        slide4: 'Традиционные ритуалы',
-        slide5: 'Баланс и гармония',
-        slide6: 'Психическое здоровье'
       }
     },
     buttons: {
@@ -33,9 +27,8 @@ export const translations = {
       goToShop: 'Перейти в магазин'
     },
     programare: {
-      title: 'Запись',
       subtitle: 'Записаться на консультацию',
-      description: 'Сделай первый шаг к более здоровому и светлому будущему. Наша команда здесь, чтобы поддержать тебя на каждом этапе.',
+      description: 'Мой путь - это путь служения Богу в человеческом обличии, его душе, его истинной природе.',
       button: 'Записаться сейчас',
       form: {
         fname: 'Имя',
@@ -83,7 +76,7 @@ export const translations = {
         title: 'Присоединяйся к нашему сообществу',
         description: 'Присоединяйся сегодня для ресурсов, перспектив и связи'
       },
-      copyright: 'Авторские права © 2024 Fion Golden. Все права защищены.'
+      copyright: 'Авторские права © 2025 Fion Golden. Все права защищены.'
     },
     services: {
       intro1: 'Приветствую тебя, мой дорогой человек.',
@@ -93,12 +86,17 @@ export const translations = {
       myPath1: 'Мое духовное становление началось с глубокого изучения религий и погружения в христианское целительство. Я долгое время исследовал духовные каноны, работал с молитвами, энергией веры и силой намерения души. Параллельно я соприкасался с древними деревенскими практиками, веретничеством, обрядовой и природной магией, сохранившейся через поколения и переданной мне от рода.',
       myPath2: 'Вследствие значимых событий в моей жизни у меня открылся канал - канал ченнелинга и прямого общения с высшими силами. Этот момент изменил все в моей жизни. С того самого дня и вот уже 20 лет я являюсь проводником, своеобразным переводчиком тонких миров на язык, понятный человеческой душе.',
       myPath3: 'Долгие годы я занимался исключительно целительством и энергетическими чистками. Но со временем спектр моей работы расширился, и сегодня я помогаю людям в самых разных жизненных ситуациях.',
+      subtitle: 'Обо мне',
+      nameTitle: 'Фион Голден – эзотерик, духовный наставник, парапсихолог, энергопрактик',
+      greeting: 'Приветствую тебя, мой дорогой человек.',
+      discoverServices: 'Узнать о моих услугах',
+      closingBilingual: 'Мы встретились неслучайно.',
       whatIWorkWith: 'С чем я работаю',
       whatIWorkWithDesc: 'Как духовный наставник и эзотерик, я сопровождаю человека в его поиске и возвращении к себе. Моя работа - это не просто эзотерика. Это взаимодействие с энергией, судьбой и глубинной природой личности. Это помощь - на всех доступных мне уровнях, начиная от человеческого и заканчивая энергетическим.',
       iWorkWith: 'Я работаю с:',
       iAlsoPractice: 'Также я практикую:',
       besidesThis: 'Помимо этого, я могу служить тебе в практике:',
-      andMore: '… и многое другое.',
+      andMore: 'многое другое.',
       training: 'Провожу индивидуальные обучения, духовные инициации и наставнические программы, а также организую поездки к местам силы и ретриты, где человек может восстановить свою энергию, услышать себя и вспомнить свое истинное Я.',
       myMission: 'Моя миссия',
       mission1: 'Я здесь, чтобы помочь тебе сделать твой путь легче, чище и счастливее.',
@@ -107,59 +105,98 @@ export const translations = {
       mission4: 'Судьба привела тебя сюда, потому что твоя душа готова к новому этапу. Я рад тебе, рад твоей энергии и твоему пути.',
       closing: 'Мои двери всегда открыты.'
     },
-    talismanuri: {
+    whatwedo: {
+      subtitle: 'Духовные и энергетические услуги',
       section1: {
         title: 'Диагностика и чтение судьбы',
-        subtitle: 'Когда человек хочет понять себя, свою ситуацию и направление жизненного пути.',
-        p1: 'Это первая и одна из самых важных точек соприкосновения человека с духовной работой над собой.',
-        p2: 'Диагностика - это тонкий процесс считывания поля человека, его энергий, жизненных узоров, кармических узлов, событий текущего периода и тех смыслов, через которые они проявляются.',
-        p3: 'В работе используются разные инструменты, которые выбираются не по шаблону, а по внутреннему запросу и чувствованию поля клиента:',
-        item1: 'Глубинный расклад Таро по запросу',
-        item2: 'Чтение Матрицы в потоке ченнелинга',
-        note: 'Важно: работа с Таро и работа с Матрицей имеют разную глубину, структуру и формат проведения. Соответственно, каждая форма диагностики имеет свою энергетическую ценность и индивидуальный подход.',
-        p4: 'Работа осуществляется как очно, так и дистанционно.'
+        p1: 'Когда человек хочет понять себя, свою ситуацию и направление жизненного пути, диагностика становится первым и одним из самых важных точек соприкосновения с духовной работой.',
+        p2: 'Диагностика - это тонкий процесс считывания поля человека: его энергий, жизненных узоров, кармических узлов, событий текущего периода и тех смыслов, через которые они проявляются.',
+        p3: 'В этой работе я использую различные инструменты, выбираемые не по шаблону, а по внутреннему запросу и чувствованию поля клиента:',
+        item1: 'Глубокий расклад Таро по запросу или ситуации',
+        item2: 'или',
+        item3: 'Чтение Матрицы в потоке ченнелинга',
+        p4: 'Важно: работа с Таро и работа с Матрицей имеют разную глубину, структуру и формат проведения. Соответственно, каждая форма диагностики имеет свою энергетическую ценность и индивидуальный подход.',
+        p5: 'Сессии могут проводиться как очно, так и дистанционно.'
       },
       section2: {
         title: 'Очищение и восстановление',
-        subtitle: 'Когда необходимо освободиться от разрушительных программ и энергетической тяжести.',
-        p1: 'Очищение - это глубокий процесс освобождения от всего, что мешает естественному течению энергии жизни, не переходя границы добра и зла.',
-        p2: 'Благодаря ритуалам очищения снимается все, что блокирует жизненную силу, создает внутреннюю тяжесть, тревожность, ощущение застоя и утраты себя в мире.',
-        p3: 'Человек может ощущать оттоки энергии по-разному: хроническая усталость, потеря мотивации, необъяснимые страхи, повторяющиеся негативные события, ощущение чужого влияния, энергетическая пустота, эмоциональные "качели", болезни без явной причины и прочее.',
-        p4: 'Очищение необходимо тогда, когда поле человека перегружено чужими программами, родовыми узлами, энергетическими зажимами и подключками, которые мешают жить своей жизнью, чувствовать свою силу и идти по своему пути предназначения и света.',
-        p5: 'Каждая чистка подбирается строго индивидуально. Не существует универсального метода - все зависит от сложности ситуации, типа подключек, глубины поражения поля и готовности самого человека к трансформации.',
-        p6: 'Работа проводится только по согласию человека. Без согласия вмешательство в энергетику не осуществляется.',
-        p7: 'Процесс может включать как очные, так и дистанционные практики, включая работу с фантомом и энергополем человека.',
+        p1: 'Когда необходимо освободиться от разрушительных программ и энергетической тяжести.',
+        p2: 'Очищение - это глубокий процесс освобождения от всего, что мешает естественному течению энергии жизни, не переходя границы добра и зла.',
+        p3: 'Благодаря ритуалам очищения снимается все, что блокирует жизненную силу, создает внутреннюю тяжесть, тревожность, ощущение застоя и утраты себя в мире.',
+        p4: 'Человек может ощущать оттоки энергии по-разному:',
+        item1: 'хроническая усталость',
+        item2: 'потеря мотивации',
+        item3: 'необъяснимые страхи',
+        item4: 'повторяющиеся негативные события',
+        item5: 'ощущение чужого влияния',
+        item6: 'энергетическая пустота',
+        item7: 'эмоциональные "качели"',
+        item8: 'болезни без явной причины и многое другое',
+        p5: 'Очищение необходимо тогда, когда поле человека перегружено чужими программами, родовыми узлами, энергетическими зажимами и подключками, которые мешают жить своей жизнью, чувствовать свою силу и идти по своему пути предназначения и света.',
+        p6: 'Каждая чистка подбирается строго индивидуально. Не существует универсального метода - все зависит от сложности ситуации, типа подключек, глубины поражения поля и готовности самого человека к трансформации.',
+        p7: 'Работа проводится только по согласию человека. Без согласия вмешательство в энергетику не осуществляется.',
+        p8: 'Процесс может включать как очные, так и дистанционные практики, включая работу с фантомом и энергополем человека.',
         subsectionTitle: 'Чем проводится очищение?',
-        p8: 'В своей практике я использую различные методы и инструменты очищения, такие как травы, свечи, масла, соли, ладаны, поющие чаши, восковые отливки, свинцовые отливки, катание яйцами, работу с четырьмя стихиями, освобождение от лярв бобами и медью, а также другие инструменты, которые оговариваются индивидуально.'
+        p9: 'В своей практике я использую различные методы и инструменты очищения, такие как:',
+        item9: 'травы и окуривания',
+        item10: 'программные свечи',
+        item11: 'масла, соли и ладан',
+        item12: 'поющие чаши',
+        item13: 'восковые и свинцовые отливки',
+        item14: 'катание яйцами',
+        item15: 'работа с четырьмя стихиями',
+        item16: 'освобождение от энергетических паразитов бобами и медью',
+        item17: 'и другие техники, выбираемые индивидуально, в зависимости от ситуации'
       },
       section3: {
         title: 'Очищение и гармонизация пространства',
-        subtitle: 'Для дома, бизнеса и любых мест силы человека',
-        p1: 'Пространство, в котором живет или работает человек, накапливает в себе все: эмоции, события, страхи, конфликты, боль, радость, слова, намерения, истории. Оно дышит вместе с человеком, отражает его состояние и напрямую влияет на его самочувствие, здоровье, успех и внутреннюю устойчивость.',
-        p2: 'Когда пространство наполнено застоявшейся, искаженной или тяжелой энергией, это проявляется через постоянные конфликты, финансовые потери, болезни, ощущение напряжения, бессонницу, тревогу, ощущение "чужого присутствия" или необъяснимого дискомфорта.',
-        p3: 'Очищение и гармонизация пространства - это процесс восстановления его естественного баланса, возвращения дому или месту работы статуса защищенной, живой и поддерживающей среды.',
-        p4: 'Каждая работа с пространством проводится после его энергетической диагностики. Определяется уровень загрязнения, наличие деструктивных программ, остаточных фантомов, а также состояние энергетических зон.',
-        p5: 'Работа осуществляется как очно, так и дистанционно, в зависимости от ситуации. При работе с бизнесом и домом процесс всегда подбирается индивидуально - с учетом назначения помещения и запросов владельца.'
+        p1: 'Для дома, бизнеса и любых мест силы человека.',
+        p2: 'Пространство, в котором живет или работает человек, накапливает в себе все: эмоции, события, страхи, конфликты, боль, радость, слова, намерения, истории. Оно дышит вместе с человеком, отражает его состояние и напрямую влияет на его самочувствие, здоровье, успех и внутреннюю устойчивость.',
+        p3: 'Когда пространство наполнено застоявшейся, искаженной или тяжелой энергией, это проявляется через:',
+        item1: 'постоянные конфликты',
+        item2: 'финансовые потери',
+        item3: 'болезни',
+        item4: 'ощущение напряжения или беспокойства',
+        item5: 'бессонницу',
+        item6: 'тревогу',
+        item7: 'ощущение "чужого присутствия"',
+        item8: 'необъяснимый дискомфорт',
+        p4: 'Очищение и гармонизация пространства - это процесс восстановления его естественного баланса, возвращения дому или месту работы статуса защищенной, живой и поддерживающей среды.',
+        p5: 'Каждая работа с пространством проводится после его энергетической диагностики. Определяется уровень загрязнения, наличие деструктивных программ, остаточных фантомов, а также состояние энергетических зон.',
+        p6: 'Работа осуществляется как очно, так и дистанционно, в зависимости от ситуации. При работе с бизнесом и домом процесс всегда подбирается индивидуально - с учетом назначения помещения и запросов владельца.'
       },
       section4: {
         title: 'Гармонизация личности и отношений',
         subtitle: 'Настройка внутреннего баланса и эмоциональной устойчивости',
-        p1: 'Этот блок практик посвящен тонкой и глубинной работе с личностью человека, его внутренними состояниями, самоощущением, отношениями с собой и окружающим миром. Главная задача - формирование того состояния, из которого человек строит свою новую реальность - свои решения, выборы, реакции, связи и сценарии жизни.',
-        p2: 'Гармонизация личности - это процесс возвращения человека к себе настоящему. К своему центру. К своей опоре. Это работа не только с родовыми каналами, болью и травмами, но и с раскрытием светлой стороны души, с восстановлением самоценности и осознанием собственного потенциала.',
-        p3: 'Отношения с собой неизбежно отражаются во всех других сферах: в партнерстве, в семье, в родовых связях, в дружбе и в проявленности в мире.',
-        p4: 'Работа выстраивается индивидуально и может включать в себя как энергетические практики, так и глубинную диагностику.',
-        p5: 'Дополнительно в работе применяется нумерологический метод «Матрица Судьбы» - мощный инструмент, позволяющий увидеть плюсовой потенциал человека во всех сферах жизни, его врожденные ресурсы, сильные стороны и зоны роста.',
-        p6: 'Матрица помогает не только осознать свои возможности, но и применить практические инструменты для их реализации в реальности: в отношениях, саморазвитии, предназначении, творчестве и личной силе.',
-        p7: 'Гармонизация личности - это путь возвращения к себе, к своей истинной природе и своей силе. Работа осуществляется как очно, так и дистанционно.'
+        p1: 'Этот блок практик посвящен тонкой и глубинной работе с личностью человека, его внутренними состояниями, самоощущением, отношениями с собой и окружающим миром.',
+        p2: 'Главная задача - формирование того состояния, из которого человек строит свою новую реальность - свои решения, выборы, реакции, связи и сценарии жизни.',
+        p3: 'Гармонизация личности - это процесс возвращения человека к себе настоящему. К своему центру. К своей опоре. Это работа не только с родовыми каналами, болью и травмами, но и с раскрытием светлой стороны души, с восстановлением самоценности и осознанием собственного потенциала.',
+        p4: 'Отношения с собой неизбежно отражаются во всех других сферах:',
+        item1: 'в партнерстве',
+        item2: 'в семье',
+        item3: 'в родовых связях',
+        item4: 'в дружбе',
+        item5: 'в проявленности в мире',
+        p5: 'Работа выстраивается индивидуально и может включать в себя как энергетические практики, так и глубинную диагностику.',
+        p6: 'Дополнительно в работе применяется нумерологический метод «Матрица Судьбы» - мощный инструмент, позволяющий увидеть плюсовой потенциал человека во всех сферах жизни, его врожденные ресурсы, сильные стороны и зоны роста.',
+        p7: 'Матрица помогает не только осознать свои возможности, но и применить практические инструменты для их реализации в реальности: в отношениях, саморазвитии, предназначении, творчестве и личной силе.',
+        p8: 'Гармонизация личности - это путь возвращения к себе, к своей истинной природе и своей силе. Работа осуществляется как очно, так и дистанционно.'
       },
       section5: {
         title: 'Денежный поток и реализация',
         subtitle: 'Работа с изобилием, ростом и материальной реализацией',
-        p1: 'Набор практик, посвященных взаимодействию человека с материальным миром и тем, как энергия денег проходит через его жизнь. Деньги - это не просто ресурс. Это отражение внутреннего состояния, отношения к себе, к миру, к своему праву принимать и приумножать.',
-        p2: 'Когда денежный поток искажен, человек сталкивается с повторяющимися финансовыми трудностями, нестабильностью, ощущением потери, страха перед деньгами, невозможностью удержать ресурсы или постоянным чувством, что усилия не соответствуют результату.',
-        p3: 'Работа с денежным потоком - это глубокий процесс восстановления естественного канала изобилия, раскрытия врожденного потенциала к принятию, накоплению, умножению и гармоничному управлению материальной энергией.',
-        p4: 'Работа с денежным потоком начинается с диагностики. Каждый процесс выстраивается индивидуально и может включать как работу с человеком, так и настройку его бизнеса, проекта или финансовой стратегии.',
-        p5: 'Работа осуществляется как очно, так и дистанционно.'
+        p1: 'Набор практик, посвященных взаимодействию человека с материальным миром и тем, как энергия денег проходит через его жизнь.',
+        p2: 'Деньги - это не просто ресурс. Это отражение внутреннего состояния, отношения к себе, к миру, к своему праву принимать и приумножать.',
+        p3: 'Когда денежный поток искажен, появляются:',
+        item1: 'повторяющиеся финансовые трудности',
+        item2: 'нестабильность',
+        item3: 'потери',
+        item4: 'страх перед деньгами',
+        item5: 'невозможность удержать ресурсы',
+        item6: 'ощущение, что усилия не соответствуют результату',
+        p4: 'Работа с денежным потоком - это глубокий процесс восстановления естественного канала изобилия, раскрытия врожденного потенциала к принятию, накоплению, умножению и гармоничному управлению материальной энергией.',
+        p5: 'Процесс всегда начинается с диагностики. Каждый этап строится индивидуально и может включать как работу с человеком, так и настройку его бизнеса, проектов или финансовой стратегии.',
+        p6: 'Работа осуществляется как очно, так и дистанционно.'
       },
       section6: {
         title: 'Артефакты силы и сакральные предметы',
@@ -195,8 +232,8 @@ export const translations = {
         item7: 'Ритуалы на защиту',
         item8: 'Ритуалы на восстановление энергии',
         item9: 'Настройка судьбоносных процессов',
-        p5: '… и многие другие',
-        p6: 'Каждая практика подбирается индивидуально и проводится с уважением к свободе воли человека и духовным законам.'
+        item10: 'и многие другие',
+        p5: 'Каждая практика подбирается индивидуально и проводится с уважением к свободе воли человека и духовным законам.'
       },
       section8: {
         title: 'Духовное обучение и сопровождение',
@@ -218,7 +255,7 @@ export const translations = {
       ctaButton: 'Записаться на консультацию'
     },
     ritualuri: {
-      title: 'СПИСОК УСЛУГ',
+      title: 'Список услуг',
       section1: {
         title: 'Консультации и диагностики',
         item1: 'Консультация Таро любой сложности (отношения, чувства, измены, выбор, предназначение, финансы, карьера, здоровье, жизненные ситуации, духовный путь, прогнозы)',
@@ -261,7 +298,8 @@ export const translations = {
         item2: 'Групповое обучение в малых группах',
         item3: 'Обучение обрядовой магии и работе с энергиями',
         item4: 'Авторские обучающие программы',
-        item5: 'Инициации и сопровождение в трансформации'
+        item5: 'Инициации и сопровождение в трансформации',
+        item6: 'Духовное обучение и сопровождение'
       },
       section6: {
         title: 'Ретриты',
@@ -280,7 +318,7 @@ export const translations = {
       ctaButton: 'Записаться на консультацию'
     },
     magazin: {
-      title: 'ЭЗОТЕРИЧЕСКИЙ-МАГАЗИН',
+      title: 'Эзотерический-магазин',
       subtitle: 'СПИСОК ТОВАРОВ ДЛЯ ЭЗО-МАГАЗИНА',
       category1: {
         title: 'Индивидуально созданные предметы силы',
@@ -716,6 +754,22 @@ export const translations = {
           'Свечной бокс'
         ]
       }
+    },
+    donations: {
+      title: 'Пожертвование',
+      subtitle: 'Поддержать работу',
+      heading: 'Сделать пожертвование',
+      description: 'Ваша поддержка помогает продолжать мою работу и служение. Каждое пожертвование ценно и принимается с благодарностью.',
+      selectAmount: 'Выберите сумму',
+      customAmount: 'Или введите свою сумму',
+      amountPlaceholder: 'Введите сумму',
+      donateButton: 'Перейти к оплате',
+      processing: 'Обработка...',
+      securityNote: 'Платежи обрабатываются безопасно через Stripe. Ваши данные защищены.',
+      errors: {
+        invalidAmount: 'Пожалуйста, введите корректную сумму',
+        generic: 'Произошла ошибка. Пожалуйста, попробуйте еще раз.'
+      }
     }
   },
   ro: {
@@ -752,9 +806,8 @@ export const translations = {
       goToShop: 'Mergi la magazin'
     },
     programare: {
-      title: 'Programare',
       subtitle: 'Rezervă o consultație',
-      description: 'Fă primul pas către o minte mai sănătoasă și un viitor mai strălucitor. Echipa noastră compăsimitoare este aici să te sprijine la fiecare pas.',
+      description: 'Drumul meu este un drum al slujirii lui Dumnezeu în forma Sa umană – sufletul omului, natura lui adevărată, esența lui divină.',
       button: 'Programează acum',
       form: {
         fname: 'Prenume',
@@ -802,7 +855,7 @@ export const translations = {
         title: 'Alătură-te comunității noastre',
         description: 'Alătură-te astăzi pentru resurse, perspective și conexiune'
       },
-      copyright: 'Copyright © 2024 Fion Golden. Toate drepturile rezervate.'
+      copyright: 'Copyright © 2025 Fion Golden. Toate drepturile rezervate.'
     },
     services: {
       intro1: 'Bun venit, dragă ființă umană.',
@@ -812,12 +865,17 @@ export const translations = {
       myPath1: 'Dezvoltarea mea spirituală a început cu un studiu profund al religiilor și imersiunea în vindecarea creștină. Am cercetat mult timp canoanele spirituale, am lucrat cu rugăciuni, energia credinței și puterea intenției sufletului. În paralel, am intrat în contact cu practici vechi sătești, filatura, magia rituală și naturală, păstrată prin generații și transmisă mie de la neam.',
       myPath2: 'Ca urmare a evenimentelor semnificative din viața mea, mi s-a deschis un canal - canalul de channeling și comunicare directă cu forțele superioare. Acest moment a schimbat totul în viața mea. Din acea zi și deja de 20 de ani, sunt un conductor, un fel de traducător al lumilor subtile într-un limbaj înțeles de sufletul uman.',
       myPath3: 'Mulți ani m-am ocupat exclusiv de vindecare și curățări energetice. Dar în timp, spectrul muncii mele s-a extins, iar astăzi ajut oamenii în cele mai diverse situații de viață.',
+      subtitle: 'Despre mine',
+      nameTitle: 'Fion Golden – ezoterist, mentor spiritual, parapsiholog, energopractician',
+      greeting: 'Te salut, om drag.',
+      discoverServices: 'Descoperă serviciile mele',
+      closingBilingual: 'Întâlnirea noastră nu este întâmplătoare.',
       whatIWorkWith: 'Cu ce lucrez',
       whatIWorkWithDesc: 'Ca mentor spiritual și ezoterist, însoțesc omul în căutarea și revenirea la sine. Munca mea nu este doar ezoterism. Este o interacțiune cu energia, destinul și natura profundă a personalității. Este ajutor - la toate nivelurile disponibile mie, de la uman la energetic.',
       iWorkWith: 'Lucrez cu:',
       iAlsoPractice: 'De asemenea, practic:',
       besidesThis: 'Pe lângă asta, pot să te servesc în practica:',
-      andMore: '… și multe altele.',
+      andMore: 'și multe altele.',
       training: 'Conduc instruiri individuale, inițieri spirituale și programe de mentorat, precum și organizez excursii la locuri de putere și retrageri, unde omul își poate restabili energia, se poate auzi și își poate aminti adevăratul Eu.',
       myMission: 'Misiunea mea',
       mission1: 'Sunt aici pentru a te ajuta să-ți faci calea mai ușoară, mai curată și mai fericită.',
@@ -913,7 +971,7 @@ export const translations = {
         item7: 'Rituale de protecție',
         item8: 'Rituale pentru restaurarea energiei',
         item9: 'Ajustarea proceselor destinului',
-        p5: '… și multe altele.',
+        p5: 'și multe altele.',
         p6: 'Fiecare practică este aleasă individual și se realizează cu respect deplin pentru liberul arbitru al persoanei și pentru legile spirituale.'
       },
       section8: {
@@ -934,6 +992,155 @@ export const translations = {
         p5: 'Lucrul se poate desfășura individual sau în grupuri mici, atât fizic, cât și online. Toate procesele sunt însoțite de susținere, explicații și ajustări la fiecare etapă a parcursului.'
       },
       ctaButton: 'Rezervă o consultație'
+    },
+    whatwedo: {
+      subtitle: 'Servicii spirituale și energetice',
+      section1: {
+        title: 'Diagnostic și citirea destinului',
+        p1: 'Atunci când omul dorește să se înțeleagă pe sine, să își clarifice o situație sau să își descopere direcția de viață, diagnosticarea devine primul și unul dintre cele mai importante puncte de întâlnire cu munca spirituală.',
+        p2: 'Diagnosticul energetic este un proces subtil de citire a câmpului unui om: a energiilor sale, a tiparelor de viață, a nodurilor karmice, a evenimentelor din perioada actuală și a sensurilor profunde prin care acestea se manifestă.',
+        p3: 'În această lucrare folosesc mai multe instrumente, alese nu după un tipar, ci în funcție de cererea interioară și de rezonanța cu câmpul clientului:',
+        item1: 'Sesiune de Tarot profund, realizată în funcție de întrebarea sau situația ta',
+        item2: 'sau',
+        item3: 'Citirea Matricei personale în fluxul channeling-ului',
+        p4: 'Este important de știut că lucrul cu Tarotul și lucrul cu Matricea au profunzimi, structuri și formate diferite. Fiecare tip de diagnostic poartă propria valoare energetică și necesită o abordare personalizată.',
+        p5: 'Sesiunile pot fi realizate atât fizic, cât și la distanță.'
+      },
+      section2: {
+        title: 'Purificare și restaurare energetică',
+        p1: 'Atunci când este nevoie de eliberare de programe distructive și de greutatea energetică acumulată.',
+        p2: 'Purificarea este un proces profund de eliberare de tot ceea ce împiedică curgerea firească a energiei vieții, fără a depăși vreodată granițele dintre bine și rău.',
+        p3: 'Prin ritualurile de curățare se înlătură tot ceea ce blochează forța vitală, creează greutate interioară, anxietate, stagnare sau sentimentul de pierdere a propriei identități în lume.',
+        p4: 'Omul poate simți scurgerile de energie în diferite forme:',
+        item1: 'oboseală cronică',
+        item2: 'pierdere a motivației',
+        item3: 'frici inexplicabile',
+        item4: 'repetarea unor evenimente negative',
+        item5: 'senzația unei influențe străine',
+        item6: 'gol interior',
+        item7: '"balansuri" emoționale',
+        item8: 'afecțiuni fără cauză clară și multe altele.',
+        p5: 'Purificarea devine necesară atunci când câmpul omului este supraîncărcat de programe străine, noduri ancestrale, blocaje energetice sau conexiuni distructive care îl împiedică să-și trăiască viața în forța și lumina destinului său.',
+        p6: 'Fiecare curățare este aleasă strict individual. Nu există un ritual universal – totul depinde de complexitatea situației, tipurile de conectări, profunzimea afectării câmpului și disponibilitatea omului pentru transformare.',
+        p7: 'Intervenția se face doar cu acordul persoanei. Fără consimțământ, lucrul energetic nu se realizează niciodată.',
+        p8: 'Procesul poate include sesiuni fizice sau practici la distanță, inclusiv lucrul cu fantoma energetică și cu câmpul subtil al omului.',
+        subsectionTitle: 'Cu ce se realizează purificarea?',
+        p9: 'În practica mea folosesc o varietate de metode și instrumente, precum:',
+        item9: 'plante și fumigații',
+        item10: 'lumânări programate',
+        item11: 'uleiuri, săruri și tămâie',
+        item12: 'boluri tibetane',
+        item13: 'turnări din ceară sau plumb',
+        item14: 'rostogolire cu ouă',
+        item15: 'lucrul cu cele patru elemente',
+        item16: 'eliberarea larvelor energetice cu boabe sau cupru',
+        item17: '…și alte tehnici selectate individual, în funcție de situație.'
+      },
+      section3: {
+        title: 'Purificarea și armonizarea spațiului',
+        p1: 'Pentru locuință, afaceri și orice loc important pentru om.',
+        p2: 'Spațiul în care trăiește sau lucrează un om absoarbe totul: emoții, evenimente, conflicte, frici, bucurii, cuvinte, intenții, istorii. El respiră împreună cu omul și îi reflectă starea, influențând direct sănătatea, succesul, echilibrul interior și calitatea vieții.',
+        p3: 'Când spațiul este încărcat cu energie stagnantă, distorsionată sau grea, se manifestă prin:',
+        item1: 'conflicte constante',
+        item2: 'pierderi financiare',
+        item3: 'boli recurente',
+        item4: 'tensiune sau neliniște',
+        item5: 'insomnii',
+        item6: 'anxietate',
+        item7: 'senzația unui „prezențe străine"',
+        item8: 'discomfort inexplicabil',
+        p4: 'Purificarea și armonizarea spațiului restabilesc echilibrul natural al acestuia și readuc locuinței sau afacerii statutul de mediu protejat, viu și susținător.',
+        p5: 'Fiecare intervenție în spațiu este precedată de o diagnosticare energetică. Se evaluează nivelul de încărcare, existența programelor distructive, a fantomelor reziduale și starea zonelor energetice.',
+        p6: 'Lucrul se poate realiza atât fizic, cât și la distanță, în funcție de situație. În cazul locuințelor și afacerilor, procesul este întotdeauna personalizat, ținând cont de destinația încăperii și de cerințele proprietarului.'
+      },
+      section4: {
+        title: 'Armonizarea personalității și a relațiilor',
+        subtitle: 'Ajustarea echilibrului interior și a stabilității emoționale',
+        p1: 'Acest segment de practici este dedicat lucrului fin și profund cu interiorul omului: stările sale lăuntrice, percepția de sine, relația cu propria persoană și cu lumea din jur.',
+        p2: 'Scopul principal este formarea acelei stări interioare din care omul își construiește noua realitate – deciziile, reacțiile, conexiunile și scenariile vieții sale.',
+        p3: 'Armonizarea personalității este un proces de reîntoarcere la sinele autentic, la centrul interior, la forța proprie. Este o muncă ce implică nu doar curățarea canalelor ancestrale, eliberarea durerilor și traumelor, ci și revelația părții luminoase a sufletului, restaurarea valorii personale și conștientizarea potențialului interior.',
+        p4: 'Relația cu sine se reflectă inevitabil în toate celelalte domenii:',
+        item1: 'în cuplu',
+        item2: 'în familie',
+        item3: 'în legătura cu neamul',
+        item4: 'în prietenii',
+        item5: 'în manifestarea omului în lume',
+        p5: 'Lucrul se construiește individual și poate include atât practici energetice, cât și diagnosticări profunde.',
+        p6: 'Un instrument suplimentar utilizat în acest proces este metoda numerologică „Matricea Destinului" – un sistem puternic care dezvăluie potențialul pozitiv al omului în toate sferele vieții: resursele înnăscute, punctele forte și zonele de creștere.',
+        p7: 'Matricea nu doar ajută la înțelegerea propriilor posibilități, ci oferă și instrumente practice pentru manifestarea lor în realitate: în relații, în dezvoltarea personală, în descoperirea misiunii, în creativitate și în puterea personală.',
+        p8: 'Armonizarea personalității este un drum de întoarcere la sine, la natura autentică și la forța interioară. Sesiunile pot fi realizate atât fizic, cât și la distanță.'
+      },
+      section5: {
+        title: 'Fluxul financiar și realizarea materială',
+        subtitle: 'Lucrul cu abundența, creșterea și manifestarea în planul material',
+        p1: 'Acest set de practici este dedicat modului în care omul interacționează cu lumea materială și felului în care energia banilor circulă prin viața sa.',
+        p2: 'Banii nu sunt doar un resurs — ei reflectă starea interioară a omului, relația cu sine, cu lumea și cu dreptul său natural de a primi și de a multiplica.',
+        p3: 'Când fluxul financiar este distorsionat, apar:',
+        item1: 'dificultăți financiare recurente',
+        item2: 'instabilitate',
+        item3: 'pierderi',
+        item4: 'frică în raport cu banii',
+        item5: 'incapacitatea de a păstra resursele',
+        item6: 'senzația că eforturile nu sunt răsplătite pe măsură',
+        p4: 'Lucrul cu fluxul financiar înseamnă restaurarea canalului natural al abundenței, activarea capacității înnăscute de a primi, de a păstra, de a multiplica și de a gestiona cu armonie energia materială.',
+        p5: 'Procesul începe întotdeauna cu o diagnosticare. Fiecare etapă este construită individual și poate include atât lucrul cu persoana, cât și armonizarea energiei afacerii, a proiectelor sau a strategiei financiare.',
+        p6: 'Sesiunile sunt disponibile atât în format fizic, cât și online.'
+      },
+      section6: {
+        title: 'Artefacte de putere și obiecte sacre',
+        subtitle: 'Instrumente personale de susținere și protecție',
+        p1: 'Pentru a sprijini omul pe drumul său de viață, creez obiecte sacre de putere – instrumente energetice personale menite să protejeze, să întărească și să însoțească blând procesele de transformare.',
+        p2: 'Fiecare obiect sacru este creat de mine în stare de conexiune cu câmpul persoanei, prin channeling, ritualuri și lucrul cu energiile subtile, adaptat individual fiecărui scop și fiecărei intenții.',
+        p3: 'Aceste artefacte devin aliați vii, susținând omul în evoluția sa, consolidând protecția, stabilizând câmpul și ajutându-l să mențină vibrațiile necesare.',
+        subsectionTitle: 'Ce creez și încarc energetic:',
+        item1: 'Amulete individuale de protecție',
+        item2: 'Talismane personale',
+        item3: 'Lumânări programate',
+        item4: 'Obiecte și haine consacrate',
+        item5: 'Cristale și suporturi energetice',
+        item6: 'Amestecuri din plante și tisane vindecătoare',
+        item7: 'Obiecte de putere create pentru un scop precis',
+        item8: 'Simboluri sacre încărcate energetic',
+        p4: 'Fiecare artefact trece printr-un proces complet: diagnosticare, alegerea materialelor și elementelor, ajustare ritualică și activare energetică. El nu lucrează în locul omului, ci împreună cu el, amplificând potențialul natural și protejând spațiul personal.'
+      },
+      section7: {
+        title: 'Rituale și practici sacre',
+        subtitle: 'Atunci când sufletul este pregătit pentru un pas nou și pentru transformări profunde',
+        p1: 'Magia ritualică este una dintre formele centrale ale practicii mele spirituale. Îi ofer un loc aparte, deoarece consider că ritualurile sunt necesare pentru schimbări profunde, pentru trecerea dintr-o stare în alta, pentru încheierea ciclurilor vechi și deschiderea celor noi.',
+        p2: 'Ritualul este un instrument sacru prin care omul interacționează conștient cu destinul său, cu energia sa și cu forțele superioare.',
+        p3: 'Fiecare ritual este realizat individual, în funcție de cerere, de starea energetică a persoanei și de nivelul său de pregătire. Lucrul poate fi fizic sau la distanță, cu menținerea integrală a forței și eficienței.',
+        p4: 'Ofer, de asemenea, inițiere și instruire în practica ritualică, pentru cei care simt chemarea și sunt pregătiți să pășească conștient pe această cale.',
+        subsectionTitle: 'Ce ritualuri realizez:',
+        item1: 'Ritualuri ceremoniale de purificare',
+        item2: 'Rituale de trecere',
+        item3: 'Rituale pentru deschiderea drumurilor',
+        item4: 'Resetări energetice',
+        item5: 'Rituale de curățare karmică',
+        item6: 'Introducere în starea de gnoză',
+        item7: 'Rituale de protecție',
+        item8: 'Rituale pentru restaurarea energiei',
+        item9: 'Ajustarea proceselor destinului',
+        item10: 'și multe altele.',
+        p5: 'Fiecare practică este aleasă individual și se realizează cu respect deplin pentru liberul arbitru al persoanei și pentru legile spirituale.'
+      },
+      section8: {
+        title: 'Învățare spirituală și însoțire pe cale',
+        subtitle: 'Pentru cei care aleg drumul dezvoltării conștiente',
+        p1: 'Pentru cei care simt chemarea dezvoltării conștiente și sunt pregătiți nu doar să primească ajutor, ci să pătrundă în profunzime, să-și dezvăluie natura interioară și să parcurgă un proces autentic de transformare, sunt deschis să ofer cunoaștere și însoțire spirituală. Nu ca un conducător, ci ca un însoțitor pe drumul creșterii personale și al transformării.',
+        p2: 'Acesta este un proces în care merg alături de om, oferind cunoaștere, susținându-l în momentele de trecere, ajutându-l să înțeleagă, să-și clarifice și să-și construiască propria modalitate de a interacționa cu lumea, cu sine și cu forțele superioare.',
+        subsectionTitle: 'Formatele posibile includ:',
+        item1: 'Mentorat spiritual individual',
+        item2: 'Inițieri în cunoaștere',
+        item3: 'Practici personale de transformare',
+        item4: 'Instruire ezoterică',
+        item5: 'Cursuri și practici spirituale',
+        item6: 'Practici de extindere a conștiinței',
+        item7: 'Retreaturi și călătorii către locuri de putere',
+        p3: 'Fiecare format este ales în funcție de nivelul persoanei, de maturitatea energetică și de intenția interioară.',
+        p4: 'Învățarea se bazează pe profundă acordare, respect față de drumul omului și deschiderea treptată a potențialului său. Nu vorbesc despre transmiterea cunoștințelor de dragul cunoștințelor. Mentoratul este un proces viu, în care omul învață să simtă, să conștientizeze, să înțeleagă și să aplice practicile în propria viață.',
+        p5: 'Lucrul se poate desfășura individual sau în grupuri mici, atât fizic, cât și online. Toate procesele sunt însoțite de susținere, explicații și ajustări la fiecare etapă a parcursului.'
+      },
+      ctaButton: 'Programează o consultație'
     },
     ritualuri: {
       title: 'Lista serviciilor',
@@ -979,7 +1186,8 @@ export const translations = {
         item2: 'Învățare în grupuri mici',
         item3: 'Cursuri de magie ritualică și lucrul cu energiile',
         item4: 'Programe educaționale autor',
-        item5: 'Inițieri și însoțire în procesul de transformare'
+        item5: 'Inițieri și însoțire în procesul de transformare',
+        item6: 'Învățare spirituală și însoțire pe cale'
       },
       section6: {
         title: 'Retreaturi',
@@ -1433,6 +1641,22 @@ export const translations = {
           'Cutie cu plante sacre',
           'Cutie cu lumânări ritualice'
         ]
+      }
+    },
+    donations: {
+      title: 'Donație',
+      subtitle: 'Susține munca',
+      heading: 'Fă o donație',
+      description: 'Sprijinul tău ajută la continuarea muncii și serviciului meu. Fiecare donație este valoroasă și este primită cu recunoștință.',
+      selectAmount: 'Selectează suma',
+      customAmount: 'Sau introdu o sumă personalizată',
+      amountPlaceholder: 'Introdu suma',
+      donateButton: 'Continuă la plată',
+      processing: 'Se procesează...',
+      securityNote: 'Plățile sunt procesate în siguranță prin Stripe. Datele tale sunt protejate.',
+      errors: {
+        invalidAmount: 'Te rugăm să introduci o sumă validă',
+        generic: 'A apărut o eroare. Te rugăm să încerci din nou.'
       }
     }
   }

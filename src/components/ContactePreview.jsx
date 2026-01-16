@@ -8,17 +8,17 @@ const ContactePreview = () => {
     <div 
       id="contacte" 
       className="cta-section" 
-      style={{ 
-        padding: '100px 0'
+      style={{
+          paddingTop: 0,
+          paddingBottom: '25px',
       }}
     >
-      <div className="container">
+      <div className="container" style={{ height: '300px' }}>
         <div className="row">
           <div className="col-lg-12">
-            <div className="cta-box cta-box-no-image">
+            <div className="cta-box cta-box-no-image"  style={{ height: '300px' }}>
               <div className="cta-box-content">
                 <div className="section-title">
-                  <h3 className="wow fadeInUp">{t('contacte.title')}</h3>
                   <h2 className="text-anime-style-2" data-cursor="-opaque">
                     {t('contacte.subtitle')}
                   </h2>

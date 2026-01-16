@@ -24,15 +24,17 @@ const PageHeader = ({ title, subtitle, backgroundImage }) => {
   return (
     <div 
       className="page-header"
-        style={{
+      style={{
           position: 'relative',
           padding: '150px 0 100px',
-          background: `${overlayGradient}, url(${bg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          overflow: 'hidden'
-        }}
+          // split shorthand "background" into explicit properties
+          backgroundImage: `${overlayGradient}, url(${bg})`,
+          backgroundSize: 'cover, cover',
+          backgroundPosition: 'center, center',
+          backgroundRepeat: 'no-repeat, no-repeat',
+          overflow: 'hidden',
+      }}
+
     >
       {/* Overlay Pattern - lighter on mobile */}
       <div

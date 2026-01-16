@@ -92,27 +92,19 @@ const Hero = () => {
                     <div className="hero-content">
                       {/* Section Title */}
                       <div className="section-title">
-                        <h3 className="wow fadeInUp">{t(`hero.slides.${slide.subtitleKey}`)}</h3>
                         <h1 className="text-anime-style-2" data-cursor="-opaque">
                           {t('hero.title')}
-                        </h1>
-                        <p className="wow fadeInUp" data-wow-delay="0.2s">
+                            <br/>
+                            <br/>
                           {t('hero.subtitle')}
                           <br />
                           <br />
                           {t('hero.description')}
-                        </p>
+                        </h1>
                       </div>
 
                       {/* Hero Content Body */}
-                      <div className="hero-content-body">
-                        {/* Hero Button */}
-                        <div className="hero-btn wow fadeInUp" data-wow-delay="0.4s">
-                          <Link to="/programare" className="btn-default">
-                            {t('hero.button')}
-                          </Link>
-                        </div>
-                      </div>
+
                     </div>
                   </div>
                 </div>

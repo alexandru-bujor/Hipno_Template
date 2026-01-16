@@ -10,6 +10,10 @@ import Talismanuri from './pages/Talismanuri'
 import Ritualuri from './pages/Ritualuri'
 import Contacte from './pages/Contacte'
 import NotFound from './pages/NotFound'
+import Services from "./components/Services";
+import WhatWeDo from "./components/WhatWeDo";
+import Magazin from "./pages/Magazin";
+import Donations from "./pages/Donations";
 
 function App() {
   return (
@@ -21,9 +25,14 @@ function App() {
             <Route path="/programare" element={<Programare />} />
             <Route path="/consultatie" element={<Consultatie />} />
             <Route path="/talismanuri" element={<Talismanuri />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/ritualuri" element={<Ritualuri />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contacte" element={<Contacte />} />
+            <Route path="/whatwedo" element={<WhatWeDo />} />
+            <Route path="/magazin" element={<Magazin />} />
+            <Route path="/donations" element={<Donations />} />
+            <Route path="/payment" element={<Donations />} />
             {/* 404 Page */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -8,10 +8,7 @@ const ProgramarePreview = () => {
   return (
     <div 
       id="programare" 
-      className="cta-section" 
-      style={{ 
-        padding: '100px 0'
-      }}
+      className="cta-section"
     >
       <div className="container">
         <div className="row" >
@@ -19,7 +16,6 @@ const ProgramarePreview = () => {
             <div className="cta-box cta-box-no-image">
               <div className="cta-box-content">
                 <div className="section-title">
-                  <h3 className="wow fadeInUp">{t('programare.title')}</h3>
                   <h2 className="text-anime-style-2" data-cursor="-opaque">
                     {t('programare.subtitle')}
                   </h2>

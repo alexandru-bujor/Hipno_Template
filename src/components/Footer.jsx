@@ -8,7 +8,7 @@ const Footer = () => {
   const footerMenu = [
     { key: 'home', link: '/' },
     { key: 'programare', link: '/programare' },
-    { key: 'magazin', link: '/', anchor: '#magazin' },
+    { key: 'donations.title', link: '/donations' },
     { key: 'contacte', link: '/contacte' }
   ]
 
@@ -28,7 +28,7 @@ const Footer = () => {
                         {item.anchor ? (
                           <a href={item.anchor}>{t(`nav.${item.key}`)}</a>
                         ) : (
-                          <Link to={item.link}>{t(`nav.${item.key}`)}</Link>
+                          <Link to={item.link}>{t(item.key === 'donations.title' ? 'donations.title' : `nav.${item.key}`)}</Link>
                         )}
                       </li>
                     ))}

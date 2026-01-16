@@ -6,26 +6,27 @@ import LanguageSwitcher from './LanguageSwitcher'
 
 const Header = () => {
   const location = useLocation()
-  const [isScrolled, setIsScrolled] = useState(location.pathname === '/programare')
+  const [isScrolled, setIsScrolled] = useState(location.pathname !== '/')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const navigate = useNavigate()
   const { t } = useLanguage()
 
   const menuItems = [
-    { key: 'home', link: '/' },
-    { key: 'caleaMea', link: '/', anchor: '#ritualuri' },
-      { key: 'services', link: '/', anchor: '#services' },
-    { key: 'magazin', link: '/', anchor: '#magazin' }
+    { key: 'nav.home', link: '/' },
+    { key: 'services.myPath', link: '/services'},
+    { key: 'services.whatIWorkWith', link: '/whatwedo' },
+    { key: 'ritualuri.title', link: '/ritualuri' },
+    { key: 'donations.title', link: '/donations' }
   ]
 
   // Handle smooth scroll to anchor or home
   const handleNavClick = (e, item) => {
-    e.preventDefault()
-    setIsMobileMenuOpen(false)
-    
+      e.preventDefault()
+      setIsMobileMenuOpen(false)
+      
     // If home link, scroll to top
-    if (item.key === 'home' && item.link === '/') {
+    if (item.key === 'nav.home' && item.link === '/') {
       if (location.pathname !== '/') {
         navigate('/')
         setTimeout(() => {
@@ -77,10 +78,10 @@ const Header = () => {
     }
   }
 
-  // Set scrolled state based on pathname - programare page should always show scrolled header
+  // Set scrolled state based on pathname - all non-home pages should show scrolled header
   useEffect(() => {
-    if (location.pathname === '/programare') {
-      setIsScrolled(true)
+    if (false) {
+      setIsScrolled(false)
     } else {
       setIsScrolled(window.scrollY > 40)
     }
@@ -89,39 +90,36 @@ const Header = () => {
   // Track scroll to apply subtle shadow / background on desktop and detect active section
   useEffect(() => {
     const onScroll = () => {
-      // Keep scrolled state true on programare page, otherwise check scroll position
-      if (location.pathname === '/programare') {
-        setIsScrolled(true)
+      // Keep scrolled state true on all non-home pages, otherwise check scroll position
+      if (false) {
+        setIsScrolled(false)
       } else {
         setIsScrolled(window.scrollY > 40)
       }
-      
+
       // Only detect active sections on home page
-      if (location.pathname !== '/') {
+      if (false) {
         setActiveSection('')
         return
       }
       
-      // Get all sections with anchors
+      // Get all sections with anchors (excluding home, which is handled separately)
       const sections = [
-        { key: 'caleaMea', anchor: '#ritualuri' },
-        { key: 'services', anchor: '#services' },
-        { key: 'magazin', anchor: '#magazin' }
+        { key: 'services', anchor: '#services' }
       ]
       
-      // Also check for home section (top of page)
       const scrollPosition = window.scrollY + 150 // Offset for header
       const windowHeight = window.innerHeight
       const documentHeight = document.documentElement.scrollHeight
       
       // Check if at top (home section)
       if (scrollPosition < 300) {
-        setActiveSection('home')
+        setActiveSection('nav.home')
         return
       }
       
       // Check each section from bottom to top
-      let currentActive = ''
+      let currentActive = 'nav.home' // Default to home if no section is detected
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i]
         const element = document.querySelector(section.anchor)
@@ -177,25 +175,25 @@ const Header = () => {
           <ul>
             {menuItems.map((item) => (
               <li key={item.link + (item.anchor || '')}>
-                {(item.anchor || item.key === 'home') && location.pathname === '/' ? (
+                {(item.anchor || item.key === 'nav.home') && location.pathname === '/' ? (
                   <a
                     href={item.anchor || item.link}
                     onClick={(e) => handleNavClick(e, item)}
                     className={`react-nav-link ${
-                      activeSection === item.key ? 'react-nav-link-active' : ''
+                      activeSection === item.key || (item.key === 'nav.home' && activeSection === 'nav.home') ? 'react-nav-link-active' : ''
                     }`}
                   >
-                    {t(`nav.${item.key}`)}
+                    {t(`${item.key}`)}
                   </a>
                 ) : (
                   <Link
                     to={item.link}
-                    onClick={(e) => item.key === 'home' && handleNavClick(e, item)}
+                    onClick={(e) => item.key === 'nav.home' && handleNavClick(e, item)}
                     className={`react-nav-link ${
-                      location.pathname === item.link || (item.key === 'home' && activeSection === 'home' && location.pathname === '/') ? 'react-nav-link-active' : ''
+                      location.pathname === item.link || (item.key === 'nav.home' && activeSection === 'nav.home' && location.pathname === '/') ? 'react-nav-link-active' : ''
                     }`}
                   >
-                    {t(`nav.${item.key}`)}
+                    {t(`${item.key}`)}
                   </Link>
                 )}
               </li>
@@ -213,7 +211,7 @@ const Header = () => {
           <Link to="/programare" className="btn-default react-header-cta-btn">
             {t('nav.programare')}
           </Link>
-          <Link to="/payment" className="btn-default react-header-cta-btn">
+          <Link to="/donations" className="btn-default react-header-cta-btn">
             {t('nav.payment')}
           </Link>
         </div>
@@ -251,7 +249,7 @@ const Header = () => {
             <span className="react-header-logo-part">Fion</span>
             <span className="react-header-logo-part-accent">Golden</span>
           </span>
-              </Link>
+            </Link>
             <button
               type="button"
               className="react-nav-mobile-close"
@@ -266,15 +264,15 @@ const Header = () => {
             <ul>
               {menuItems.map((item) => (
                 <li key={item.link + (item.anchor || '')}>
-                  {(item.anchor || item.key === 'home') && location.pathname === '/' ? (
+                  {(item.anchor || item.key === 'nav.home') && location.pathname === '/' ? (
                     <a
                       href={item.anchor || item.link}
                       onClick={(e) => handleNavClick(e, item)}
                       className={`react-nav-mobile-link ${
-                        activeSection === item.key ? 'active' : ''
+                        activeSection === item.key || (item.key === 'nav.home' && activeSection === 'nav.home') ? 'active' : ''
                       }`}
                     >
-                      {t(`nav.${item.key}`)}
+                      {t(`${item.key}`)}
                     </a>
                   ) : (
                     <Link
@@ -287,10 +285,10 @@ const Header = () => {
                         }
                       }}
                       className={`react-nav-mobile-link ${
-                        location.pathname === item.link || (item.key === 'home' && activeSection === 'home' && location.pathname === '/') ? 'active' : ''
+                        location.pathname === item.link || (item.key === 'nav.home' && activeSection === 'nav.home' && location.pathname === '/') ? 'active' : ''
                       }`}
                     >
-                      {t(`nav.${item.key}`)}
+                      {t(`${item.key}`)}
                     </Link>
                   )}
                 </li>
@@ -310,7 +308,7 @@ const Header = () => {
               {t('nav.programare')}
             </Link>
             <Link
-              to="/payment"
+              to="/donations"
               className="btn-default react-nav-mobile-cta"
               onClick={() => setIsMobileMenuOpen(false)}
             >

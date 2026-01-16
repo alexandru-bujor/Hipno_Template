@@ -1,92 +1,154 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
-import RevealImage from '../components/RevealImage'
+import CollapsibleList from '../components/CollapsibleList'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Ritualuri = () => {
   const { t } = useLanguage()
-  const rituals = [
-    {
-      title: 'Ritualuri de purificare',
-      description: 'Ritualuri tradiționale pentru curățarea energiei negative și restabilirea echilibrului spiritual. Aceste ritualuri te ajută să te eliberezi de energie negativă și să găsești pacea interioară.',
-      image: 'assets/images/hero-images/AdobeStock_267533248.jpeg',
-      features: ['Curățare energetică', 'Echilibru spiritual', 'Tradițional']
-    },
-    {
-      title: 'Ritualuri de protecție',
-      description: 'Ritualuri puternice pentru protecție spirituală și fizică. Fiecare ritual este adaptat nevoilor tale specifice pentru protecție maximă.',
-      image: 'assets/images/hero-images/AdobeStock_638399430.jpeg',
-      features: ['Protecție completă', 'Personalizat', 'Puternic']
-    },
-    {
-      title: 'Ritualuri personalizate',
-      description: 'Ritualuri create special pentru nevoile tale unice. Lucrăm împreună pentru a crea un ritual perfect adaptat situației tale.',
-      image: 'assets/images/hero-images/AdobeStock_723363653.jpeg',
-      features: ['100% personalizat', 'Adaptat nevoilor tale', 'Rezultate garantate']
-    }
-  ]
-
+  
   return (
     <>
       <PageHeader
-        title={t('nav.ritualuri')}
-        subtitle="Transformare spirituală"
-        backgroundImage="assets/images/hero-images/AdobeStock_1649580010.jpeg"
+        backgroundImage="assets/images/hero-images/AdobeStock_183593206.jpeg"
       />
       
-      <div className="our-services" style={{ padding: '100px 0' }}>
+      <div className="our-services">
         <div className="container">
-          <div className="row section-row align-items-center mb-5">
-            <div className="col-lg-12 text-center">
-              <div className="section-title">
-                <h3 className="wow fadeInUp">Serviciile noastre</h3>
-                <h2 className="text-anime-style-2" data-cursor="-opaque">
-                  Ritualuri pentru transformare spirituală
-                </h2>
-                <p className="wow fadeInUp" data-wow-delay="0.2s" style={{ maxWidth: '700px', margin: '0 auto' }}>
-                  Oferim ritualuri tradiționale și moderne, adaptate nevoilor tale, 
-                  pentru purificare, protecție și transformare spirituală profundă.
-                </p>
-              </div>
-            </div>
-          </div>
-          
           <div className="row">
-            {rituals.map((item, index) => (
-              <div key={index} className="col-lg-4 col-md-6 mb-4">
-                <div className="service-item wow fadeInUp" data-wow-delay={`${index * 0.2}s`}>
-                  <div className="service-image">
-                    <Link to="/consultatie" data-cursor-text="Vezi detalii">
-                      <RevealImage>
-                        <figure className="image-anime">
-                          <img src={item.image} alt={item.title} />
-                        </figure>
-                      </RevealImage>
-                    </Link>
-                  </div>
-                  <div className="service-content">
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                    {item.features && (
-                      <ul style={{ marginTop: '15px', paddingLeft: '20px' }}>
-                        {item.features.map((feature, idx) => (
-                          <li key={idx} style={{ marginBottom: '8px', color: '#666' }}>
-                            <i className="fa-solid fa-check" style={{ color: '#007bff', marginRight: '8px' }}></i>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                  <div className="service-btn">
-                    <Link to="/consultatie" className="readmore-btn">
-                      Află mai multe
-                    </Link>
-                  </div>
+            <div className="col-lg-12">
+              <div className="services-content">
+                {/* Main Title */}
+                <div className="services-section services-main-title">
+                  <h2 className="services-section-title services-title-main">
+                    {t('ritualuri.title')}
+                  </h2>
+                </div>
+
+                {/* Service 1 */}
+                <div className="services-section">
+                  <h2 className="services-section-title" data-number="1">{t('ritualuri.section1.title')}</h2>
+                  <CollapsibleList
+                    items={[
+                      t('ritualuri.section1.item1'),
+                      t('ritualuri.section1.item2'),
+                      t('ritualuri.section1.item3'),
+                      t('ritualuri.section1.item4'),
+                      t('ritualuri.section1.item5')
+                    ]}
+                    initialVisible={3}
+                    listStyle="default"
+                  />
+                </div>
+
+                {/* Service 2 */}
+                <div className="services-section">
+                  <h2 className="services-section-title" data-number="2">{t('ritualuri.section2.title')}</h2>
+                  <CollapsibleList
+                    items={[
+                      t('ritualuri.section2.item1'),
+                      t('ritualuri.section2.item2'),
+                      t('ritualuri.section2.item3'),
+                      t('ritualuri.section2.item4'),
+                      t('ritualuri.section2.item5'),
+                      t('ritualuri.section2.item6'),
+                      t('ritualuri.section2.item7'),
+                      t('ritualuri.section2.item8')
+                    ]}
+                    initialVisible={4}
+                    listStyle="cards"
+                  />
+                </div>
+
+                {/* Service 3 */}
+                <div className="services-section">
+                  <h2 className="services-section-title" data-number="3">{t('ritualuri.section3.title')}</h2>
+                  <CollapsibleList
+                    items={[
+                      t('ritualuri.section3.item1'),
+                      t('ritualuri.section3.item2'),
+                      t('ritualuri.section3.item3'),
+                      t('ritualuri.section3.item4'),
+                      t('ritualuri.section3.item5')
+                    ]}
+                    initialVisible={3}
+                    listStyle="cards"
+                  />
+                </div>
+
+                {/* Service 4 */}
+                <div className="services-section">
+                  <h2 className="services-section-title" data-number="4">{t('ritualuri.section4.title')}</h2>
+                  <CollapsibleList
+                    items={[
+                      t('ritualuri.section4.item1'),
+                      t('ritualuri.section4.item2'),
+                      t('ritualuri.section4.item3'),
+                      t('ritualuri.section4.item4'),
+                      t('ritualuri.section4.item5'),
+                      t('ritualuri.section4.item6')
+                    ]}
+                    initialVisible={3}
+                    listStyle="grid"
+                  />
+                </div>
+
+                {/* Service 5 */}
+                <div className="services-section">
+                  <h2 className="services-section-title" data-number="5">{t('ritualuri.section5.title')}</h2>
+                  <CollapsibleList
+                    items={[
+                      t('ritualuri.section5.item1'),
+                      t('ritualuri.section5.item2'),
+                      t('ritualuri.section5.item3'),
+                      t('ritualuri.section5.item4'),
+                      t('ritualuri.section5.item5'),
+                      t('ritualuri.section5.item6')
+                    ]}
+                    initialVisible={3}
+                    listStyle="minimal"
+                  />
+                </div>
+
+                {/* Service 6 */}
+                <div className="services-section">
+                  <h2 className="services-section-title" data-number="6">{t('ritualuri.section6.title')}</h2>
+                  <CollapsibleList
+                    items={[
+                      t('ritualuri.section6.item1'),
+                      t('ritualuri.section6.item2'),
+                      t('ritualuri.section6.item3')
+                    ]}
+                    initialVisible={3}
+                    listStyle="grid"
+                    showSeeMore={false}
+                  />
+                </div>
+
+                {/* Service 7 */}
+                <div className="services-section">
+                  <h2 className="services-section-title" data-number="7">{t('ritualuri.section7.title')}</h2>
+                  <CollapsibleList
+                    items={[
+                      t('ritualuri.section7.item1'),
+                      t('ritualuri.section7.item2'),
+                      t('ritualuri.section7.item3'),
+                      t('ritualuri.section7.item4'),
+                      t('ritualuri.section7.item5')
+                    ]}
+                    initialVisible={3}
+                    listStyle="default"
+                  />
+                </div>
+
+                {/* CTA Button */}
+                <div className="services-cta">
+                  <Link to="/programare" className="btn-default">
+                    {t('ritualuri.ctaButton')}
+                  </Link>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>

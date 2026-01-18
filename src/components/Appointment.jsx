@@ -21,10 +21,53 @@ const Appointment = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitMessage('')
+    setSubmitSuccess(false)
+
+    try {
+      const apiEndpoint = import.meta.env.VITE_API_ENDPOINT || 'http://localhost:3000/api/appointment'
+      
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitSuccess(true)
+        setSubmitMessage(t('programare.form.success') || 'Appointment submitted successfully!')
+        // Reset form
+        setFormData({
+          fname: '',
+          lname: '',
+          email: '',
+          phone: '',
+          date: '',
+          time: '',
+          message: ''
+        })
+      } else {
+        setSubmitSuccess(false)
+        setSubmitMessage(data.message || t('programare.form.error') || 'Failed to submit appointment')
+      }
+    } catch (error) {
+      console.error('Error submitting appointment:', error)
+      setSubmitSuccess(false)
+      setSubmitMessage(t('programare.form.error') || 'An error occurred. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
 
@@ -133,9 +176,22 @@ const Appointment = () => {
                       ></textarea>
                     </div>
 
+                    {/* Submit Message */}
+                    {submitMessage && (
+                      <div className={`form-group col-md-12 mb-4 ${submitSuccess ? 'text-success' : 'text-danger'}`}>
+                        <p style={{ margin: 0, fontWeight: 500 }}>
+                          {submitMessage}
+                        </p>
+                      </div>
+                    )}
+
                     <div className="form-group col-md-12">
-                    <button type="submit" className="btn-default">
-                      {t('programare.form.submit')}
+                    <button 
+                      type="submit" 
+                      className="btn-default"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (t('programare.form.submitting') || 'Submitting...') : t('programare.form.submit')}
                     </button>
                     </div>
                   </div>

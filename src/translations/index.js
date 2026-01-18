@@ -38,7 +38,10 @@ export const translations = {
         date: 'Дата',
         time: 'Время',
         message: 'Сообщение',
-        submit: 'Отправить запрос'
+        submit: 'Отправить запрос',
+        submitting: 'Отправка...',
+        success: 'Запись успешно отправлена! Мы свяжемся с вами в ближайшее время.',
+        error: 'Произошла ошибка. Пожалуйста, попробуйте еще раз.'
       },
       content: {
         title: 'Программа',
@@ -766,10 +769,24 @@ export const translations = {
       donateButton: 'Перейти к оплате',
       processing: 'Обработка...',
       securityNote: 'Платежи обрабатываются безопасно через Stripe. Ваши данные защищены.',
+      success: 'Успешно!',
+      successMessage: 'Спасибо за ваше пожертвование! Ваш платеж был успешно обработан.',
+      canceled: 'Отменено',
+      cancelMessage: 'Ваш платеж был отменен. Вы можете попробовать снова в любое время.',
       errors: {
         invalidAmount: 'Пожалуйста, введите корректную сумму',
         generic: 'Произошла ошибка. Пожалуйста, попробуйте еще раз.'
       }
+    },
+    thankYou: {
+      title: 'Спасибо!',
+      subtitle: 'Ваше пожертвование получено',
+      heading: 'Спасибо за ваше пожертвование!',
+      message: 'Ваша поддержка очень важна для нас. Ваш платеж был успешно обработан, и мы искренне благодарим вас за ваш вклад.',
+      receiptInfo: 'Подтверждение платежа было отправлено на ваш email адрес.',
+      sessionId: 'ID сессии',
+      backToHome: 'Вернуться на главную',
+      makeAnotherDonation: 'Сделать еще одно пожертвование'
     }
   },
   ro: {
@@ -817,7 +834,10 @@ export const translations = {
         date: 'Data',
         time: 'Ora',
         message: 'Mesaj',
-        submit: 'Trimite programarea'
+        submit: 'Trimite programarea',
+        submitting: 'Se trimite...',
+        success: 'Programarea a fost trimisă cu succes! Vă vom contacta în cel mai scurt timp.',
+        error: 'A apărut o eroare. Vă rugăm să încercați din nou.'
       },
       content: {
         title: 'Programare',
@@ -1654,10 +1674,24 @@ export const translations = {
       donateButton: 'Continuă la plată',
       processing: 'Se procesează...',
       securityNote: 'Plățile sunt procesate în siguranță prin Stripe. Datele tale sunt protejate.',
+      success: 'Succes!',
+      successMessage: 'Mulțumim pentru donație! Plata ta a fost procesată cu succes.',
+      canceled: 'Anulat',
+      cancelMessage: 'Plata ta a fost anulată. Poți încerca din nou oricând.',
       errors: {
         invalidAmount: 'Te rugăm să introduci o sumă validă',
         generic: 'A apărut o eroare. Te rugăm să încerci din nou.'
       }
+    },
+    thankYou: {
+      title: 'Mulțumim!',
+      subtitle: 'Donația ta a fost primită',
+      heading: 'Mulțumim pentru donația ta!',
+      message: 'Sprijinul tău este foarte important pentru noi. Plata ta a fost procesată cu succes și îți mulțumim din suflet pentru contribuția ta.',
+      receiptInfo: 'Confirmarea plății a fost trimisă pe adresa ta de email.',
+      sessionId: 'ID sesiune',
+      backToHome: 'Înapoi la pagina principală',
+      makeAnotherDonation: 'Fă o altă donație'
     }
   }
 }

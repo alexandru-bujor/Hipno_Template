@@ -6,12 +6,16 @@ import react from '@vitejs/plugin-react'
 // For repo https://github.com/alexandru-bujor/Hipno_Template
 // the base must be '/Hipno_Template/' so assets load correctly on GitHub Pages.
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: '/Hipno_Template/',
+  // In development, use root path for easier routing
+  // In production: 
+  //   - For GitHub Pages: use '/Hipno_Template/'
+  //   - For Docker/custom domain: use '/' (set via VITE_BASE_URL env var)
+  base: process.env.VITE_BASE_URL || (mode === 'development' ? '/' : '/Hipno_Template/'),
   server: {
-    port: 3000,
+    port: 5173,
     open: true
   }
-})
+}))
 

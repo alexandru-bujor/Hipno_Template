@@ -14,11 +14,20 @@ import Services from "./components/Services";
 import WhatWeDo from "./components/WhatWeDo";
 import Magazin from "./pages/Magazin";
 import Donations from "./pages/Donations";
+import ThankYou from "./pages/ThankYou";
 
 function App() {
+  // In development, use empty basename. In production (GitHub Pages), use the base path
+  const basename = import.meta.env.DEV ? '' : (import.meta.env.BASE_URL || '')
+  
+  // Debug: Log the basename being used
+  if (import.meta.env.DEV) {
+    console.log('🔍 Router basename (dev):', basename, '| BASE_URL:', import.meta.env.BASE_URL)
+  }
+  
   return (
     <LanguageProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter basename={basename}>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -33,6 +42,7 @@ function App() {
             <Route path="/magazin" element={<Magazin />} />
             <Route path="/donations" element={<Donations />} />
             <Route path="/payment" element={<Donations />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             {/* 404 Page */}
             <Route path="*" element={<NotFound />} />
           </Routes>

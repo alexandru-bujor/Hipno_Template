@@ -1,5 +1,5 @@
 # Frontend Dockerfile
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -15,11 +15,13 @@ COPY . .
 # Build arguments for environment variables
 ARG VITE_STRIPE_PUBLISHABLE_KEY
 ARG VITE_STRIPE_API_ENDPOINT
+ARG VITE_API_ENDPOINT
 ARG VITE_BASE_URL=/
 
 # Set environment variables for build
 ENV VITE_STRIPE_PUBLISHABLE_KEY=$VITE_STRIPE_PUBLISHABLE_KEY
 ENV VITE_STRIPE_API_ENDPOINT=$VITE_STRIPE_API_ENDPOINT
+ENV VITE_API_ENDPOINT=$VITE_API_ENDPOINT
 ENV VITE_BASE_URL=$VITE_BASE_URL
 
 # Build the application (use production mode)

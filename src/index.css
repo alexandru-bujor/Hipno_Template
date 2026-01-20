@@ -737,7 +737,7 @@ button.btn-default:hover {
 .our-services {
   position: relative;
   overflow: hidden;
-  background: ;
+  background: transparent;
   background-image: none !important;
   padding: 80px 0;
 }
@@ -2830,7 +2830,7 @@ header.main-header.react-header.react-header-scrolled {
 /* Programare section - blur to transparent effect */
 #programare {
   position: relative;
-  background: ;
+  background: transparent;
 }
 
 #programare::before {
@@ -3168,6 +3168,32 @@ header.main-header.react-header.react-header-scrolled {
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
+  padding: 80px 0;
+  min-height: auto;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  overflow: visible;
+  height: auto;
+}
+
+.our-appointment .container {
+  position: relative;
+  z-index: 1;
+}
+
+.our-appointment .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.our-appointment .col-lg-12 {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .our-appointment-box {
@@ -3181,6 +3207,13 @@ header.main-header.react-header.react-header-scrolled {
   border: none;
   max-width: 900px;
   margin: 0 auto;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+  min-height: auto;
+  overflow: visible;
 }
 
 .our-appointment-box .section-title {
@@ -3205,22 +3238,26 @@ header.main-header.react-header.react-header-scrolled {
 }
 
 .appointment-form {
-  background: linear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
+  background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   width: 100%;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  min-height: auto;
+  overflow: visible;
+  padding: 0;
 }
 
 .appointment-form form {
   width: 100%;
   max-width: 100%;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  min-height: auto;
+  overflow: visible;
 }
 
 .appointment-form .row {
@@ -3228,26 +3265,57 @@ header.main-header.react-header.react-header-scrolled {
   flex-wrap: wrap;
   margin-left: -15px;
   margin-right: -15px;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .appointment-form .form-group {
   padding-left: 15px;
-  padding-right: 0px;
+  padding-right: 15px;
   margin-bottom: 25px;
+  width: 100%;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.appointment-form .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Desktop: Two column layout for form groups */
+@media (min-width: 768px) {
+  .appointment-form .form-group.col-md-6 {
+    width: 50%;
+    flex: 0 0 50%;
+  }
+  
+  .appointment-form .form-group.col-md-12 {
+    width: 100%;
+    flex: 0 0 100%;
+  }
 }
 
 .appointment-form .form-group:last-child {
   margin-bottom: 0;
   text-align: center;
   padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .appointment-form .form-control {
   background: #ffffff !important;
   background-color: #ffffff !important;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   padding: 14px 18px;
   font-size: 15px;
   color: #333;
@@ -3255,21 +3323,109 @@ header.main-header.react-header.react-header-scrolled {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
 .appointment-form .form-control:focus {
   border-color: #9b9a84;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(155, 154, 132, 0.1);
+  box-shadow: 0 0 0 3px rgba(155, 154, 132, 0.15);
+  background-color: #ffffff !important;
 }
 
 .appointment-form .form-control::placeholder {
   color: #999;
+  opacity: 0.7;
 }
 
 .appointment-form textarea.form-control {
   resize: vertical;
   min-height: 120px;
+}
+
+/* Enhanced Date and Time Input Styling */
+.appointment-form input[type="date"],
+.appointment-form input[type="time"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 15px;
+  color: #333;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+.appointment-form input[type="date"]:focus,
+.appointment-form input[type="time"]:focus {
+  border-color: #9b9a84;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(155, 154, 132, 0.15);
+  background-color: #ffffff !important;
+}
+
+.appointment-form input[type="date"]:hover,
+.appointment-form input[type="time"]:hover {
+  border-color: #9b9a84;
+  background-color: #fafafa !important;
+}
+
+/* Webkit Calendar Picker Indicator Styling */
+.appointment-form input[type="date"]::-webkit-calendar-picker-indicator,
+.appointment-form input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  padding: 4px;
+  margin-left: 8px;
+  filter: brightness(0) saturate(100%) invert(30%) sepia(10%) saturate(500%) hue-rotate(30deg);
+}
+
+.appointment-form input[type="date"]::-webkit-calendar-picker-indicator:hover,
+.appointment-form input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(600%) hue-rotate(30deg);
+}
+
+/* Firefox Date/Time Picker Styling */
+.appointment-form input[type="date"]::-moz-calendar-picker-indicator,
+.appointment-form input[type="time"]::-moz-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  padding: 4px;
+  margin-left: 8px;
+}
+
+.appointment-form input[type="date"]::-moz-calendar-picker-indicator:hover,
+.appointment-form input[type="time"]::-moz-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Date/Time Input Labels (if needed) */
+.appointment-form label[for="date"],
+.appointment-form label[for="time"] {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Desktop: Enhanced Date/Time Styling */
+@media (min-width: 768px) {
+  .appointment-form input[type="date"],
+  .appointment-form input[type="time"] {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
 }
 
 /* Forms Mobile */
@@ -3280,22 +3436,87 @@ header.main-header.react-header.react-header-scrolled {
     background-size: cover;
   }
 
+  .our-appointment {
+    padding: 60px 15px;
+  }
+  
+  .our-appointment .container {
+    padding: 0 15px;
+  }
+  
+  .our-appointment .row {
+    margin: 0;
+    justify-content: center;
+  }
+  
+  .our-appointment .col-lg-12 {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .our-appointment-box {
     padding: 35px 20px;
     border-radius: 15px;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .appointment-form {
     padding: 0;
+    width: 100%;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    min-height: auto;
+    overflow: visible;
+  }
+  
+  .appointment-form .row {
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .form-group {
+  .appointment-form .form-group {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    padding-left: 0;
+    padding-right: 0;
     margin-bottom: 20px;
+    max-width: 100%;
+    display: block;
+  }
+  
+  .appointment-form .form-group:last-child {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
   }
 
-  .form-control {
+  .appointment-form .form-control {
     padding: 12px 15px;
     font-size: 14px;
+    width: 100%;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+  }
+  
+  .appointment-form input[type="date"],
+  .appointment-form input[type="time"] {
+    padding: 12px 15px;
+    font-size: 14px;
+    width: 100%;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
   }
 
   .form-control::placeholder {

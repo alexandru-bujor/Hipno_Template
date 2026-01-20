@@ -16,7 +16,7 @@ const Donations = () => {
 
   // Get Stripe publishable key from environment variable
   // Fallback to the key directly if env var not loaded (for development)
-  const stripePublishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_51Sgn9F2IhcAUKbyt3tkwD3M5sTsPw4QZpXTj893wfglHUgL4RDU4wn4ymDulqxB2rrWzVAC8Rh71SHuj5VXkt1Wy001JklkCEP'
+  const stripePublishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
   // Get API endpoint - works with serverless functions (Vercel/Netlify) or custom backend
   // For serverless: /api/create-checkout-session (Vercel) or /.netlify/functions/create-checkout-session (Netlify)
   // For local backend: http://localhost:3000/api/create-checkout-session
@@ -26,6 +26,9 @@ const Donations = () => {
   // Ensure it's always a full URL (not relative)
   const getFullEndpoint = () => {
     const endpoint = apiEndpoint || 'http://localhost:3000/api/create-checkout-session'
+    if (!endpoint) {
+      return 'http://localhost:3000/api/create-checkout-session'
+    }
     if (endpoint.startsWith('http://') || endpoint.startsWith('https://')) {
       return endpoint
     }
@@ -158,10 +161,7 @@ const Donations = () => {
 
   return (
     <>
-      <PageHeader 
-        title={t('donations.title')}
-        subtitle={t('donations.subtitle')}
-      />
+
       
       <section className="donations-section" style={{ padding: '80px 0' }}>
         <div className="container">

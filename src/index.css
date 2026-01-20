@@ -139,18 +139,46 @@ input[type="date"] {
     border-radius: 4px;
 }
 
+/* Modern Container - Desktop Optimized */
 .container {
-  max-width: 1500px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 60px;
 }
 
-/* Ensure container centers its content */
+/* Desktop-specific container improvements */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 80px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 100px;
+  }
+}
+
+/* Modern Section Layout - Desktop */
 .cta-section .container,
 .our-services .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
+  position: relative;
+}
+
+/* Desktop: Improved section spacing */
+@media (min-width: 992px) {
+  .cta-section,
+  .our-services {
+    padding: 100px 0;
+  }
+  
+  .cta-section .container,
+  .our-services .container {
+    padding: 0 60px;
+  }
 }
 
 /* Page Header Styles */
@@ -206,7 +234,7 @@ input[type="date"] {
   }
 
   .page-header > div[style*="background"] {
-    background: liinear-gradient(
+    background: linear-gradient(
   180deg,
   var(--white-color) 0%,
   var(--white-color) 45%,
@@ -242,6 +270,8 @@ input[type="date"] {
   margin-bottom: 30px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .service-item:hover {
@@ -299,11 +329,13 @@ input[type="date"] {
 }
 
 .service-content {
-    display: flex;
-    justify-content: center;   /* centers horizontally */
-    align-items: center;       /* centers vertically */
-    text-align: center;        /* ensures text itself is centered */
-    height: 90%;              /* make sure the container has a defined height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 90%;
+  flex: 1;
+  flex-direction: column;
 }
 
 .service-content h1 {
@@ -420,18 +452,6 @@ input[type="date"] {
   background: #9b9a84 !important;
 }
 
-/* Ensure service items have proper layout */
-.service-item {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.service-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
 
 /* Image Animation Improvements */
 .image-anime {
@@ -514,49 +534,219 @@ button.btn-default:hover {
   color: #fff !important;
 }
 
-/* Hero Content Text Arrangement Improvements */
+/* Hero Content Text Arrangement Improvements - Desktop */
+.hero {
+  position: relative;
+  padding-top: 80px; /* Space for fixed navbar (header height ~60-70px + buffer) */
+}
+
+.hero.hero-slider-layout {
+  padding-top: 80px; /* Space for fixed navbar */
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  z-index: 2;
+}
+
 .hero-content .section-title h1 {
   font-size: 48px;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.3;
   margin-bottom: 30px;
   max-width: 100%;
   word-wrap: break-word;
+  color: var(--white-color);
+}
+
+/* Fix excessive spacing from <br/> tags */
+.hero-content .section-title h1 br {
+  line-height: 0.5;
+  display: block;
+  content: "";
+  margin: 0.5em 0;
+}
+
+/* Desktop: Better typography and spacing for hero heading */
+@media (min-width: 992px) {
+  .hero-content {
+    max-width: 900px;
+    padding: 0;
+  }
+  
+  .hero-content .section-title {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .hero-content .section-title h1 {
+    font-size: 56px;
+    line-height: 1.25;
+    margin-bottom: 35px;
+    width: 100%;
+    padding: 0;
+    margin-top: 0;
+  }
+  
+  /* Fix text-anime-style-2 layout issues */
+  .hero-content .section-title h1.text-anime-style-2 {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  
+  /* Fix inline-block divs created by text animation */
+  .hero-content .section-title h1.text-anime-style-2 > div {
+    display: inline !important;
+    position: relative !important;
+    height: auto !important;
+    line-height: inherit !important;
+    vertical-align: baseline !important;
+  }
+  
+  .hero-content .section-title h1.text-anime-style-2 > div > div {
+    display: inline !important;
+    position: relative !important;
+    height: auto !important;
+    line-height: inherit !important;
+    vertical-align: baseline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Better spacing for <br/> tags on desktop */
+  .hero-content .section-title h1 br {
+    margin: 0.3em 0;
+    line-height: 0.3;
+  }
+  
+  /* Override excessive padding from custom.css */
+  .hero.hero-slider-layout {
+    padding-top: 80px !important; /* Space for fixed navbar */
+    margin-top: 0 !important;
+  }
+  
+  .hero.hero-slider-layout .hero-slide {
+    padding: 150px 0 !important;
+    min-height: calc(100vh - 80px); /* Account for navbar */
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 0 !important;
+  }
+  
+  /* Ensure hero slide container doesn't constrain height */
+  .hero-slide {
+    min-height: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .hero-slide .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .hero-slide .row {
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+  }
+  
+  .hero-slide .col-lg-12 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 15px;
+  }
+  
+  /* Ensure hero content is properly positioned */
+  .hero.hero-slider-layout .hero-content {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    width: 100%;
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-content {
+    max-width: 1000px;
+  }
+  
+  .hero-content .section-title h1 {
+    font-size: 64px;
+    line-height: 1.2;
+  }
+  
+  /* Better spacing for <br/> tags on large screens */
+  .hero-content .section-title h1 br {
+    margin: 0.25em 0;
+    line-height: 0.25;
+  }
+  
+  /* Reduce padding on large screens */
+  .hero.hero-slider-layout .hero-slide {
+    padding: 120px 0 !important;
+  }
 }
 
 .hero-content .section-title p {
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 1.7;
   margin-top: 20px;
   margin-bottom: 30px;
   max-width: 100%;
+  color: var(--white-color);
 }
 
 .hero-content .section-title h3 {
   margin-bottom: 15px;
+  color: var(--white-color);
 }
 
-/* Services Content Styling - Enhanced Visual Design */
+/* Desktop: Improved paragraph spacing */
+@media (min-width: 992px) {
+  .hero-content .section-title p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-top: 25px;
+    margin-bottom: 35px;
+  }
+}
+
+/* Services Content Styling - Modern Desktop Design */
 .our-services {
   position: relative;
   overflow: hidden;
-  background: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
-  background-color: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
+  background: ;
   background-image: none !important;
+  padding: 80px 0;
+}
+
+/* Desktop: Enhanced spacing */
+@media (min-width: 992px) {
+  .our-services {
+    padding: 120px 0;
+  }
 }
 
 .our-services::before {
@@ -564,44 +754,45 @@ button.btn-default:hover {
 }
 
 .our-services .services-content {
-  max-width: 1300px;
+  max-width: 100%;
   margin: 0 auto;
-  color: #333 !important;
-  visibility: visible !important;
-  display: block !important;
-  opacity: 1 !important;
+  color: #333;
   position: relative;
   width: 100%;
-  /* Background removed - translucent window effect is on .col-lg-12 */
-  background: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
-  border-radius: 30px;
+  padding: 0;
 }
 
-/* Alternating section containers */
+/* Desktop: Improved content width */
+@media (min-width: 992px) {
+  .our-services .services-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Modern Section Cards - Desktop Enhanced */
 .our-services .services-section {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   position: relative;
-  padding: 55px 65px;
+  padding: 50px 60px;
   background: #ffffff;
-  border-radius: 25px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: none;
   overflow: hidden;
   scroll-margin-top: 100px;
 }
 
-.our-services {
-  scroll-behavior: smooth;
+/* Desktop: Larger padding and improved shadows */
+@media (min-width: 992px) {
+  .our-services .services-section {
+    margin-bottom: 60px;
+    padding: 60px 80px;
+    border-radius: 24px;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.08);
+  }
 }
-
 
 .our-services .services-section:nth-child(even) {
   background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 249, 249, 1) 100%);
@@ -624,9 +815,17 @@ button.btn-default:hover {
 }
 
 .our-services .services-section:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 70px rgba(155, 154, 132, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(155, 154, 132, 0.18);
   border: none !important;
+}
+
+/* Desktop: Enhanced hover effect */
+@media (min-width: 992px) {
+  .our-services .services-section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 70px rgba(155, 154, 132, 0.22);
+  }
 }
 
 .our-services .services-section:hover::before {
@@ -647,17 +846,27 @@ button.btn-default:hover {
 }
 
 
-/* Decorative quote marks for intro */
+/* Modern Intro Section - Desktop Enhanced */
 .our-services .services-intro {
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   position: relative;
-  padding: 60px 80px;
+  padding: 50px 60px;
   border: none !important;
-  border-radius: 30px;
+  border-radius: 24px;
   background: #ffffff !important;
   background-color: #ffffff !important;
-  box-shadow: 0 10px 40px rgba(155, 154, 132, 0.15);
+  box-shadow: 0 10px 40px rgba(155, 154, 132, 0.12);
   overflow: hidden;
+}
+
+/* Desktop: Larger intro section */
+@media (min-width: 992px) {
+  .our-services .services-intro {
+    margin-bottom: 100px;
+    padding: 70px 100px;
+    border-radius: 28px;
+    box-shadow: 0 12px 50px rgba(155, 154, 132, 0.15);
+  }
 }
 
 .our-services .services-intro::after {
@@ -1171,12 +1380,28 @@ button.btn-default:hover {
 }
 
 /* Section Title Improvements */
+/* Modern Section Titles - Desktop Enhanced */
 .section-title h2 {
   font-size: 42px;
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 20px;
   color: #2c3e50;
+}
+
+/* Desktop: Larger, more elegant titles */
+@media (min-width: 992px) {
+  .section-title h2 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section-title h2 {
+    font-size: 52px;
+  }
 }
 
 .section-title h3 {
@@ -1198,6 +1423,15 @@ button.btn-default:hover {
   font-size: 16px;
   color: #666;
   line-height: 1.8;
+}
+
+/* Desktop: Enhanced paragraph typography */
+@media (min-width: 992px) {
+  .section-title p {
+    font-size: 17px;
+    line-height: 1.85;
+    max-width: 800px;
+  }
 }
 
 /* Responsive Improvements */
@@ -1425,7 +1659,7 @@ header.main-header.react-header {
   right: 0;
   z-index: 1000;
   transition: background 0.25s ease, box-shadow 0.25s ease;
-  background: transparent;
+  background: #000;
 }
 
 header.main-header.react-header.react-header-scrolled {
@@ -1891,6 +2125,11 @@ header.main-header.react-header.react-header-scrolled {
 @media (max-width: 768px) {
   .hero {
     min-height: 500px;
+    padding-top: 70px; /* Space for fixed navbar on mobile */
+  }
+  
+  .hero.hero-slider-layout {
+    padding-top: 70px !important; /* Space for fixed navbar on mobile */
   }
 
   .hero-content {
@@ -2483,85 +2722,94 @@ header.main-header.react-header.react-header-scrolled {
   }
 }
 
-/* Center all sections and content on main page - only affect direct children */
-.cta-section .container,
-.our-services .container {
-  display: block;
-}
-
+/* Modern Row Layout - Desktop Optimized */
 .cta-section .row,
 .our-services .row {
   display: flex;
   justify-content: center;
   margin-left: 0;
   margin-right: 0;
+  flex-wrap: wrap;
 }
 
+/* Desktop: Better row spacing */
+@media (min-width: 992px) {
+  .cta-section .row,
+  .our-services .row {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  
+  .cta-section .row > [class*="col-"],
+  .our-services .row > [class*="col-"] {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Modern Column Layout - Desktop */
 .cta-section .col-lg-12,
 .our-services .col-lg-12 {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  /* No background styling */
-  background: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
-  background-color: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
+  background: transparent;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  border: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* CTA Box Centering - when no image - override custom.css completely */
+/* Desktop: Improved column spacing */
+@media (min-width: 992px) {
+  .cta-section .col-lg-12,
+  .our-services .col-lg-12 {
+    padding: 0 20px;
+  }
+}
+
+/* Modern CTA Box - Desktop Enhanced */
 .cta-section .cta-box.cta-box-no-image {
-  padding: 60px 40px !important;
-  padding-left: 40px !important;
-  padding-right: 40px !important;
-  padding-top: 60px !important;
-  padding-bottom: 60px !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 auto !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  display: flex !important;
-  flex-direction: column !important;
-  width: 95% !important;
-  max-width: 1200px !important;
-  position: relative !important;
+  padding: 50px 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+  border-radius: 20px;
 }
 
-/* Override all custom.css styles for cta-box-content when no image */
+/* Desktop: Larger CTA box with better spacing */
+@media (min-width: 992px) {
+  .cta-section .cta-box.cta-box-no-image {
+    padding: 70px 80px;
+    max-width: 1200px;
+    border-radius: 24px;
+  }
+}
+
+/* Modern CTA Content - Desktop */
 .cta-section .cta-box.cta-box-no-image .cta-box-content {
-  width: 95% !important;
-  max-width: 800px !important;
-  margin: 0 auto !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  text-align: center !important;
-  padding: 0 !important;
-  position: relative !important;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0;
+  position: relative;
+}
+
+/* Desktop: Wider content area */
+@media (min-width: 992px) {
+  .cta-section .cta-box.cta-box-no-image .cta-box-content {
+    max-width: 1000px;
+  }
 }
 
 /* Center section title content in all CTA sections */
@@ -2576,35 +2824,13 @@ header.main-header.react-header.react-header-scrolled {
 
 .cta-box-content .section-title h3::before {
   background: none !important;
-  background-color: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
+  background-color: transparent;
 }
 
 /* Programare section - blur to transparent effect */
 #programare {
   position: relative;
-  background: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
-  background-color: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
+  background: ;
 }
 
 #programare::before {
@@ -2750,30 +2976,12 @@ header.main-header.react-header.react-header-scrolled {
   z-index: 2;
 }
 
-/* Remove background from .our-services sections */
-.our-services {
-  background: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
-  background-color: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
-  background-image: none !important;
-}
-
-.our-services::before,
-.our-services::after {
-  display: none !important;
+/* Mobile: Remove background from .our-services sections */
+@media (max-width: 768px) {
+  .our-services::before,
+  .our-services::after {
+    display: none !important;
+  }
 }
 
 /* Services content - no backdrop filter */
@@ -2834,27 +3042,8 @@ header.main-header.react-header.react-header-scrolled {
   
   /* Services sections mobile */
   /* Services sections mobile - no background */
-  .our-services {
-    background: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
-    background-image: none !important;
-  }
-  
   .our-services .services-content {
-    background: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
+    background: transparent;
   }
   
   /* Ensure container is above background layers */
@@ -2866,14 +3055,7 @@ header.main-header.react-header.react-header-scrolled {
   /* Mobile - no background styling */
   .cta-section .col-lg-12,
   .our-services .col-lg-12 {
-    background: liinear-gradient(
-  180deg,
-  var(--white-color) 0%,
-  var(--white-color) 45%,
-  var(--accent-color) 55%,
-  var(--accent-color) 100%
-);
-;
+    background: transparent;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
@@ -3023,7 +3205,7 @@ header.main-header.react-header.react-header-scrolled {
 }
 
 .appointment-form {
-  background: liinear-gradient(
+  background: linear-gradient(
   180deg,
   var(--white-color) 0%,
   var(--white-color) 45%,
@@ -3144,51 +3326,8 @@ header.main-header.react-header.react-header-scrolled {
   footer {
     padding: 60px 0 30px;
   }
-
-  .footer-widget {
-    margin-bottom: 40px;
-    text-align: center;
-  }
-
-  .footer-widget h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .footer-widget ul li {
-    margin-bottom: 10px;
-  }
-
-  .footer-widget ul li a {
-    font-size: 14px;
-  }
-
-  .footer-bottom {
-    text-align: center;
-    padding-top: 30px;
-    margin-top: 30px;
-  }
 }
 
-/* Utility Classes Mobile */
-@media (max-width: 768px) {
-  .text-center-mobile {
-    text-align: center !important;
-  }
-
-  .mb-mobile {
-    margin-bottom: 30px !important;
-  }
-
-  .mt-mobile {
-    margin-top: 30px !important;
-  }
-
-  .px-mobile {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
-}
 
 /* Small Mobile Devices */
 @media (max-width: 576px) {
@@ -3347,116 +3486,10 @@ header.main-header.react-header.react-header-scrolled {
 
 /* Footer Mobile Styles */
 @media (max-width: 768px) {
-  .footer-cta-box {
-    padding: 40px 0;
-    text-align: center;
-  }
-
-  .footer-cta-content {
-    margin-bottom: 25px;
-  }
-
-  .footer-cta-content h2 {
-    font-size: 24px !important;
-  }
-
-  .footer-cta-btn {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-  }
-
-  .footer-cta-btn .btn-default {
-    width: 100%;
-    max-width: 280px;
-    padding: 12px 20px;
-    font-size: 14px;
-  }
-
   .main-footer {
     padding: 50px 0 30px;
     background: #000000 !important;
     background-color: #000000 !important;
-  }
-
-  .footer-logo {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .footer-logo img {
-    max-width: 150px;
-    margin: 0 auto;
-  }
-
-  .about-footer {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .about-footer h2 {
-    font-size: 24px !important;
-    margin-bottom: 25px;
-  }
-
-  .footer-contact-box {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .footer-contact-item {
-    text-align: center;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
-
-  .footer-contact-item p {
-    font-size: 13px;
-    margin-bottom: 8px;
-    color: #666;
-  }
-
-  .footer-contact-item h3 {
-    font-size: 16px;
-    color: #333;
-  }
-
-  .footer-social-links {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .footer-social-links h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .footer-social-links p {
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  .footer-social-links ul {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  .footer-social-links ul li a {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f8f9fa;
-    border-radius: 50%;
-    font-size: 18px;
-    color: #333;
-    transition: all 0.3s ease;
   }
 
   .footer-copyright {
@@ -3507,9 +3540,6 @@ header.main-header.react-header.react-header-scrolled {
 
 /* Talismanuri & Ritualuri Preview Mobile */
 @media (max-width: 768px) {
-  .our-services {
-    padding-top:25px
-  }
 }
 
 /* Programare & Contacte Preview Mobile */

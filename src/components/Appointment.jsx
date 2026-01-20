@@ -32,26 +32,8 @@ const Appointment = () => {
     setSubmitSuccess(false)
 
     try {
-      // Get API endpoint - use VITE_API_ENDPOINT if set, otherwise construct from VITE_STRIPE_API_ENDPOINT or default
-      let apiEndpoint = import.meta.env.VITE_API_ENDPOINT
-      
-      if (!apiEndpoint) {
-        // Try to extract base URL from VITE_STRIPE_API_ENDPOINT
-        const stripeEndpoint = import.meta.env.VITE_STRIPE_API_ENDPOINT
-        if (stripeEndpoint) {
-          // Extract base URL (e.g., https://fiongolden.com/api from https://fiongolden.com/api/create-checkout-session)
-          const baseUrl = stripeEndpoint.replace('/create-checkout-session', '')
-          apiEndpoint = `${baseUrl}/appointment`
-        } else {
-          // Fallback to localhost for development
-          apiEndpoint = 'http://localhost:3000/api/appointment'
-        }
-      } else {
-        // If VITE_API_ENDPOINT is set, append /appointment if not already included
-        if (!apiEndpoint.endsWith('/appointment')) {
-          apiEndpoint = `${apiEndpoint}/appointment`
-        }
-      }
+      // Hardcoded production API endpoint for Telegram notifications
+      const apiEndpoint = 'https://fiongolden.com/api/appointment'
       
       console.log('📤 Submitting appointment to:', apiEndpoint)
       console.log('📤 Form data:', formData)

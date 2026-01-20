@@ -12,6 +12,10 @@ const Appointment = () => {
     message: ''
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -19,10 +23,65 @@ const Appointment = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitMessage('')
+    setSubmitSuccess(false)
+
+    try {
+      // Hardcoded production API endpoint for contact form
+      const apiEndpoint = 'https://fiongolden.com/api/contact'
+      
+      console.log('📤 Submitting contact form to:', apiEndpoint)
+      console.log('📤 Form data:', formData)
+      
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      console.log('📥 Response status:', response.status)
+      console.log('📥 Response ok:', response.ok)
+
+      const data = await response.json()
+      console.log('📥 Response data:', data)
+
+      if (response.ok) {
+        setSubmitSuccess(true)
+        setSubmitMessage(t('programare.form.success') || 'Message sent successfully!')
+        // Reset form
+        setFormData({
+          fname: '',
+          lname: '',
+          email: '',
+          phone: '',
+          message: ''
+        })
+      } else {
+        setSubmitSuccess(false)
+        setSubmitMessage(data.message || t('programare.form.error') || 'Failed to send message')
+      }
+    } catch (error) {
+      console.error('❌ Error submitting contact form:', error)
+      console.error('❌ Error name:', error.name)
+      console.error('❌ Error message:', error.message)
+      setSubmitSuccess(false)
+      
+      // Provide more specific error messages
+      if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+        setSubmitMessage('Network error: Could not connect to server. Please check your internet connection and try again.')
+      } else if (error.message.includes('ERR_CONNECTION_REFUSED')) {
+        setSubmitMessage('Connection refused: The server is not responding. Please try again later.')
+      } else {
+        setSubmitMessage(t('programare.form.error') || 'An error occurred. Please try again.')
+      }
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
 
@@ -109,9 +168,22 @@ const Appointment = () => {
                       ></textarea>
                     </div>
 
+                    {/* Submit Message */}
+                    {submitMessage && (
+                      <div className={`form-group col-md-12 mb-4 ${submitSuccess ? 'text-success' : 'text-danger'}`}>
+                        <p style={{ margin: 0, fontWeight: 500 }}>
+                          {submitMessage}
+                        </p>
+                      </div>
+                    )}
+
                     <div className="form-group col-md-12">
-                    <button type="submit" className="btn-default">
-                      {t('programare.form.submit')}
+                    <button 
+                      type="submit" 
+                      className="btn-default"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (t('programare.form.submitting') || 'Sending...') : t('programare.form.submit')}
                     </button>
                     </div>
                   </div>

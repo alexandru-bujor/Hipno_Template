@@ -21,8 +21,9 @@ const ThankYou = () => {
 
   const verifyPayment = async (sessionId) => {
     try {
-      const apiEndpoint = import.meta.env.VITE_API_ENDPOINT || 'http://localhost:3000'
-      const response = await fetch(`${apiEndpoint}/api/verify-payment`, {
+      // Hardcoded production API endpoint
+      const apiEndpoint = 'https://fiongolden.com/api/verify-payment'
+      const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

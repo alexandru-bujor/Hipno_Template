@@ -17,23 +17,12 @@ const Donations = () => {
   // Get Stripe publishable key from environment variable
   // Fallback to the key directly if env var not loaded (for development)
   const stripePublishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
-  // Get API endpoint - works with serverless functions (Vercel/Netlify) or custom backend
-  // For serverless: /api/create-checkout-session (Vercel) or /.netlify/functions/create-checkout-session (Netlify)
-  // For local backend: http://localhost:3000/api/create-checkout-session
-  // Hardcode the local backend URL for development (environment variables may not load in Vite)
-  const apiEndpoint = import.meta.env.VITE_STRIPE_API_ENDPOINT || 'http://localhost:3000/api/create-checkout-session'
+  // Hardcoded production API endpoint for Stripe checkout
+  const apiEndpoint = 'https://fiongolden.com/api/create-checkout-session'
   
-  // Ensure it's always a full URL (not relative)
+  // Simple function to return the hardcoded endpoint
   const getFullEndpoint = () => {
-    const endpoint = apiEndpoint || 'http://localhost:3000/api/create-checkout-session'
-    if (!endpoint) {
-      return 'http://localhost:3000/api/create-checkout-session'
-    }
-    if (endpoint.startsWith('http://') || endpoint.startsWith('https://')) {
-      return endpoint
-    }
-    // If it's a relative path, prepend the backend URL
-    return `http://localhost:3000${endpoint.startsWith('/') ? endpoint : '/' + endpoint}`
+    return apiEndpoint
   }
   
   // Handle success/cancel query parameters from Stripe redirect

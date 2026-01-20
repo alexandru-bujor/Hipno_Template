@@ -252,6 +252,75 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
   res.json({ received: true });
 });
 
+// Contact form submission endpoint
+app.post('/api/contact', async (req, res) => {
+  const requestId = Date.now().toString(36);
+  const timestamp = new Date().toISOString();
+  
+  console.log(`\n📧 [${requestId}] Contact form request received at ${timestamp}`);
+  console.log(`📧 [${requestId}] Request origin: ${req.headers.origin || 'N/A'}`);
+  console.log(`📧 [${requestId}] Request IP: ${req.ip || req.connection.remoteAddress || 'N/A'}`);
+  console.log(`📧 [${requestId}] Request body:`, JSON.stringify(req.body, null, 2));
+  
+  try {
+    const { fname, lname, email, phone, message } = req.body;
+
+    // Validate required fields
+    if (!fname || !lname || !email) {
+      console.error(`❌ [${requestId}] Validation failed: Missing required fields`);
+      console.error(`❌ [${requestId}] Received:`, { fname: !!fname, lname: !!lname, email: !!email });
+      return res.status(400).json({ 
+        success: false,
+        message: 'First name, last name, and email are required',
+        requestId
+      });
+    }
+
+    console.log(`✅ [${requestId}] Validation passed`);
+    console.log(`📤 [${requestId}] Sending Telegram notification...`);
+
+    // Send Telegram notification (using appointment notification format)
+    const notificationSent = await sendAppointmentNotification({
+      fname,
+      lname,
+      email,
+      phone: phone || 'Not provided',
+      date: 'N/A',
+      time: 'N/A',
+      message: message || 'No message provided'
+    });
+
+    if (notificationSent) {
+      console.log(`✅ [${requestId}] Telegram notification sent successfully`);
+    } else {
+      console.warn(`⚠️ [${requestId}] Failed to send Telegram notification`);
+      console.warn(`⚠️ [${requestId}] Checking Telegram configuration...`);
+      console.warn(`⚠️ [${requestId}] TELEGRAM_BOT_TOKEN: ${process.env.TELEGRAM_BOT_TOKEN ? 'SET' : 'NOT SET'}`);
+      console.warn(`⚠️ [${requestId}] TELEGRAM_CHAT_ID: ${process.env.TELEGRAM_CHAT_ID || 'NOT SET'}`);
+      console.warn(`⚠️ [${requestId}] TELEGRAM_APPOINTMENT_TOPIC_ID: ${process.env.TELEGRAM_APPOINTMENT_TOPIC_ID || 'NOT SET'}`);
+    }
+
+    console.log(`✅ [${requestId}] Contact form processed successfully`);
+    res.json({ 
+      success: true,
+      message: 'Contact form submitted successfully',
+      notificationSent,
+      requestId
+    });
+  } catch (error) {
+    console.error(`❌ [${requestId}] Error processing contact form:`, error);
+    console.error(`❌ [${requestId}] Error name:`, error.name);
+    console.error(`❌ [${requestId}] Error message:`, error.message);
+    console.error(`❌ [${requestId}] Error stack:`, error.stack);
+    res.status(500).json({ 
+      success: false,
+      message: error.message || 'Failed to process contact form',
+      requestId,
+      error: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+});
+
 // Create Stripe Checkout Session
 app.post('/api/create-checkout-session', async (req, res) => {
   const requestId = Date.now().toString(36);

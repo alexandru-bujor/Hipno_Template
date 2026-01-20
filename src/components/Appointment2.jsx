@@ -33,9 +33,6 @@ const Appointment = () => {
       // Hardcoded production API endpoint for contact form
       const apiEndpoint = 'https://fiongolden.com/api/contact'
       
-      console.log('📤 Submitting contact form to:', apiEndpoint)
-      console.log('📤 Form data:', formData)
-      
       const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
@@ -44,11 +41,7 @@ const Appointment = () => {
         body: JSON.stringify(formData),
       })
 
-      console.log('📥 Response status:', response.status)
-      console.log('📥 Response ok:', response.ok)
-
       const data = await response.json()
-      console.log('📥 Response data:', data)
 
       if (response.ok) {
         setSubmitSuccess(true)
@@ -66,9 +59,6 @@ const Appointment = () => {
         setSubmitMessage(data.message || t('programare.form.error') || 'Failed to send message')
       }
     } catch (error) {
-      console.error('❌ Error submitting contact form:', error)
-      console.error('❌ Error name:', error.name)
-      console.error('❌ Error message:', error.message)
       setSubmitSuccess(false)
       
       // Provide more specific error messages

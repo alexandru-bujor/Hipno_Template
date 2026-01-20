@@ -35,13 +35,9 @@ const ThankYou = () => {
       
       if (data.success && data.paymentStatus === 'paid') {
         setPaymentVerified(true)
-        console.log('✅ Payment verified and notification sent')
-      } else {
-        console.warn('⚠️ Payment not verified:', data.message)
       }
     } catch (error) {
-      console.error('Error verifying payment:', error)
-      // Don't show error to user, just log it
+      // Silently handle errors - don't show to user
     }
   }
 

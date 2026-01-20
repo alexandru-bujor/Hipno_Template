@@ -51,15 +51,6 @@ const Donations = () => {
     }
   }, [searchParams, setSearchParams, t])
 
-  // Debug: Log the endpoint and key being used (remove in production)
-  useEffect(() => {
-    const fullEndpoint = getFullEndpoint()
-    console.log('🔍 API Endpoint (raw):', apiEndpoint)
-    console.log('🔍 API Endpoint (full):', fullEndpoint)
-    console.log('🔍 Env variable (endpoint):', import.meta.env.VITE_STRIPE_API_ENDPOINT)
-    console.log('🔑 Stripe Key loaded:', stripePublishableKey ? `${stripePublishableKey.substring(0, 20)}...` : 'MISSING!')
-    console.log('🔑 Env variable (key):', import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY ? `${import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY.substring(0, 20)}...` : 'NOT LOADED')
-  }, [apiEndpoint, stripePublishableKey])
 
   const presetAmounts = [50, 100, 250, 500, 1000]
 
@@ -91,9 +82,6 @@ const Donations = () => {
     try {
       // Get the full endpoint URL (always use absolute URL)
       const endpoint = getFullEndpoint()
-      
-      console.log('🚀 Making request to:', endpoint)
-      console.log('💰 Donation amount:', donationAmount, 'cents:', Math.round(parseFloat(donationAmount) * 100))
       
       // Call backend API to create checkout session
       const response = await fetch(endpoint, {
@@ -142,7 +130,6 @@ const Donations = () => {
         throw new Error(stripeError.message)
       }
     } catch (err) {
-      console.error('Error creating checkout session:', err)
       setError(err.message || t('donations.errors.generic'))
       setIsLoading(false)
     }

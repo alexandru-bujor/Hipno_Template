@@ -35,9 +35,6 @@ const Appointment = () => {
       // Hardcoded production API endpoint for Telegram notifications
       const apiEndpoint = 'https://fiongolden.com/api/appointment'
       
-      console.log('📤 Submitting appointment to:', apiEndpoint)
-      console.log('📤 Form data:', formData)
-      
       const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
@@ -46,11 +43,7 @@ const Appointment = () => {
         body: JSON.stringify(formData),
       })
 
-      console.log('📥 Response status:', response.status)
-      console.log('📥 Response ok:', response.ok)
-
       const data = await response.json()
-      console.log('📥 Response data:', data)
 
       if (response.ok) {
         setSubmitSuccess(true)
@@ -70,10 +63,6 @@ const Appointment = () => {
         setSubmitMessage(data.message || t('programare.form.error') || 'Failed to submit appointment')
       }
     } catch (error) {
-      console.error('❌ Error submitting appointment:', error)
-      console.error('❌ Error name:', error.name)
-      console.error('❌ Error message:', error.message)
-      console.error('❌ Error stack:', error.stack)
       setSubmitSuccess(false)
       
       // Provide more specific error messages

@@ -20,11 +20,6 @@ function App() {
   // In development, use empty basename. In production (GitHub Pages), use the base path
   const basename = import.meta.env.DEV ? '' : (import.meta.env.BASE_URL || '')
   
-  // Debug: Log the basename being used
-  if (import.meta.env.DEV) {
-    console.log('🔍 Router basename (dev):', basename, '| BASE_URL:', import.meta.env.BASE_URL)
-  }
-  
   return (
     <LanguageProvider>
       <BrowserRouter basename={basename}>

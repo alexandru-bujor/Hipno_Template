@@ -11,11 +11,16 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - FRONTEND_URL=${FRONTEND_URL:-http://localhost}
-      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - FRONTEND_URL=${FRONTEND_URL:-https://fiongolden.com}
       - BASE_PATH=${BASE_PATH:-}
-    env_file:
-      - api/.env
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      # Telegram Bot Configuration
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - TELEGRAM_APPOINTMENT_TOPIC_ID=${TELEGRAM_APPOINTMENT_TOPIC_ID}
+      - TELEGRAM_PAYMENT_CHAT_ID=${TELEGRAM_PAYMENT_CHAT_ID}
+      - TELEGRAM_PAYMENT_TOPIC_ID=${TELEGRAM_PAYMENT_TOPIC_ID}
     networks:
       - app-network
     healthcheck:
@@ -31,7 +36,8 @@ services:
       dockerfile: Dockerfile
       args:
         - VITE_STRIPE_PUBLISHABLE_KEY=${VITE_STRIPE_PUBLISHABLE_KEY}
-        - VITE_STRIPE_API_ENDPOINT=${VITE_STRIPE_API_ENDPOINT:-http://localhost/api/create-checkout-session}
+        - VITE_STRIPE_API_ENDPOINT=${VITE_STRIPE_API_ENDPOINT:-https://fiongolden.com/api/create-checkout-session}
+        - VITE_API_ENDPOINT=${VITE_API_ENDPOINT:-https://fiongolden.com/api}
         - VITE_BASE_URL=/
     container_name: donations-frontend
     restart: unless-stopped

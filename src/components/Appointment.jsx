@@ -32,7 +32,29 @@ const Appointment = () => {
     setSubmitSuccess(false)
 
     try {
-      const apiEndpoint = import.meta.env.VITE_API_ENDPOINT || 'http://localhost:3000/api/appointment'
+      // Get API endpoint - use VITE_API_ENDPOINT if set, otherwise construct from VITE_STRIPE_API_ENDPOINT or default
+      let apiEndpoint = import.meta.env.VITE_API_ENDPOINT
+      
+      if (!apiEndpoint) {
+        // Try to extract base URL from VITE_STRIPE_API_ENDPOINT
+        const stripeEndpoint = import.meta.env.VITE_STRIPE_API_ENDPOINT
+        if (stripeEndpoint) {
+          // Extract base URL (e.g., https://fiongolden.com/api from https://fiongolden.com/api/create-checkout-session)
+          const baseUrl = stripeEndpoint.replace('/create-checkout-session', '')
+          apiEndpoint = `${baseUrl}/appointment`
+        } else {
+          // Fallback to localhost for development
+          apiEndpoint = 'http://localhost:3000/api/appointment'
+        }
+      } else {
+        // If VITE_API_ENDPOINT is set, append /appointment if not already included
+        if (!apiEndpoint.endsWith('/appointment')) {
+          apiEndpoint = `${apiEndpoint}/appointment`
+        }
+      }
+      
+      console.log('📤 Submitting appointment to:', apiEndpoint)
+      console.log('📤 Form data:', formData)
       
       const response = await fetch(apiEndpoint, {
         method: 'POST',
@@ -42,7 +64,11 @@ const Appointment = () => {
         body: JSON.stringify(formData),
       })
 
+      console.log('📥 Response status:', response.status)
+      console.log('📥 Response ok:', response.ok)
+
       const data = await response.json()
+      console.log('📥 Response data:', data)
 
       if (response.ok) {
         setSubmitSuccess(true)
@@ -62,9 +88,20 @@ const Appointment = () => {
         setSubmitMessage(data.message || t('programare.form.error') || 'Failed to submit appointment')
       }
     } catch (error) {
-      console.error('Error submitting appointment:', error)
+      console.error('❌ Error submitting appointment:', error)
+      console.error('❌ Error name:', error.name)
+      console.error('❌ Error message:', error.message)
+      console.error('❌ Error stack:', error.stack)
       setSubmitSuccess(false)
-      setSubmitMessage(t('programare.form.error') || 'An error occurred. Please try again.')
+      
+      // Provide more specific error messages
+      if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+        setSubmitMessage('Network error: Could not connect to server. Please check your internet connection and try again.')
+      } else if (error.message.includes('ERR_CONNECTION_REFUSED')) {
+        setSubmitMessage('Connection refused: The server is not responding. Please try again later.')
+      } else {
+        setSubmitMessage(t('programare.form.error') || 'An error occurred. Please try again.')
+      }
     } finally {
       setIsSubmitting(false)
     }

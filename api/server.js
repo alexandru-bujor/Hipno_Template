@@ -27,10 +27,20 @@ const notifiedSessions = new Set();
 const app = express();
 
 // Enable CORS for your frontend
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+console.log(`🔐 CORS configured for: ${frontendUrl}`);
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: frontendUrl,
   credentials: true
 }));
+
+// Request logging middleware
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/')) {
+    console.log(`📨 ${req.method} ${req.path} - ${new Date().toISOString()}`);
+  }
+  next();
+});
 
 // JSON body parser (for regular endpoints)
 app.use(express.json());
@@ -54,17 +64,26 @@ app.get('/api/health', (req, res) => {
 
 // Verify payment and send notification endpoint
 app.post('/api/verify-payment', async (req, res) => {
+  const requestId = Date.now().toString(36);
+  console.log(`\n💰 [${requestId}] Payment verification request received`);
+  console.log(`💰 [${requestId}] Request body:`, JSON.stringify(req.body, null, 2));
+  
   try {
     const { sessionId } = req.body;
 
     if (!sessionId) {
+      console.error(`❌ [${requestId}] Session ID is missing`);
       return res.status(400).json({ 
-        message: 'Session ID is required' 
+        success: false,
+        message: 'Session ID is required',
+        requestId
       });
     }
 
+    console.log(`🔍 [${requestId}] Retrieving Stripe session: ${sessionId}`);
     // Retrieve the checkout session from Stripe
     const session = await stripe.checkout.sessions.retrieve(sessionId);
+    console.log(`✅ [${requestId}] Session retrieved. Payment status: ${session.payment_status}`);
 
     // Only send notification if payment was successful
     if (session.payment_status === 'paid') {
@@ -125,15 +144,30 @@ app.post('/api/verify-payment', async (req, res) => {
 
 // Appointment submission endpoint
 app.post('/api/appointment', async (req, res) => {
+  const requestId = Date.now().toString(36);
+  const timestamp = new Date().toISOString();
+  
+  console.log(`\n📥 [${requestId}] Appointment request received at ${timestamp}`);
+  console.log(`📥 [${requestId}] Request origin: ${req.headers.origin || 'N/A'}`);
+  console.log(`📥 [${requestId}] Request IP: ${req.ip || req.connection.remoteAddress || 'N/A'}`);
+  console.log(`📥 [${requestId}] Request body:`, JSON.stringify(req.body, null, 2));
+  
   try {
     const { fname, lname, email, phone, date, time, message } = req.body;
 
     // Validate required fields
     if (!fname || !lname || !email) {
+      console.error(`❌ [${requestId}] Validation failed: Missing required fields`);
+      console.error(`❌ [${requestId}] Received:`, { fname: !!fname, lname: !!lname, email: !!email });
       return res.status(400).json({ 
-        message: 'First name, last name, and email are required' 
+        success: false,
+        message: 'First name, last name, and email are required',
+        requestId
       });
     }
+
+    console.log(`✅ [${requestId}] Validation passed`);
+    console.log(`📤 [${requestId}] Sending Telegram notification...`);
 
     // Send Telegram notification
     const notificationSent = await sendAppointmentNotification({
@@ -146,19 +180,33 @@ app.post('/api/appointment', async (req, res) => {
       message
     });
 
-    if (!notificationSent) {
-      console.warn('⚠️ Failed to send Telegram notification, but appointment was recorded');
+    if (notificationSent) {
+      console.log(`✅ [${requestId}] Telegram notification sent successfully`);
+    } else {
+      console.warn(`⚠️ [${requestId}] Failed to send Telegram notification`);
+      console.warn(`⚠️ [${requestId}] Checking Telegram configuration...`);
+      console.warn(`⚠️ [${requestId}] TELEGRAM_BOT_TOKEN: ${process.env.TELEGRAM_BOT_TOKEN ? 'SET' : 'NOT SET'}`);
+      console.warn(`⚠️ [${requestId}] TELEGRAM_CHAT_ID: ${process.env.TELEGRAM_CHAT_ID || 'NOT SET'}`);
+      console.warn(`⚠️ [${requestId}] TELEGRAM_APPOINTMENT_TOPIC_ID: ${process.env.TELEGRAM_APPOINTMENT_TOPIC_ID || 'NOT SET'}`);
     }
 
+    console.log(`✅ [${requestId}] Appointment processed successfully`);
     res.json({ 
       success: true,
       message: 'Appointment submitted successfully',
-      notificationSent
+      notificationSent,
+      requestId
     });
   } catch (error) {
-    console.error('Error processing appointment:', error);
+    console.error(`❌ [${requestId}] Error processing appointment:`, error);
+    console.error(`❌ [${requestId}] Error name:`, error.name);
+    console.error(`❌ [${requestId}] Error message:`, error.message);
+    console.error(`❌ [${requestId}] Error stack:`, error.stack);
     res.status(500).json({ 
-      message: error.message || 'Failed to process appointment' 
+      success: false,
+      message: error.message || 'Failed to process appointment',
+      requestId,
+      error: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
 });
@@ -206,15 +254,25 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
 
 // Create Stripe Checkout Session
 app.post('/api/create-checkout-session', async (req, res) => {
+  const requestId = Date.now().toString(36);
+  console.log(`\n💳 [${requestId}] Checkout session creation request received`);
+  console.log(`💳 [${requestId}] Request origin: ${req.headers.origin || 'N/A'}`);
+  console.log(`💳 [${requestId}] Request body:`, JSON.stringify(req.body, null, 2));
+  
   try {
     const { amount, currency = 'usd' } = req.body;
 
     // Validate amount
     if (!amount || amount < 50) { // Minimum $0.50
+      console.error(`❌ [${requestId}] Invalid amount: ${amount}`);
       return res.status(400).json({ 
-        message: 'Amount must be at least $0.50' 
+        success: false,
+        message: 'Amount must be at least $0.50',
+        requestId
       });
     }
+
+    console.log(`✅ [${requestId}] Amount validated: ${amount} ${currency}`);
 
     // Get origin from request headers for redirect URLs
     // In development, use the frontend URL directly
@@ -270,10 +328,26 @@ app.post('/api/create-checkout-session', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3001;
+// Log environment configuration on startup
+console.log('\n🔧 Environment Configuration:');
+console.log(`   NODE_ENV: ${process.env.NODE_ENV || 'NOT SET'}`);
+console.log(`   PORT: ${process.env.PORT || 'NOT SET'}`);
+console.log(`   FRONTEND_URL: ${process.env.FRONTEND_URL || 'NOT SET'}`);
+console.log(`   BASE_PATH: ${process.env.BASE_PATH || 'NOT SET (empty)'}`);
+console.log(`   STRIPE_SECRET_KEY: ${process.env.STRIPE_SECRET_KEY ? 'SET (' + process.env.STRIPE_SECRET_KEY.substring(0, 20) + '...)' : 'NOT SET'}`);
+console.log(`   STRIPE_WEBHOOK_SECRET: ${process.env.STRIPE_WEBHOOK_SECRET ? 'SET' : 'NOT SET'}`);
+console.log(`   TELEGRAM_BOT_TOKEN: ${process.env.TELEGRAM_BOT_TOKEN ? 'SET (' + process.env.TELEGRAM_BOT_TOKEN.substring(0, 10) + '...)' : 'NOT SET'}`);
+console.log(`   TELEGRAM_CHAT_ID: ${process.env.TELEGRAM_CHAT_ID || 'NOT SET'}`);
+console.log(`   TELEGRAM_APPOINTMENT_TOPIC_ID: ${process.env.TELEGRAM_APPOINTMENT_TOPIC_ID || 'NOT SET'}`);
+console.log(`   TELEGRAM_PAYMENT_CHAT_ID: ${process.env.TELEGRAM_PAYMENT_CHAT_ID || 'NOT SET'}`);
+console.log(`   TELEGRAM_PAYMENT_TOPIC_ID: ${process.env.TELEGRAM_PAYMENT_TOPIC_ID || 'NOT SET (empty)'}`);
+console.log('');
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Stripe backend server running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`🔑 Stripe secret key loaded: ${process.env.STRIPE_SECRET_KEY.substring(0, 20)}...`);
   console.log(`🌐 Frontend URL: ${process.env.FRONTEND_URL || 'http://localhost:5173'}`);
+  console.log(`📡 CORS enabled for: ${process.env.FRONTEND_URL || 'http://localhost:5173'}`);
+  console.log('');
 });
